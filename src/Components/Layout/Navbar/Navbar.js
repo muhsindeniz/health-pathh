@@ -157,16 +157,16 @@ const Navbar = () => {
                                                     <Link to="/vegetables">Vegetables</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/">Fruits</Link>
+                                                    <Link to="/fruits">Fruits</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/">Natural Teas</Link>
+                                                    <Link to="/natural-teas">Natural Teas</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/">Useful Plants</Link>
+                                                    <Link to="/useful-plants">Useful Plants</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/">Diet Lists</Link>
+                                                    <Link to="/diet-list">Diet Lists</Link>
                                                 </li>
                                                 <li>
                                                     <Link to="/contact">Contact Us</Link>

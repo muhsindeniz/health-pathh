@@ -18,6 +18,10 @@ import ProductDetail from './Pages/ProductDetail/ProductDetail';
 import WishList from './Pages/WishList/WishList';
 import Cart from './Pages/Cart/Cart';
 import Vegetables from './Pages/Vegetables/Vegetables';
+import Fruits from './Pages/Fruits/Fruits';
+import NaturalTeas from './Pages/NaturalTeas/NaturalTeas';
+import Plants from './Pages/Plants/Plants';
+import DietList from './Pages/DietList/DietList';
 
 function App() {
 
@@ -37,7 +41,6 @@ function App() {
     }
   }, [])
 
-
   return (
     <>
       <GlobalSettingsContext.Provider value={{ mobile }}>
@@ -52,6 +55,10 @@ function App() {
               <Route path="/wishList" component={WishList} />
               <Route path="/cart" component={Cart} />
               <Route path="/vegetables" component={Vegetables} />
+              <Route path="/fruits" component={Fruits} />
+              <Route path="/natural-teas" component={NaturalTeas} />
+              <Route path="/useful-plants" component={Plants} />
+              <Route path="/diet-list" component={DietList} />
             </Switch>
             <Footer />
           </Router> 
