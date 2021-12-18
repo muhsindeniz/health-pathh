@@ -38,9 +38,9 @@ const Footer = () => {
 
                                         <ul>
                                             <li><Link to="/">Home</Link></li>
-                                            <li><Link to="/">Vegetables</Link></li>
-                                            <li><Link to="/"> Fruits</Link></li>
-                                            <li><Link to="/"> Natural Teas</Link></li>
+                                            <li><Link to="/vegetables">Vegetables</Link></li>
+                                            <li><Link to="/fruits"> Fruits</Link></li>
+                                            <li><Link to="/natural-teas"> Natural Teas</Link></li>
                                            
                                         </ul>
                                     </div>
@@ -51,8 +51,8 @@ const Footer = () => {
                                 <h3>Menu</h3>
                                     <div className="footer_menu">
                                         <ul>
-                                        <li><Link to="/"> Useful Plants</Link></li>
-                                            <li><Link to="/"> Diet Lists</Link></li>
+                                        <li><Link to="/useful-plants"> Useful Plants</Link></li>
+                                            <li><Link to="/diet-list"> Diet Lists</Link></li>
                                             <li><Link to="/contact"> Contact Us</Link></li>
                                         </ul>
                                     </div>

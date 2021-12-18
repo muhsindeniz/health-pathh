@@ -21,7 +21,7 @@ const Contact = () => {
                                 <p>We find the most healthy and natural foods for you, we prepare your personalized diet lists according to your body mass index value.</p>
                                 <ul>
                                     <li><i className="fa fa-fax"></i>  Address : New Neighborhood Ahmet Rasim Street House No: 145 Hatay / Samandag</li>
-                                    <li><i class="far fa-paper-plane"></i> <Link href="mailto:mnknsro413@gmail.com">mnknsro413@gmail.com</Link></li>
+                                    <li><i className="far fa-paper-plane"></i> <Link href="mailto:mnknsro413@gmail.com">mnknsro413@gmail.com</Link></li>
                                     <li><i className="fa fa-phone"></i><Link href="tel:0(1234)567890">0(545) 725 04 40</Link>  </li>
                                 </ul>
                             </div>

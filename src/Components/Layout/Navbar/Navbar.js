@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import logo from '../../../Assets/media/img/logo/logo.png'
 import { Link } from 'react-router-dom'
 import product from '../../../Assets/media/img/s-product/product.jpg'
 import product2 from '../../../Assets/media/img/s-product/product2.jpg'
+import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext'
 
 const Navbar = () => {
+
+    let [openMenu, setOpenMenu] = useState(false)
+    let {mobile} = useContext(GlobalSettingsContext);
 
     return (
         <>
@@ -35,7 +39,7 @@ const Navbar = () => {
                             <div className="row align-items-center">
                                 <div className="col-lg-2 col-md-3 col-sm-3 col-3">
                                     <div className="logo">
-                                        <a href="index.html"><img src={logo} alt="" /></a>
+                                        <Link to="/"><img src={logo} alt="" /></Link>
                                     </div>
                                 </div>
                                 <div className="col-lg-10 col-md-6 col-sm-7 col-8">
@@ -149,26 +153,29 @@ const Navbar = () => {
                                 <div className="col-lg-8">
                                     <div className="main_menu menu_position">
                                         <nav>
-                                            <ul>
-                                                <li>
+                                            <div className="menu_icon w-100" onClick={() => setOpenMenu(!openMenu)}>
+                                                <i className="fas fa-bars"></i>
+                                            </div>
+                                            <ul className={openMenu === false ? "open" : "closed"}>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/">home</Link>
                                                 </li>
-                                                <li>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/vegetables">Vegetables</Link>
                                                 </li>
-                                                <li>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/fruits">Fruits</Link>
                                                 </li>
-                                                <li>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/natural-teas">Natural Teas</Link>
                                                 </li>
-                                                <li>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/useful-plants">Useful Plants</Link>
                                                 </li>
-                                                <li>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/diet-list">Diet Lists</Link>
                                                 </li>
-                                                <li>
+                                                <li onClick={() => setOpenMenu(true)}>
                                                     <Link to="/contact">Contact Us</Link>
                                                 </li>
                                             </ul>
