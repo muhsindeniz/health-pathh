@@ -11856,3 +11856,28 @@ iframe{
 .ant-menu-item-selected svg{
   fill: #40A944 !important;
 }
+
+.action_links ul{
+  margin: 0;
+}
+
+.filter-price{
+  width: 100%;
+  display: flex;
+}
+
+.filter-price input{
+  border: solid 2px #ccc; 
+  border-radius: 7px;
+  padding: 7px 10px;
+  max-width: 80px;
+  margin-right: 10px;
+}
+
+.filter-price button{
+  background-color: #40A944;
+  color: #fff;
+  border: solid 1px #40A944;
+  padding: 0 15px;
+  border-radius: 8px;
+}

@@ -1,33 +1,76 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
 import productbig1 from '../../Assets/media/img/product/productbig1.jpg'
 import productbig2 from '../../Assets/media/img/product/productbig2.jpg'
-import Filter from '../../Components/Filters/Filter';
+import banner17 from '../../Assets/media/img/bg/banner17.jpg'
+import { Select } from 'antd';
 
 const Plants = () => {
+
+    const { Option } = Select;
+
+    function handleChange(value) {
+        console.log(`selected ${value}`);
+    } 
+    
     return (
         <>
-             <div className="shop_area shop_reverse mt-70 mb-70">
+            <div className="shop_area shop_reverse mt-70 mb-70">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-3 col-md-12">
-                            <Filter />
+                            <aside className="sidebar_widget">
+                                <div className="widget_inner">
+                                    <div className="widget_list widget_filter">
+                                        <h3>Filter by price</h3>
+                                        <div className="filter-price">
+                                            <input placeholder="En az" type="number" />
+                                            <input placeholder="En az" type="number" />
+                                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                    <div className="widget_list widget_color">
+                                        <h3>Choose Calorie Values</h3>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Low-calorie Vegetables<span>(6)</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Medium-calorie Vegetables<span>(8)</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#">High Calorie Vegetables<span>(10)</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="widget_list tags_widget">
+                                        <h3>Product tags</h3>
+                                        <div className="tag_cloud">
+                                            <Link to="/vegetables">Vegetables</Link>
+                                            <Link to="/vegetables">Low-calorie Vegetables</Link>
+                                            <Link to="/vegetables">Helth Vegetables</Link>
+                                            <Link to="/vegetables">Health</Link>
+                                        </div>
+                                    </div>
+                                    <div className="widget_list banner_widget">
+                                        <div className="banner_thumb">
+                                            <a href="#"><img src={banner17} alt="" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
                         </div>
 
                         <div className="col-lg-9 col-md-12">
                             <div className="shop_toolbar_wrapper">
                                 <div className=" niceselect_option">
-                                    <form className="select_option" action="#">
-                                        <select name="orderby" id="short">
-                                            <option selected defaultValue="1">Sort by average rating</option>
-                                            <option value="2">Sort by popularity</option>
-                                            <option value="3">Sort by newness</option>
-                                            <option value="4">Sort by price: low to high</option>
-                                            <option value="5">Sort by price: high to low</option>
-                                            <option value="6">Product Name: Z</option>
-                                        </select>
-                                    </form>
+                                <Select defaultValue="Sort by average rating" style={{ width: "100%" }} onChange={handleChange}>
+                                            <Option value="jack">Sort by popularity</Option>
+                                            <Option value="lucy">Sort by newness</Option>
+                                            <Option value="Yiminghe">Sort by price: low to high</Option>
+                                            <Option value="a">Sort by price: low to high</Option>
+                                            <Option value="b">Product Name: Z</Option>
+                                        </Select>
                                 </div>
                                 <div className="page_amount">
                                     <p>Showing 1–9 of 21 results</p>
