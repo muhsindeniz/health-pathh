@@ -3,12 +3,10 @@ import logo from '../../../Assets/media/img/logo/logo.png'
 import { Link } from 'react-router-dom'
 import product from '../../../Assets/media/img/s-product/product.jpg'
 import product2 from '../../../Assets/media/img/s-product/product2.jpg'
-import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext'
+import { Menu } from 'antd';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 const Navbar = () => {
-
-    let [openMenu, setOpenMenu] = useState(false)
-    let {mobile} = useContext(GlobalSettingsContext);
 
     return (
         <>
@@ -18,7 +16,7 @@ const Navbar = () => {
                         <div className="container">
                             <div className="row align-items-center">
                                 <div className="col-lg-6 col-md-6">
-                                
+
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="header_social text-right">
@@ -147,45 +145,35 @@ const Navbar = () => {
                                 </div>
                                 <div className="col-lg-2 col-md-6">
                                     <section className="d-lg-none d-sm-block">
-                                       
+
                                     </section>
                                 </div>
-                                <div className="col-lg-8">
-                                    <div className="main_menu menu_position">
-                                        <nav>
-                                            <div className="menu_icon w-100" onClick={() => setOpenMenu(!openMenu)}>
-                                                <i className="fas fa-bars"></i>
-                                            </div>
-                                            <ul className={openMenu === false ? "open" : "closed"}>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/">home</Link>
-                                                </li>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/vegetables">Vegetables</Link>
-                                                </li>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/fruits">Fruits</Link>
-                                                </li>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/natural-teas">Natural Teas</Link>
-                                                </li>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/useful-plants">Useful Plants</Link>
-                                                </li>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/diet-list">Diet Lists</Link>
-                                                </li>
-                                                <li onClick={() => setOpenMenu(true)}>
-                                                    <Link to="/contact">Contact Us</Link>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                                <div className="col-lg-2">
-                                    <div className="call-support">
-                                        <p><a href="tel:05457250440">(545) 725 04 40</a> Customer Support</p>
-                                    </div>
+                                <div className="col-lg-10 col-sm-12">
+                                    <Menu mode="horizontal">
+                                        <Menu.Item key="home" icon={<MailOutlined />}>
+                                        <Link to="/">Home</Link>
+                                        </Menu.Item>
+                                        <Menu.Item key="vegetables"  icon={<AppstoreOutlined />}>
+                                        <Link to="/vegetables">Vegetables</Link>
+                                        </Menu.Item>
+                                        <Menu.Item key="fruits"  icon={<AppstoreOutlined />}>
+                                        <Link to="/fruits">Fruits</Link>
+                                        </Menu.Item>
+                                        <Menu.Item key="tea"  icon={<AppstoreOutlined />}>
+                                        <Link to="/natural-teas">Natural Teas</Link>
+                                        </Menu.Item>
+                                        <Menu.Item key="plants"  icon={<AppstoreOutlined />}>
+                                        <Link to="/useful-plants">Useful Plants</Link>
+                                        </Menu.Item>
+                                        <Menu.Item key="lists"  icon={<AppstoreOutlined />}>
+                                        <Link to="/diet-list">Diet Lists</Link>
+                                        </Menu.Item>
+                                        <Menu.Item key="us"  icon={<AppstoreOutlined />}>
+                                        <Link to="/contact">Contact Us</Link>
+                                        </Menu.Item>
+                                      
+                                    </Menu>
+
                                 </div>
                             </div>
                         </div>

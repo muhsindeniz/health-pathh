@@ -20,6 +20,7 @@ import Fruits from './Pages/Fruits/Fruits';
 import NaturalTeas from './Pages/NaturalTeas/NaturalTeas';
 import Plants from './Pages/Plants/Plants';
 import DietList from './Pages/DietList/DietList';
+import 'antd/dist/antd.css';
 
 function App() {
 
@@ -38,11 +39,6 @@ function App() {
       window.removeEventListener('load', getSize)
     }
   }, [])
-
-  var iframes = document.getElementsByTagName('iframe');
-  for (var i = 0; i < iframes.length; i++) {
-      iframes[i].parentNode.removeChild(iframes[i]);
-  }
 
   return (
     <>

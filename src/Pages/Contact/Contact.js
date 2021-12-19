@@ -9,7 +9,7 @@ const Contact = () => {
             <HeaderBanner page="Contact Us" targetPage="Contact Us" />
 
             <div className="contact_map mt-70">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51590.889037618246!2d35.934378443244356!3d36.08299090611279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1525d6a47a2890ad%3A0x8ad66bfc29e4b6e8!2sSamanda%C4%9F%2C%20Hatay!5e0!3m2!1sen!2str!4v1638790343156!5m2!1sen!2str" width="100%" height="450" style={{ border: "none" }} allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51590.889037618246!2d35.934378443244356!3d36.08299090611279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1525d6a47a2890ad%3A0x8ad66bfc29e4b6e8!2sSamanda%C4%9F%2C%20Hatay!5e0!3m2!1sen!2str!4v1638790343156!5m2!1sen!2str" width="100%" height="450" style={{ border: "none" }} allowFullScreen="" loading="lazy"></iframe>
             </div>
 
             <div className="contact_area">
