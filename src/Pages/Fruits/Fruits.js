@@ -26,7 +26,7 @@ const Fruits = () => {
                                         <div className="filter-price">
                                             <input placeholder="En az" type="number" />
                                             <input placeholder="En az" type="number" />
-                                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                                            <button type="submit"><i className="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
                                     <div className="widget_list widget_color">
@@ -46,10 +46,10 @@ const Fruits = () => {
                                     <div className="widget_list tags_widget">
                                         <h3>Product tags</h3>
                                         <div className="tag_cloud">
-                                            <Link to="/vegetables">Vegetables</Link>
-                                            <Link to="/vegetables">Low-calorie Vegetables</Link>
-                                            <Link to="/vegetables">Helth Vegetables</Link>
-                                            <Link to="/vegetables">Health</Link>
+                                            <Link to="/fruits">Fruits</Link>
+                                            <Link to="/fruits">Low-calorie Vegetables</Link>
+                                            <Link to="/fruits">Helth Fruits</Link>
+                                            <Link to="/fruits">Health</Link>
                                         </div>
                                     </div>
                                     <div className="widget_list banner_widget">

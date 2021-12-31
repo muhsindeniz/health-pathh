@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import product from '../../../Assets/media/img/s-product/product.jpg'
 import product2 from '../../../Assets/media/img/s-product/product2.jpg'
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 const Navbar = () => {
 
@@ -150,28 +149,27 @@ const Navbar = () => {
                                 </div>
                                 <div className="col-lg-10 col-sm-12">
                                     <Menu mode="horizontal">
-                                        <Menu.Item key="home" icon={<MailOutlined />}>
+                                        <Menu.Item key="home" >
                                         <Link to="/">Home</Link>
                                         </Menu.Item>
-                                        <Menu.Item key="vegetables"  icon={<AppstoreOutlined />}>
+                                        <Menu.Item key="vegetables">
                                         <Link to="/vegetables">Vegetables</Link>
                                         </Menu.Item>
-                                        <Menu.Item key="fruits"  icon={<AppstoreOutlined />}>
+                                        <Menu.Item key="fruits">
                                         <Link to="/fruits">Fruits</Link>
                                         </Menu.Item>
-                                        <Menu.Item key="tea"  icon={<AppstoreOutlined />}>
+                                        <Menu.Item key="tea">
                                         <Link to="/natural-teas">Natural Teas</Link>
                                         </Menu.Item>
-                                        <Menu.Item key="plants"  icon={<AppstoreOutlined />}>
+                                        <Menu.Item key="plants">
                                         <Link to="/useful-plants">Useful Plants</Link>
                                         </Menu.Item>
-                                        <Menu.Item key="lists"  icon={<AppstoreOutlined />}>
+                                        <Menu.Item key="lists">
                                         <Link to="/diet-list">Diet Lists</Link>
                                         </Menu.Item>
-                                        <Menu.Item key="us"  icon={<AppstoreOutlined />}>
+                                        <Menu.Item key="us">
                                         <Link to="/contact">Contact Us</Link>
                                         </Menu.Item>
-                                      
                                     </Menu>
 
                                 </div>

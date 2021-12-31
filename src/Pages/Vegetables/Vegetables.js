@@ -26,7 +26,7 @@ const Vegetables = () => {
                                         <div className="filter-price">
                                             <input placeholder="En az" type="number" />
                                             <input placeholder="En az" type="number" />
-                                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                                            <button type="submit"><i className="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
                                     <div className="widget_list widget_color">
