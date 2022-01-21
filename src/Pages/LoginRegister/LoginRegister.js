@@ -28,8 +28,9 @@ const LoginRegister = () => {
             }).then(({data: { result, result_message }}) => {
                 if(result){
                     message.success("Giriş Başarılı..")
-                    Cookies.set("user", JSON.stringify(result))
-                    Cookies.set("token", result.token)
+                    localStorage.setItem("user", JSON.stringify(result))
+                    localStorage.setItem("token", result.token)
+
                     setToken(result.token)
                     setUser(result);
                     setLoading(false)

@@ -16,13 +16,13 @@ const Navbar = () => {
     let history = useHistory();
 
     let logOut = () => {
-        Cookies.remove("user");
-        Cookies.remove("token");
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
         setUser(null)
         setToken(null)
         message.success("Başarıyla çıkış yapıldı..")
         history.push('/')
-      }
+    }
 
     return (
         <>
@@ -77,10 +77,10 @@ const Navbar = () => {
                                                         <i className="far fa-user"></i>
                                                         <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                             <span className="header-title-login">
-                                                                Giriş Yap
+                                                            {token === null ? "Giriş Yap" : "Hesabım"}
                                                             </span>
                                                             <br />
-                                                            <small>{token === null ? "veya üye ol" : user.name}</small>
+                                                            <small>{token === null ? "veya üye ol" : user?.name}</small>
                                                         </div>
                                                     </label>
                                                     <div className="section-dropdown">
@@ -94,7 +94,9 @@ const Navbar = () => {
                                             </div>
 
                                             {
-                                                mobile === true ? <div className="user-profile-container">MD</div> : <div className="header_account_list header_wishlist">
+                                                mobile === true ? <div className="user-profile-container">
+                                                    <i className="far fa-user"></i>
+                                                </div> : <div className="header_account_list header_wishlist">
                                                     <Link to="/cart">
                                                         <div className="sec-center">
                                                             <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
