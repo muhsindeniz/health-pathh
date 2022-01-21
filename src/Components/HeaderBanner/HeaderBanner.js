@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const HeaderBanner = (props) => {
 
@@ -12,7 +13,7 @@ const HeaderBanner = (props) => {
                         <div className="breadcrumb_content">
                             <h3>{page}</h3>
                             <ul>
-                                <li><a href="index.html">home</a></li>
+                                <li><Link to="/">home</Link></li>
                                 <li>{targetPage}</li>
                             </ul>
                         </div>

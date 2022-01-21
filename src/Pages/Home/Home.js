@@ -22,13 +22,6 @@ import product11 from '../../Assets/media/img/product/product11.jpg';
 import product12 from '../../Assets/media/img/product/product12.jpg';
 import product13 from '../../Assets/media/img/product/product13.jpg';
 import product19 from '../../Assets/media/img/product/product19.jpg';
-import blog1 from '../../Assets/media/img/blog/blog1.jpg'
-import blog2 from '../../Assets/media/img/blog/blog2.jpg'
-import blog3 from '../../Assets/media/img/blog/blog3.jpg'
-import brand1 from '../../Assets/media/img/brand/brand1.jpg'
-import brand2 from '../../Assets/media/img/brand/brand2.jpg'
-import brand3 from '../../Assets/media/img/brand/brand3.jpg'
-import brand4 from '../../Assets/media/img/brand/brand4.jpg'
 import banner1 from '../../Assets/media/img/bg/banner1.jpg';
 import banner2 from '../../Assets/media/img/bg/banner2.jpg';
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
@@ -189,8 +182,8 @@ const Home = () => {
                                             <article className="single_product">
                                                 <figure>
                                                     <div className="product_thumb">
-                                                        <a className="primary_img" href="product-details.html"><img src={product19} alt="" /></a>
-                                                        <a className="secondary_img" href="product-details.html"><img src={product19} alt="" /></a>
+                                                        <Link className="primary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
+                                                        <Link className="secondary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
                                                         <div className="label_product">
                                                             <span className="label_sale">Sale</span>
                                                             <span className="label_new">New</span>
@@ -205,8 +198,8 @@ const Home = () => {
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
-                                                        <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                        <p><a href="#">Fruits</a></p>
+                                                        <h4 className="product_name"><Link className="primary_img" to="/product-detail/1">Quisque In Arcu</Link></h4>
+                                                        <p><Link className="primary_img" to="/product-detail/1">Fruits</Link></p>
                                                         <div className="price_box">
                                                             <span className="current_price">$55.00</span>
                                                             <span className="old_price">$235.00</span>
@@ -219,8 +212,8 @@ const Home = () => {
                                             <article className="single_product">
                                                 <figure>
                                                     <div className="product_thumb">
-                                                        <a className="primary_img" href="product-details.html"><img src={product19} alt="" /></a>
-                                                        <a className="secondary_img" href="product-details.html"><img src={product19} alt="" /></a>
+                                                        <Link className="primary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
+                                                        <Link className="secondary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
                                                         <div className="label_product">
                                                             <span className="label_sale">Sale</span>
                                                             <span className="label_new">New</span>
@@ -235,8 +228,8 @@ const Home = () => {
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
-                                                        <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                        <p><a href="#">Fruits</a></p>
+                                                        <h4 className="product_name"><Link to="/product-detail/1">Quisque In Arcu</Link></h4>
+                                                        <p><Link to="/product-detail/1">Fruits</Link></p>
                                                         <div className="price_box">
                                                             <span className="current_price">$55.00</span>
                                                             <span className="old_price">$235.00</span>
@@ -249,8 +242,8 @@ const Home = () => {
                                             <article className="single_product">
                                                 <figure>
                                                     <div className="product_thumb">
-                                                        <a className="primary_img" href="product-details.html"><img src={product19} alt="" /></a>
-                                                        <a className="secondary_img" href="product-details.html"><img src={product19} alt="" /></a>
+                                                        <Link className="primary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
+                                                        <Link className="secondary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
                                                         <div className="label_product">
                                                             <span className="label_sale">Sale</span>
                                                             <span className="label_new">New</span>
@@ -265,8 +258,8 @@ const Home = () => {
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
-                                                        <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                        <p><a href="#">Fruits</a></p>
+                                                        <h4 className="product_name"><Link to="/product-detail/1">Quisque In Arcu</Link></h4>
+                                                        <p><Link to="/product-detail/1">Fruits</Link></p>
                                                         <div className="price_box">
                                                             <span className="current_price">$55.00</span>
                                                             <span className="old_price">$235.00</span>
@@ -279,8 +272,8 @@ const Home = () => {
                                             <article className="single_product">
                                                 <figure>
                                                     <div className="product_thumb">
-                                                        <a className="primary_img" href="product-details.html"><img src={product19} alt="" /></a>
-                                                        <a className="secondary_img" href="product-details.html"><img src={product19} alt="" /></a>
+                                                        <Link className="primary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
+                                                        <Link className="secondary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
                                                         <div className="label_product">
                                                             <span className="label_sale">Sale</span>
                                                             <span className="label_new">New</span>
@@ -295,8 +288,8 @@ const Home = () => {
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
-                                                        <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                        <p><a href="#">Fruits</a></p>
+                                                        <h4 className="product_name"><Link to="/product-detail/1">Quisque In Arcu</Link></h4>
+                                                        <p><Link to="/product-detail/1">Fruits</Link></p>
                                                         <div className="price_box">
                                                             <span className="current_price">$55.00</span>
                                                             <span className="old_price">$235.00</span>
@@ -309,8 +302,8 @@ const Home = () => {
                                             <article className="single_product">
                                                 <figure>
                                                     <div className="product_thumb">
-                                                        <a className="primary_img" href="product-details.html"><img src={product19} alt="" /></a>
-                                                        <a className="secondary_img" href="product-details.html"><img src={product19} alt="" /></a>
+                                                        <Link className="primary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
+                                                        <Link className="secondary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
                                                         <div className="label_product">
                                                             <span className="label_sale">Sale</span>
                                                             <span className="label_new">New</span>
@@ -325,8 +318,8 @@ const Home = () => {
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
-                                                        <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                        <p><a href="#">Fruits</a></p>
+                                                        <h4 className="product_name"><Link to="/product-detail/1">Quisque In Arcu</Link></h4>
+                                                        <p><Link to="/product-detail/1">Fruits</Link></p>
                                                         <div className="price_box">
                                                             <span className="current_price">$55.00</span>
                                                             <span className="old_price">$235.00</span>
@@ -339,8 +332,8 @@ const Home = () => {
                                             <article className="single_product">
                                                 <figure>
                                                     <div className="product_thumb">
-                                                        <a className="primary_img" href="product-details.html"><img src={product19} alt="" /></a>
-                                                        <a className="secondary_img" href="product-details.html"><img src={product19} alt="" /></a>
+                                                        <Link className="primary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
+                                                        <Link className="secondary_img" to="/product-detail/1"><img src={product19} alt="" /></Link>
                                                         <div className="label_product">
                                                             <span className="label_sale">Sale</span>
                                                             <span className="label_new">New</span>
@@ -355,8 +348,8 @@ const Home = () => {
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
-                                                        <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                        <p><a href="#">Fruits</a></p>
+                                                        <h4 className="product_name"><Link to="/product-detail/1">Quisque In Arcu</Link></h4>
+                                                        <p><Link to="/product-detail/1">Fruits</Link></p>
                                                         <div className="price_box">
                                                             <span className="current_price">$55.00</span>
                                                             <span className="old_price">$235.00</span>
@@ -595,96 +588,6 @@ const Home = () => {
             </div>
 
 
-            <section className="blog_section blog_section2 color_two">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="section_title">
-                                <p>Our recent articles about Organic</p>
-                                <h2>Our Blog Posts</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className=" row">
-                        <div className="col-sm-12 col-lg-3">
-                            <article className="single_blog">
-                                <figure>
-                                    <div className="blog_thumb">
-                                        <a href="blog-details.html"><img src={blog1} alt="" /></a>
-                                    </div>
-                                    <figcaption className="blog_content">
-                                        <div className="articles_date">
-                                            <p>23/06/2021 | <a href="#">eCommerce</a> </p>
-                                        </div>
-                                        <h4 className="post_title"><a href="blog-details.html">Lorem ipsum dolor sit amet,  elit. Impedit, aliquam animi, saepe ex.</a></h4>
-                                        <footer className="blog_footer">
-                                            <a href="blog-details.html">Show more</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div className="col-sm-12 col-lg-3">
-                            <article className="single_blog">
-                                <figure>
-                                    <div className="blog_thumb">
-                                        <a href="blog-details.html"><img src={blog2} alt="" /></a>
-                                    </div>
-                                    <figcaption className="blog_content">
-                                        <div className="articles_date">
-                                            <p>23/06/2021 | <a href="#">eCommerce</a> </p>
-                                        </div>
-                                        <h4 className="post_title"><a href="blog-details.html"> dolor sit amet, elit. Illo iste sed animi quaerat  nobis odit  nulla.</a></h4>
-                                        <footer className="blog_footer">
-                                            <a href="blog-details.html">Show more</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div className="col-sm-12 col-lg-3">
-                            <article className="single_blog">
-                                <figure>
-                                    <div className="blog_thumb">
-                                        <a href="blog-details.html"><img src={blog3} alt="" /></a>
-                                    </div>
-                                    <figcaption className="blog_content">
-                                        <div className="articles_date">
-                                            <p>23/06/2021 | <a href="#">eCommerce</a> </p>
-                                        </div>
-                                        <h4 className="post_title"><a href="blog-details.html">maxime laborum voluptas minus, est, unde eaque esse tenetur.</a></h4>
-                                        <footer className="blog_footer">
-                                            <a href="blog-details.html">Show more</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                        <div className="col-sm-12 col-lg-3">
-                            <article className="single_blog">
-                                <figure>
-                                    <div className="blog_thumb">
-                                        <a href="blog-details.html"><img src={blog2} alt="" /></a>
-                                    </div>
-                                    <figcaption className="blog_content">
-                                        <div className="articles_date">
-                                            <p>23/06/2021 | <a href="#">eCommerce</a> </p>
-                                        </div>
-                                        <h4 className="post_title"><a href="blog-details.html">Lorem ipsum dolor sit amet, elit. Impedit, aliquam animi, saepe ex.</a></h4>
-                                        <footer className="blog_footer">
-                                            <a href="blog-details.html">Show more</a>
-                                        </footer>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-          
-
-
 
             <div className="banner_area">
                 <div className="container">
@@ -715,15 +618,15 @@ const Home = () => {
                     <div className="row">
                         <div className="col-12">
                             <div className="small_product_area product_carousel product_column3 owl-carousel">
-                                <div className="product_items row">
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
+                                <div className="row mb-5">
+                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
                                         <figure>
                                             <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product1} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product2} alt="" /></a>
+                                                <a className="primary_img" href="#"><img src={product1} alt="" /></a>
+                                                <a className="secondary_img" href="#"><img src={product2} alt="" /></a>
                                             </div>
                                             <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
+                                                <h4 className="product_name"><a href="#">Aliquam Consequat</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
                                                     <ul>
@@ -740,14 +643,14 @@ const Home = () => {
                                             </figcaption>
                                         </figure>
                                     </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
+                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
                                         <figure>
                                             <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product3} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product4} alt="" /></a>
+                                                <a className="primary_img" href="#"><img src={product3} alt="" /></a>
+                                                <a className="secondary_img" href="#"><img src={product4} alt="" /></a>
                                             </div>
                                             <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Donec Non Est</a></h4>
+                                                <h4 className="product_name"><a href="#">Donec Non Est</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
                                                     <ul>
@@ -764,14 +667,14 @@ const Home = () => {
                                             </figcaption>
                                         </figure>
                                     </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
+                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
                                         <figure>
                                             <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product5} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product6} alt="" /></a>
+                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
+                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
                                             </div>
                                             <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
+                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
                                                     <ul>
@@ -788,212 +691,14 @@ const Home = () => {
                                             </figcaption>
                                         </figure>
                                     </article>
-                                </div>
-                                <div className="product_items row">
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
+                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
                                         <figure>
                                             <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product7} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product8} alt="" /></a>
+                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
+                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
                                             </div>
                                             <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Quisque In Arcu</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$20.00</span>
-                                                    <span className="old_price">$352.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product9} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product10} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Cas Meque Metus</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$72.00</span>
-                                                    <span className="old_price">$352.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product11} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product12} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Proin Lectus Ipsum</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$36.00</span>
-                                                    <span className="old_price">$282.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-                                <div className="product_items row">
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product13} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product1} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$45.00</span>
-                                                    <span className="old_price">$162.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product10} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product3} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Donec Non Est</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$46.00</span>
-                                                    <span className="old_price">$382.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product8} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product5} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Donec Non Est</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$46.00</span>
-                                                    <span className="old_price">$382.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-                                <div className="product_items row">
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product1} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product2} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Aliquam Consequat</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$26.00</span>
-                                                    <span className="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product11} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product10} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Donec Non Est</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$46.00</span>
-                                                    <span className="old_price">$382.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-4 col-lg-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="product-details.html"><img src={product9} alt="" /></a>
-                                                <a className="secondary_img" href="product-details.html"><img src={product8} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="product-details.html">Mauris Vel Tellus</a></h4>
+                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
                                                     <ul>
@@ -1010,34 +715,54 @@ const Home = () => {
                                             </figcaption>
                                         </figure>
                                     </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div className="brand_area">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="brand_container row justify-content-between ">
-                                <div className="single_brand col-lg-2">
-                                    <a href="#"><img src={brand1} alt="" /></a>
-                                </div>
-                                <div className="single_brand col-lg-2">
-                                    <a href="#"><img src={brand2} alt="" /></a>
-                                </div>
-                                <div className="single_brand col-lg-2">
-                                    <a href="#"><img src={brand3} alt="" /></a>
-                                </div>
-                                <div className="single_brand col-lg-2">
-                                    <a href="#"><img src={brand4} alt="" /></a>
-                                </div>
-                                <div className="single_brand col-lg-2">
-                                    <a href="#"><img src={brand2} alt="" /></a>
+                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
+                                        <figure>
+                                            <div className="product_thumb">
+                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
+                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
+                                            </div>
+                                            <figcaption className="product_content">
+                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
+                                                <p><a href="#">Fruits</a></p>
+                                                <div className="action_links">
+                                                    <ul>
+                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
+                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
+                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
+                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div className="price_box">
+                                                    <span className="current_price">$56.00</span>
+                                                    <span className="old_price">$362.00</span>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </article>
+                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
+                                        <figure>
+                                            <div className="product_thumb">
+                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
+                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
+                                            </div>
+                                            <figcaption className="product_content">
+                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
+                                                <p><a href="#">Fruits</a></p>
+                                                <div className="action_links">
+                                                    <ul>
+                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
+                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
+                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
+                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div className="price_box">
+                                                    <span className="current_price">$56.00</span>
+                                                    <span className="old_price">$362.00</span>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </article>
                                 </div>
                             </div>
                         </div>

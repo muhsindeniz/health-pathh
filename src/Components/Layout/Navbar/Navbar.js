@@ -1,11 +1,28 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../../Assets/media/img/logo/logo.png'
 import { Link } from 'react-router-dom'
 import product from '../../../Assets/media/img/s-product/product.jpg'
 import product2 from '../../../Assets/media/img/s-product/product2.jpg'
-import { Menu } from 'antd';
+import { Menu, message } from 'antd';
+import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
+import { CompanySettingsContext } from '../../../Contexts/CompanySettingsContext'
+import Cookies from 'js-cookie'
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
+
+    let { mobile, token, setToken } = useContext(GlobalSettingsContext)
+    let { user, setUser } = useContext(CompanySettingsContext);
+    let history = useHistory();
+
+    let logOut = () => {
+        Cookies.remove("user");
+        Cookies.remove("token");
+        setUser(null)
+        setToken(null)
+        message.success("Başarıyla çıkış yapıldı..")
+        history.push('/')
+      }
 
     return (
         <>
@@ -34,12 +51,12 @@ const Navbar = () => {
                     <div className="header_middle">
                         <div className="container">
                             <div className="row align-items-center">
-                                <div className="col-lg-2 col-md-3 col-sm-3 col-3">
+                                <div className="col-lg-2 col-md-3 col-4">
                                     <div className="logo">
                                         <Link to="/"><img src={logo} alt="" /></Link>
                                     </div>
                                 </div>
-                                <div className="col-lg-10 col-md-6 col-sm-7 col-8">
+                                <div className="col-lg-10 col-md-9 col-8">
                                     <div className="header_right_info">
                                         <div className="search_container mobail_s_none">
                                             <form action="#">
@@ -54,17 +71,47 @@ const Navbar = () => {
                                         </div>
                                         <div className="header_account_area">
                                             <div className="header_account_list register">
-                                                <ul>
-                                                    <li><Link to="/login">Register</Link></li>
-                                                    <li><span>/</span></li>
-                                                    <li><Link to="/login">Login</Link></li>
-                                                </ul>
+                                                <div className="sec-center">
+                                                    <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+                                                    <label className="for-dropdown" htmlFor="dropdown">
+                                                        <i className="far fa-user"></i>
+                                                        <div style={{ lineHeight: "15px", textAlign: "left" }}>
+                                                            <span className="header-title-login">
+                                                                Giriş Yap
+                                                            </span>
+                                                            <br />
+                                                            <small>{token === null ? "veya üye ol" : user.name}</small>
+                                                        </div>
+                                                    </label>
+                                                    <div className="section-dropdown">
+                                                        <Link className={token === null ? "d-block" : "d-none"} to="/login">Giriş Yap</Link>
+                                                        <Link className={token === null ? "d-block" : "d-none"} to="/login">Üye Ol </Link>
+                                                        <Link to="/">Siparişlerim</Link>
+                                                        <Link to="/">Kullanıcı Bilgilerim</Link>
+                                                        <Link to="#" className={token === null ? "d-none" : "d-block"} onClick={() => logOut()}>Çıkış Yap</Link>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="header_account_list header_wishlist">
-                                                <Link to="/wishlist"><span className="lnr lnr-heart"></span> <span className="item_count">3</span> </Link>
-                                            </div>
+
+                                            {
+                                                mobile === true ? <div className="user-profile-container">MD</div> : <div className="header_account_list header_wishlist">
+                                                    <Link to="/cart">
+                                                        <div className="sec-center">
+                                                            <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+                                                            <label className="for-dropdown">
+                                                                <i className="fas fa-shopping-cart"></i>
+                                                                <div style={{ lineHeight: "15px", textAlign: "left" }}>
+                                                                    <span className="header-title-login position-relative">
+                                                                        Sepetim
+                                                                    </span>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            }
+
                                             <div className="header_account_list  mini_cart_wrapper">
-                                                <Link to="/cart"><span className="lnr lnr-cart"></span><span className="item_count">2</span></Link>
                                                 <div className="mini_cart">
                                                     <div className="cart_gallery">
                                                         <div className="cart_close">
@@ -114,10 +161,10 @@ const Navbar = () => {
                                                     </div>
                                                     <div className="mini_cart_footer">
                                                         <div className="cart_button">
-                                                            <a href="cart.html"><i className="fa fa-shopping-cart"></i> View cart</a>
+                                                            <Link to="cart.html"><i className="fa fa-shopping-cart"></i> View cart</Link>
                                                         </div>
                                                         <div className="cart_button">
-                                                            <a href="checkout.html"><i className="fa fa-sign-in"></i> Checkout</a>
+                                                            <Link to="checkout.html"><i className="fa fa-sign-in"></i> Checkout</Link>
                                                         </div>
 
                                                     </div>
@@ -150,25 +197,25 @@ const Navbar = () => {
                                 <div className="col-lg-10 col-sm-12">
                                     <Menu mode="horizontal">
                                         <Menu.Item key="home" >
-                                        <Link to="/">Home</Link>
+                                            <Link to="/">Home</Link>
                                         </Menu.Item>
                                         <Menu.Item key="vegetables">
-                                        <Link to="/vegetables">Vegetables</Link>
+                                            <Link to="/vegetables">Vegetables</Link>
                                         </Menu.Item>
                                         <Menu.Item key="fruits">
-                                        <Link to="/fruits">Fruits</Link>
+                                            <Link to="/fruits">Fruits</Link>
                                         </Menu.Item>
                                         <Menu.Item key="tea">
-                                        <Link to="/natural-teas">Natural Teas</Link>
+                                            <Link to="/natural-teas">Natural Teas</Link>
                                         </Menu.Item>
                                         <Menu.Item key="plants">
-                                        <Link to="/useful-plants">Useful Plants</Link>
+                                            <Link to="/useful-plants">Useful Plants</Link>
                                         </Menu.Item>
                                         <Menu.Item key="lists">
-                                        <Link to="/diet-list">Diet Lists</Link>
+                                            <Link to="/diet-list">Diet Lists</Link>
                                         </Menu.Item>
                                         <Menu.Item key="us">
-                                        <Link to="/contact">Contact Us</Link>
+                                            <Link to="/contact">Contact Us</Link>
                                         </Menu.Item>
                                     </Menu>
 

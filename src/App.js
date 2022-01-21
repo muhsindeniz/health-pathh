@@ -21,11 +21,14 @@ import NaturalTeas from './Pages/NaturalTeas/NaturalTeas';
 import Plants from './Pages/Plants/Plants';
 import DietList from './Pages/DietList/DietList';
 import 'antd/dist/antd.css';
+import Cookies from 'js-cookie';
 
 function App() {
 
   let [mobile, setMobile] = useState(false)
-  let [name, setName] = useState("Muhsin Deniz")
+  let [userInfo, setUserInfo] = useState(Cookies.get("user", null));
+  let [token, setToken] = useState(Cookies.get("token", null))
+  let [user, setUser] = useState(null)
 
   useEffect(() => {
     let getSize = () => {
@@ -40,10 +43,15 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    setUser(JSON.parse(userInfo))
+  }, [Cookies.get("user")])
+
+
   return (
     <>
-      <GlobalSettingsContext.Provider value={{ mobile }}>
-        <CompanySettingsContext.Provider value={{ name }}>
+      <GlobalSettingsContext.Provider value={{ mobile, token, setToken }}>
+        <CompanySettingsContext.Provider value={{ user, setUser }}>
           <Router>
             <Navbar />
             <Switch>

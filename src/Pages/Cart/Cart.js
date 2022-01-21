@@ -29,7 +29,7 @@ const Cart = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                   <td className="product_remove"><a href="#"><i className="fa fa-trash-o"></i></a></td>
+                                   <td className="product_remove"><a href="#"><i className="far fa-trash-alt"></i></a></td>
                                     <td className="product_thumb"><a href="#"><img src={productbig1} alt="" /></a></td>
                                     <td className="product_name"><a href="#">Handbag fringilla</a></td>
                                     <td className="product-price">£65.00</td>
@@ -40,7 +40,7 @@ const Cart = () => {
                                 </tr>
 
                                 <tr>
-                                   <td className="product_remove"><a href="#"><i className="fa fa-trash-o"></i></a></td>
+                                   <td className="product_remove"><a href="#"><i className="far fa-trash-alt"></i></a></td>
                                     <td className="product_thumb"><a href="#"><img src={productbig2} alt="" /></a></td>
                                     <td className="product_name"><a href="#">Handbags justo</a></td>
                                     <td className="product-price">£90.00</td>
@@ -50,7 +50,7 @@ const Cart = () => {
 
                                 </tr>
                                 <tr>
-                                   <td className="product_remove"><a href="#"><i className="fa fa-trash-o"></i></a></td>
+                                   <td className="product_remove"><a href="#"><i className="far fa-trash-alt"></i></a></td>
                                     <td className="product_thumb"><a href="#"><img src={productbig3} alt="" /></a></td>
                                     <td className="product_name"><a href="#">Handbag elit</a></td>
                                     <td className="product-price">£80.00</td>

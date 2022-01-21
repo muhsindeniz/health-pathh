@@ -23,7 +23,7 @@ const Footer = () => {
                             <div className="col-lg-4 col-md-12 col-sm-7">
                                 <div className="widgets_container contact_us">
                                     <div className="footer_logo">
-                                        <a href="index.html"><img src={logo} alt="" /></a>
+                                        <Link to="/"><img src={logo} alt="" /></Link>
                                     </div>
                                     <p className="footer_desc">We find the most healthy and natural foods for you, we prepare your personalized diet lists according to your body mass index value.</p>
                                     <p><span>Address:</span> New Neighborhood Ahmet Rasim Street House No: 145 Hatay / Samandag</p>
