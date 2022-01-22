@@ -85,7 +85,7 @@ const Navbar = () => {
                                                     </label>
                                                     <div className="section-dropdown">
                                                         <Link className={token === null ? "d-block" : "d-none"} to="/login">Giriş Yap</Link>
-                                                        <Link className={token === null ? "d-block" : "d-none"} to="/login">Üye Ol </Link>
+                                                        <Link className={token === null ? "d-block" : "d-none"} to="/register">Üye Ol </Link>
                                                         <Link to="/">Siparişlerim</Link>
                                                         <Link to="/">Kullanıcı Bilgilerim</Link>
                                                         <Link to="#" className={token === null ? "d-none" : "d-block"} onClick={() => logOut()}>Çıkış Yap</Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
                                                         <div className="sec-center">
                                                             <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
                                                             <label className="for-dropdown">
-                                                                <i className="fas fa-shopping-cart"></i>
+                                                                <i className="fas fa-shopping-cart" data-value={4}></i>
                                                                 <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                                     <span className="header-title-login position-relative">
                                                                         Sepetim
@@ -178,7 +178,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="header_bottom sticky-header">
+                    <div className="header_bottom sticky-header ant-menu-horizontal">
                         <div className="container">
                             <div className="row align-items-center">
                                 <div className="col-12 col-md-6 mobail_s_block">
@@ -197,7 +197,7 @@ const Navbar = () => {
                                     </section>
                                 </div>
                                 <div className="col-lg-10 col-sm-12">
-                                    <Menu mode="horizontal">
+                                    <Menu mode="horizontal" className="border-0">
                                         <Menu.Item key="home" >
                                             <Link to="/">Home</Link>
                                         </Menu.Item>

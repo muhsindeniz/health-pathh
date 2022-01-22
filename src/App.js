@@ -10,7 +10,6 @@ import 'swiper/swiper.min.css'
 import Navbar from './Components/Layout/Navbar/Navbar';
 import Footer from './Components/Layout/Footer/Footer';
 import Home from './Pages/Home/Home';
-import LoginRegister from './Pages/LoginRegister/LoginRegister';
 import Contact from './Pages/Contact/Contact';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
 import WishList from './Pages/WishList/WishList';
@@ -21,6 +20,8 @@ import NaturalTeas from './Pages/NaturalTeas/NaturalTeas';
 import Plants from './Pages/Plants/Plants';
 import DietList from './Pages/DietList/DietList';
 import 'antd/dist/antd.css';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 
 function App() {
 
@@ -49,7 +50,8 @@ function App() {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={LoginRegister} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
               <Route path="/contact" component={Contact} />
               <Route path="/product-detail/:id" component={ProductDetail} />
               <Route path="/wishList" component={WishList} />

@@ -2,18 +2,17 @@ import React, { useContext, useState } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
 import axios from 'axios'
 import { message, Spin } from 'antd'
-import Cookies from "js-cookie"
 import { useHistory } from "react-router-dom";
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext'
 
-const LoginRegister = () => {
+const Login = () => {
 
-    let [loginInfo, setLoginInfo] = useState({ "email": "", "password": "" })
-    let [loading, setLoading] = useState(false);
     let history = useHistory();
     let { setUser } = useContext(CompanySettingsContext);
     let { setToken } = useContext(GlobalSettingsContext);
+    let [loading, setLoading] = useState(false);
+    let [loginInfo, setLoginInfo] = useState({ "email": "", "password": "" })
 
     let loginSubmit = () => {
         if (loginInfo.email == "" || loginInfo.password == "") {
@@ -25,17 +24,16 @@ const LoginRegister = () => {
                 password: loginInfo.password
             }, {
                 headers: { "Content-Type": "application/json" }
-            }).then(({data: { result, result_message }}) => {
-                if(result){
-                    message.success("Giriş Başarılı..")
+            }).then(({ data: { result, result_message } }) => {
+                if (result) {
+                    message.success("Login successful..")
                     localStorage.setItem("user", JSON.stringify(result))
                     localStorage.setItem("token", result.token)
-
                     setToken(result.token)
                     setUser(result);
                     setLoading(false)
                     history.push('/')
-                }else {
+                } else {
                     message.error(result_message, 3)
                     setLoading(false)
                 }
@@ -43,7 +41,7 @@ const LoginRegister = () => {
             })
         }
     }
-
+  
     return (
         <>
 
@@ -51,10 +49,9 @@ const LoginRegister = () => {
 
             <div className="customer_login">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6">
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="account_form">
-                                <h2>login</h2>
                                 <form action="javascript:void(0)">
                                     <p>
                                         <label>Username or email <span>*</span></label>
@@ -71,35 +68,6 @@ const LoginRegister = () => {
                                             Remember me
                                         </label>
                                         <button type="submit" onClick={() => loginSubmit()}>login</button>
-
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-6 col-md-6">
-                            <div className="account_form register">
-                                <h2>Register</h2>
-                                <form action="javascript:void(0)">
-                                    <p>
-                                        <label>Name Surname <span>*</span></label>
-                                        <input type="text" />
-                                    </p>
-                                    <p>
-                                        <label>Email address  <span>*</span></label>
-                                        <input type="email" />
-                                    </p>
-                                    <p>
-                                        <label>Passwords <span>*</span></label>
-                                        <input type="password" />
-                                    </p>
-                                    <p>
-                                        <label>Passwords again <span>*</span></label>
-                                        <input type="password" />
-                                    </p>
-                                    <div className="login_submit">
-                                        <button type="submit">Register</button>
                                     </div>
                                 </form>
                             </div>
@@ -117,4 +85,4 @@ const LoginRegister = () => {
     )
 }
 
-export default LoginRegister
+export default Login
