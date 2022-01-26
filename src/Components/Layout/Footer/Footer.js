@@ -84,7 +84,7 @@ const Footer = () => {
                             <div className="row align-items-center">
                                 <div className="col-lg-6 col-md-7">
                                     <div className="copyright_area">
-                                        <p>Copyright  © 2021  <a href="#">Health Safira</a>  . All Rights Reserved.Design by  <a href="#">Muhsin Deniz</a></p>
+                                        <p>Copyright  © 2021  <a href="#">Health Path</a>. All Rights Reserved. Design by <a href="#">Muhsin Deniz</a></p>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-5">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { GlobalSettingsContext } from "./Contexts/GlobalSettingsContext"
 import { CompanySettingsContext } from "./Contexts/CompanySettingsContext"
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './Assets/css/bootstrap.min.css'
 import './Assets/css/style.css'
 import './Assets/css/plugins.css'
@@ -22,6 +22,8 @@ import DietList from './Pages/DietList/DietList';
 import 'antd/dist/antd.css';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import MembershipInfo from './Pages/MembershipInfo/MembershipInfo';
+import MemberNavbar from './Components/Layout/Navbar/MemberNavbar';
 
 function App() {
 
@@ -42,32 +44,166 @@ function App() {
     }
   }, [])
 
-  return (
-    <>
-      <GlobalSettingsContext.Provider value={{ mobile, token, setToken }}>
-        <CompanySettingsContext.Provider value={{ user, setUser }}>
-          <Router>
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/product-detail/:id" component={ProductDetail} />
-              <Route path="/wishList" component={WishList} />
-              <Route path="/cart" component={Cart} />
-              <Route path="/vegetables" component={Vegetables} />
-              <Route path="/fruits" component={Fruits} />
-              <Route path="/natural-teas" component={NaturalTeas} />
-              <Route path="/useful-plants" component={Plants} />
-              <Route path="/diet-list" component={DietList} />
-            </Switch>
-            <Footer />
-          </Router> 
-        </CompanySettingsContext.Provider>
-      </GlobalSettingsContext.Provider>
-    </>
-  );
+
+  if (token) {
+    return (
+      <>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken }}>
+          <CompanySettingsContext.Provider value={{ user, setUser }}>
+            <Router>
+              <Switch>
+                <Route exact path="/">
+                  <Navbar />
+                  <Home />
+                  <Footer />
+                </Route>
+                <Route exact path="/login">
+                  <Navbar />
+                  <Login />
+                  <Footer />
+                </Route>
+                <Route exact path="/register">
+                  <Navbar />
+                  <Register />
+                  <Footer />
+                </Route>
+                <Route exact path="/contact">
+                  <Navbar />
+                  <Contact />
+                  <Footer />
+                </Route>
+                <Route exact path="/product-detail/:id">
+                  <Navbar />
+                  <ProductDetail />
+                  <Footer />
+                </Route>
+                <Route exact path="/wishList">
+                  <Navbar />
+                  <WishList />
+                  <Footer />
+                </Route>
+                <Route exact path="/cart">
+                  <MemberNavbar />
+                  <Cart />
+                  <Footer />
+                </Route>
+                <Route exact path="/vegetables">
+                  <Navbar />
+                  <Vegetables />
+                  <Footer />
+                </Route>
+                <Route exact path="/fruits">
+                  <Navbar />
+                  <Fruits />
+                  <Footer />
+                </Route>
+                <Route exact path="/natural-teas">
+                  <Navbar />
+                  <NaturalTeas />
+                  <Footer />
+                </Route>
+                <Route exact path="/useful-plants">
+                  <Navbar />
+                  <Plants />
+                  <Footer />
+                </Route>
+                <Route exact path="/diet-list">
+                  <Navbar />
+                  <DietList />
+                  <Footer />
+                </Route>
+                <Route exact path="/membership-infos">
+                  <MemberNavbar />
+                  <MembershipInfo />
+                  <Footer />
+                </Route>
+              </Switch>
+            </Router>
+          </CompanySettingsContext.Provider>
+        </GlobalSettingsContext.Provider>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken }}>
+          <CompanySettingsContext.Provider value={{ user, setUser }}>
+            <Router>
+              <Switch>
+                <Route exact path="/">
+                  <Navbar />
+                  <Home />
+                  <Footer />
+                </Route>
+                <Route exact path="/login">
+                  <Navbar />
+                  <Login />
+                  <Footer />
+                </Route>
+                <Route exact path="/register">
+                  <Navbar />
+                  <Register />
+                  <Footer />
+                </Route>
+                <Route exact path="/contact">
+                  <Navbar />
+                  <Contact />
+                  <Footer />
+                </Route>
+                <Route exact path="/product-detail/:id">
+                  <Navbar />
+                  <ProductDetail />
+                  <Footer />
+                </Route>
+                <Route exact path="/wishList">
+                  <Navbar />
+                  <WishList />
+                  <Footer />
+                </Route>
+                <Route exact path="/cart">
+                  <MemberNavbar />
+                  <Login />
+                  <Footer />
+                </Route>
+                <Route exact path="/vegetables">
+                  <Navbar />
+                  <Vegetables />
+                  <Footer />
+                </Route>
+                <Route exact path="/fruits">
+                  <Navbar />
+                  <Fruits />
+                  <Footer />
+                </Route>
+                <Route exact path="/natural-teas">
+                  <Navbar />
+                  <NaturalTeas />
+                  <Footer />
+                </Route>
+                <Route exact path="/useful-plants">
+                  <Navbar />
+                  <Plants />
+                  <Footer />
+                </Route>
+                <Route exact path="/diet-list">
+                  <Navbar />
+                  <DietList />
+                  <Footer />
+                </Route>
+                <Route exact path="/membership-infos">
+                  <MemberNavbar />
+                  <MembershipInfo />
+                  <Footer />
+                </Route>
+              </Switch>
+            </Router>
+          </CompanySettingsContext.Provider>
+        </GlobalSettingsContext.Provider>
+      </>
+    );
+  }
+
+
 }
 
 export default App;

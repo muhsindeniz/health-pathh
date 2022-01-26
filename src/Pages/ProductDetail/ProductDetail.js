@@ -19,45 +19,29 @@ const ProductDetail = () => {
                            
                             <Swiper style={{ '--swiper-navigation-color': '#fff', '--swiper-pagination-color': '#fff' }} spaceBetween={10} loop navigation={true} thumbs={{ swiper: thumbsSwiper }}>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
                                 </SwiperSlide>
                             </Swiper>
                             <Swiper onSwiper={setThumbsSwiper} spaceBetween={10} slidesPerView={4} loop freeMode={true} className="mySwiper">
-                                <SwiperSlide><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-3.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-4.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-5.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-6.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-7.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-8.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-9.jpg" /></SwiperSlide><SwiperSlide><img src="https://swiperjs.com/demos/images/nature-10.jpg" /></SwiperSlide>
+                                <SwiperSlide><img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" /></SwiperSlide>
+                                <SwiperSlide><img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" /></SwiperSlide>
+                                <SwiperSlide><img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" /></SwiperSlide>
                             </Swiper>
                             </section>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <div className="product_d_right">
                                 <form>
-                                    <h1><a href="#">commodo augue nisi</a></h1>
+                                    <h1><a href="#">Carrot</a></h1>
                                     <div className=" product_ratting">
                                         <ul>
                                             <li><a href="#"><i className="icon-star"></i></a></li>
@@ -83,24 +67,17 @@ const ProductDetail = () => {
                                         <button className="button" type="submit">add to cart</button>
 
                                     </div>
-                                    <div className=" product_d_action">
-                                        <ul>
-                                            <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                            <li><a href="#" title="Add to wishlist">+ Compare</a></li>
-                                        </ul>
-                                    </div>
                                     <div className="product_meta">
-                                        <span>Category: <a href="#">Clothing</a></span>
+                                        <span>Category: <a href="#">Vegetables</a></span>
                                     </div>
 
                                 </form>
                                 <div className="priduct_social">
                                     <ul>
-                                        <li><a className="facebook" href="#" title="facebook"><i className="fa fa-facebook"></i> Like</a></li>
-                                        <li><a className="twitter" href="#" title="twitter"><i className="fa fa-twitter"></i> tweet</a></li>
-                                        <li><a className="pinterest" href="#" title="pinterest"><i className="fa fa-pinterest"></i> save</a></li>
-                                        <li><a className="google-plus" href="#" title="google +"><i className="fa fa-google-plus"></i> share</a></li>
-                                        <li><a className="linkedin" href="#" title="linkedin"><i className="fa fa-linkedin"></i> linked</a></li>
+                                        <li><a className="facebook" href="#" title="facebook"><i className="fab fa-facebook-f"></i> Like</a></li>
+                                        <li><a className="twitter" href="#" title="twitter"><i className="fab fa-twitter"></i> tweet</a></li>
+                                        <li><a className="pinterest" href="#" title="pinterest"><i className="fab fa-pinterest"></i> save</a></li>
+                                        <li><a className="google-plus" href="#" title="google +"><i className="fab fa-google-plus"></i> share</a></li>
                                     </ul>
                                 </div>
 
