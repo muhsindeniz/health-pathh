@@ -12,7 +12,7 @@ let useGetData = () => {
         let { query } = params;
         try {
             if (token) {
-                let {data: {result, result_message}} = await axios.get(query ? `API/${action}?${qs.stringify(query)}` : `API/${action}`, {
+                let {data: {result, result_message}} = await axios.get(query ? `http://localhost:3000/api/${action}?${qs.stringify(query)}` : `http://localhost:3000/api/${action}`, {
                     headers: {
                         authorization: `Bearer ${token}`,
                         'x-api-lang': 'TR'
@@ -49,47 +49,6 @@ let useGetData = () => {
     }, [token])
 
     return call
-}
-
-let useDeleteData = () => {
-    const { token, setToken } = useContext(GlobalSettingsContext)
-
-    let call = useMemo(() => async (action) => {
-        if (token) {
-            try {
-                let {data: {result, result_message}} = await axios.delete(`API/${action}`, {
-                    headers: {
-                        authorization: `Bearer ${token}`
-                    }
-                })
-                if (result_message && result_message.type === 'token_expire') {
-                    Cookies.remove("token")
-                    setToken(null);
-                    return (result_message.message)
-                }
-                else if (!result && result_message.type === 'error')
-                    throw Error(result_message.message)
-                else
-                    return ({ result, result_message })
-            }
-            catch (error) {
-                if (error) {
-                    if (error?.response?.status === 404)
-                        throw ({ code: 404, message: '404 Aradığınızı bulamadık.' })
-                    else if (error?.message === 'Entity not found')
-                        throw ({ code: 0, message: 'Aradığınız kayıt bulunamadı.' })
-                    else
-                        throw ({ code: 0, message: error.message })
-                }
-            }
-        }
-        else {
-            throw new Error({ status: 404 })
-        }
-    }, [token])
-
-    return call
-
 }
 
 let usePostData = () => {
@@ -130,13 +89,54 @@ let usePostData = () => {
 
 }
 
-let usePutData = () => {
+let useDeleteData = () => {
+    const { token, setToken } = useContext(GlobalSettingsContext)
+
+    let call = useMemo(() => async (action) => {
+        if (token) {
+            try {
+                let {data: {result, result_message}} = await axios.delete(`http://localhost:3000/api/${action}`, {
+                    headers: {
+                        authorization: `Bearer ${token}`
+                    }
+                })
+                if (result_message && result_message.type === 'token_expire') {
+                    Cookies.remove("token")
+                    setToken(null);
+                    return (result_message.message)
+                }
+                else if (!result && result_message.type === 'error')
+                    throw Error(result_message.message)
+                else
+                    return ({ result, result_message })
+            }
+            catch (error) {
+                if (error) {
+                    if (error?.response?.status === 404)
+                        throw ({ code: 404, message: '404 Aradığınızı bulamadık.' })
+                    else if (error?.message === 'Entity not found')
+                        throw ({ code: 0, message: 'Aradığınız kayıt bulunamadı.' })
+                    else
+                        throw ({ code: 0, message: error.message })
+                }
+            }
+        }
+        else {
+            throw new Error({ status: 404 })
+        }
+    }, [token])
+
+    return call
+
+}
+
+let usePatchData = () => {
     const { token, setToken } = useContext(GlobalSettingsContext)
 
     let call = useMemo(() => async (action, values) => {
         if (token) {
             try {
-                let { data: { result, resultMessage, result_message } } = await axios.put(`API/${action}`, values, {
+                let { data: { result, result_message } } = await axios.patch(`http://localhost:3000/api/${action}`, values, {
                     headers: {
                         authorization: `Bearer ${token}`
                     }
@@ -150,7 +150,7 @@ let usePutData = () => {
                 else if (!result && result_message.type === 'error')
                     throw Error(result_message.message)
                 else
-                    return ({ result, resultMessage })
+                    return ({ result, result_message })
             }
             catch (error) {
                 if (error) {
@@ -182,7 +182,7 @@ let useUploadFile = () => {
                 const formData = new FormData();
                 values.files.forEach(file => formData.append('files', file));
 
-                let { data: { result, result_message } } = await axios.post(`API/upload`, formData, {
+                let { data: { result, result_message } } = await axios.post(`http://localhost:3000/api/upload`, formData, {
                     headers: {
                         'ContenType': 'multipart/form-data',
                         authorization: `Bearer ${token}`
@@ -223,4 +223,4 @@ let useUploadFile = () => {
 
 }
 
-export { useGetData, usePostData, usePutData, useDeleteData, useUploadFile }
+export { useGetData, usePostData, usePatchData, useDeleteData, useUploadFile }

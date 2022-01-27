@@ -25,7 +25,8 @@ const Login = () => {
             }, {
                 headers: { "Content-Type": "application/json" }
             }).then(({ data: { result, result_message } }) => {
-                if (result) {
+
+                if(result_message.type == "success"){
                     message.success("Login successful..")
                     localStorage.setItem("user", JSON.stringify(result))
                     localStorage.setItem("token", result.token)
@@ -34,7 +35,7 @@ const Login = () => {
                     setLoading(false)
                     history.push('/')
                 } else {
-                    message.error(result_message, 3)
+                    message.error(result.message, 3)
                     setLoading(false)
                 }
                 setLoading(false)

@@ -1,12 +1,92 @@
-import React from 'react';
-import { DatePicker, Tabs, Input, Switch, Button } from 'antd';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
+import { DatePicker, Tabs, Input, Switch, Button, Spin, message } from 'antd';
 import moment from 'moment';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext'
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
+import { useGetData, usePatchData, usePostData } from '../../hooks/ServiceGetways';
 const { TabPane } = Tabs;
 
 const MembershipInfo = () => {
 
+    let { token } = useContext(GlobalSettingsContext)
+    let { user, setUser } = useContext(CompanySettingsContext);
+    let history = useHistory();
+    let postData = usePostData()
+    let patchData = usePatchData()
+    let [userInfo, setUserInfo] = useState({ "name": "", "email": "", "gender": "", "birthdayString": "" });
+    let [loading, setLoading] = useState(false);
+    let [genderChecked, setGenderChecked] = useState(null);
+    let [userPassword, setUserPassword] = useState({ "password": "", "newPassword": "" })
+
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
+
+    function birthdayString(date, dateString) {
+        setUserInfo({ ...userInfo, birthdayString: dateString })
+    }
+
+    function gender(checked) {
+        setUserInfo({ ...userInfo, gender: checked === true ? "Kadın" : "Erkek" })
+    }
+
+    useEffect(() => {
+        setUserInfo({ ...userInfo, name: user.name, email: user.email, birthdayString: user.birthdayString, gender: user.gender })
+    }, [user])
+
+    useEffect(() => {
+        setGenderChecked(userInfo.gender == "Erkek" ? false : true)
+    }, [userInfo])
+
+    let get = useCallback(() => {
+        postData(`user/${user._id}`, {}).then(({ result, result_message }) => {
+            if (result_message.type === "error") console.log(result_message.message);
+            setUser(result)
+        });
+    }, [])
+
+    let updateMembershipInfo = () => {
+        setLoading(true)
+        patchData(`user/${user._id}`, { ...userInfo }).then(({ result_message }) => {
+            if (result_message.type == "success") {
+                const profile = {
+                    ...JSON.parse(localStorage.getItem('user')),
+                    ...userInfo
+                };
+                localStorage.setItem('user', JSON.stringify(profile));
+                message.success("Your information has been successfully updated.", 3)
+                get()
+                history.push('/membership-infos')
+                setLoading(false)
+
+            }
+            else message.error("Your information could not be updated!!", 3)
+            setLoading(false)
+        })
+    }
+
+    let updatePassword = () => {
+        if (userPassword.password == "" || userPassword.newPassword == "") {
+            message.info("Lütfen tüm alanları doldurun!!")
+        } else {
+            setLoading(true)
+            axios.post('http://localhost:3000/api/updatePassword', {
+                ...userPassword
+            }, {
+                headers: { "Content-Type": "application/json", authorization: `${token}` }
+            }).then(({ data: { result, result_message } }) => {
+                if (result_message.type == "success") {
+                    message.success("Şifreniz başarıyla güncellendi..")
+                    setLoading(false)
+                } else {
+                    message.error(result_message.message)
+                    setLoading(false)
+                }
+            });
+        }
+    }
+
 
     return (
         <>
@@ -21,7 +101,7 @@ const MembershipInfo = () => {
                             <section className="membershipInfo_tabs">
                                 <Tabs defaultActiveKey="1">
 
-                                    <TabPane tab="Üyelik bilgilerim" key="1" className="mt-5">
+                                    <TabPane tab="My membership information" key="1" className="mt-5">
                                         <div className="row d-flex justify-content-center">
                                             <div className="col-sm-12 col-lg-8">
                                                 <div className="membershipInfo_main_title">
@@ -34,28 +114,28 @@ const MembershipInfo = () => {
 
                                                 <div className="row">
                                                     <div className="col-sm-12 col-md-6 col-lg-6">
-                                                        <div className="mb-2">Name</div>
-                                                        <div><Input size="large" type="text" placeholder="Name" defaultValue="" className="w-100" /></div>
+                                                        <div className="mb-2">Name Surname</div>
+                                                        <div><Input onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })} size="large" type="text" placeholder="Name Surname" value={userInfo.name || ""} className="w-100" /></div>
                                                     </div>
                                                     <div className="col-sm-12 col-md-6 col-lg-6 mb-4">
-                                                        <div className="mb-2">Surname</div>
-                                                        <div><Input size="large" type="text" placeholder="Surname" defaultValue="" className="w-100" /></div>
+                                                        <div className="mb-2">Email</div>
+                                                        <div><Input onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })} size="large" type="email" placeholder="E-mail" value={userInfo.email || ""} className="w-100" /></div>
                                                     </div>
-                                                    <div className="col-sm-12 mb-4">
+                                                    <div className="col-sm-12 col-md-6 col-lg-6 mb-4">
                                                         <div className="mb-2">Date of birth</div>
                                                         <div>
-                                                            <DatePicker className="w-100" defaultValue={moment('01/01/2015', dateFormatList[0])} format={dateFormatList} />
+                                                            <DatePicker onChange={birthdayString} size="large" className="w-100" value={moment(userInfo.birthdayString || '01/01/2015', dateFormatList[0])} format={dateFormatList} />
                                                         </div>
                                                     </div>
                                                     <div className="col-sm-12 col-md-6 col-lg-6 mb-4">
                                                         <div className="mb-2">Gender</div>
                                                         <div>
-                                                            <Switch size="default" checkedChildren="Female" unCheckedChildren="Male" defaultChecked />
+                                                            <Switch onChange={gender} size="default" checked={genderChecked} checkedChildren="Female" unCheckedChildren="Male" />
                                                         </div>
                                                     </div>
 
                                                     <div className="col-sm-12">
-                                                        <Button className="w-100" size="large">Update</Button>
+                                                        <Button onClick={() => updateMembershipInfo()} className="w-100" size="large">Update</Button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,6 +154,7 @@ const MembershipInfo = () => {
                                                     </div>
 
                                                     <Input.Password
+                                                        onChange={(e) => setUserPassword({ ...userPassword, password: e.target.value })}
                                                         size="large"
                                                         placeholder="Current Password"
                                                         iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
@@ -86,6 +167,7 @@ const MembershipInfo = () => {
                                                     </div>
 
                                                     <Input.Password
+                                                        onChange={(e) => setUserPassword({ ...userPassword, newPassword: e.target.value })}
                                                         size="large"
                                                         placeholder="New Password"
                                                         iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
@@ -103,8 +185,8 @@ const MembershipInfo = () => {
                                                 </div>
 
                                                 <div className="col-sm-12">
-                                                        <Button className="w-100" size="large">Update</Button>
-                                                    </div>
+                                                    <Button onClick={() => updatePassword()} className="w-100" size="large">Update</Button>
+                                                </div>
                                             </div>
                                         </div>
                                     </TabPane>
@@ -129,6 +211,12 @@ const MembershipInfo = () => {
                     </div>
                 </div>
             </div>
+
+            {
+                loading && <div className="loading__container">
+                    <Spin size="large" />
+                </div>
+            }
         </>
     )
 };
