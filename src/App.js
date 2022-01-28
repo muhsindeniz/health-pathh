@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { GlobalSettingsContext } from "./Contexts/GlobalSettingsContext"
 import { CompanySettingsContext } from "./Contexts/CompanySettingsContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -43,7 +43,6 @@ function App() {
       window.removeEventListener('load', getSize)
     }
   }, [])
-
 
   if (token) {
     return (
