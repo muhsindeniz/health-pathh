@@ -1,15 +1,20 @@
-import { Button, Input, Select } from 'antd';
-import TextArea from 'rc-textarea';
-import React from 'react';
-import { useEffect, useState } from 'react/cjs/react.development';
+import React, { useState, useEffect, useContext } from 'react';
+import { Button, Input, Select, message, Spin } from 'antd';
 import cityes from '../../countries/city.json'
 import { AlignCenterOutlined } from '@ant-design/icons';
+import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
+import axios from 'axios';
 const { Option } = Select;
+
 const AddUserAddress = (props) => {
 
     let { setShowAddressPopup, addressInfo, setAddressInfo } = props;
+    let { token } = useContext(GlobalSettingsContext)
+    let { user, setUser } = useContext(CompanySettingsContext);
     let [province, setProvince] = useState(cityes.data);
     let [district, setDistrict] = useState(null);
+    let [loading, setLoading] = useState(false);
 
     function onProvinceChange(value) {
         setAddressInfo({ ...addressInfo, province: value })
@@ -18,6 +23,28 @@ const AddUserAddress = (props) => {
 
     function onDistrictChange(value) {
         setAddressInfo({ ...addressInfo, district: value });
+    }
+
+    let addAddressInfo = () => {
+        if (addressInfo.name == "" || addressInfo.province == "" || addressInfo.district == "", addressInfo.address == "", addressInfo.addressTitle == "", addressInfo.phone == "") {
+            message.info("Lütfen tüm alanları doldurun!!")
+        } else {
+            setLoading(true)
+            axios.post('http://localhost:3000/api/address', {
+                ...addressInfo, id: user._id
+            }, {
+                headers: { "Content-Type": "application/json", authorization: `${token}` }
+            }).then(({ data: { result, result_message } }) => {
+                if (result_message.type == "success") {
+                    message.success("Your shipping address has been successfully added..")
+                    setShowAddressPopup(false)
+                    setLoading(false)
+                } else {
+                    message.error(result_message.message)
+                    setLoading(false)
+                }
+            });
+        }
     }
 
     return (
@@ -54,7 +81,7 @@ const AddUserAddress = (props) => {
                         >
                             {
                                 province && province.map((provin, i) => (
-                                    <Option value={provin.il_adi}>{provin.il_adi}</Option>
+                                    <Option key={i} value={provin.il_adi}>{provin.il_adi}</Option>
                                 ))
                             }
 
@@ -100,12 +127,19 @@ const AddUserAddress = (props) => {
                     </div>
 
 
-                    <Button type="primary" shape="round" icon={<AlignCenterOutlined />} className="w-100" size="large">
+                    <Button type="primary" shape="round" icon={<AlignCenterOutlined />} className="w-100" size="large" onClick={() => addAddressInfo()}>
                         Save Address
                     </Button>
 
                 </div>
             </div>
+
+            {
+                loading && <div className="loading__container">
+                    <Spin size="large" />
+                </div>
+            }
+
         </>
     );
 };

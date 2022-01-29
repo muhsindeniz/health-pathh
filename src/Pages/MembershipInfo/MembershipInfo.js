@@ -223,7 +223,7 @@ const MembershipInfo = () => {
                                                     </section>
 
                                                     <AddressList 
-                                                    
+                                                   
                                                     />
                                                 </div>
                                             </div>
