@@ -9,7 +9,7 @@ const { Option } = Select;
 
 const AddUserAddress = (props) => {
 
-    let { setShowAddressPopup, addressInfo, setAddressInfo } = props;
+    let { setShowAddressPopup, addressInfo, setAddressInfo, setStorageAdress } = props;
     let { token } = useContext(GlobalSettingsContext)
     let { user, setUser } = useContext(CompanySettingsContext);
     let [province, setProvince] = useState(cityes.data);
@@ -39,6 +39,8 @@ const AddUserAddress = (props) => {
                     message.success("Your shipping address has been successfully added..")
                     setShowAddressPopup(false)
                     setLoading(false)
+                    localStorage.setItem("address", JSON.stringify(addressInfo))
+                    setStorageAdress(addressInfo)
                 } else {
                     message.error(result_message.message)
                     setLoading(false)
@@ -46,6 +48,7 @@ const AddUserAddress = (props) => {
             });
         }
     }
+
 
     return (
         <>
