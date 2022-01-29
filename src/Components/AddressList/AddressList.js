@@ -83,7 +83,6 @@ const AddressList = (props) => {
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-danger" onClick={() => showModal()}>Delete</button>
-                        <button className="btn btn-success" style={{ marginLeft: "10px" }}>Edit</button>
                     </div>
                 </div>
             </section>

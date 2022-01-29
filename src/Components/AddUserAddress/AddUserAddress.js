@@ -52,7 +52,7 @@ const AddUserAddress = (props) => {
 
     return (
         <>
-            <div className="before-bg" onClick={() => setShowAddressPopup(false)}></div>
+            <div className="before-bg" onClick={() => {setShowAddressPopup(false)}}></div>
             <div className="addUserAddressContainer card">
                 <div className="card-header">
                     <div className="close-user-address" onClick={() => setShowAddressPopup(false)}>

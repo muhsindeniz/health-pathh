@@ -214,7 +214,7 @@ const MembershipInfo = () => {
                                                     </p>
 
                                                     {
-                                                        storageAddress == null ? <section className="card cursor-pointer" onClick={() => setShowAddressPopup(true)}>
+                                                        storageAddress == null ? <section className="card cursor-pointer" onClick={() => {setShowAddressPopup(true);}}>
                                                             <div className="card-body d-flex justify-content-center align-items-center flex-column">
                                                                 <div>
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-cloud-plus" viewBox="0 0 16 16">
