@@ -674,7 +674,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .main_header {
-        padding: 25px 0;
+        padding: 10px 0;
     }
 }
 
@@ -914,7 +914,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .header_middle {
-        margin-bottom: 29px;
+        margin-bottom: 10px;
         padding: 0;
     }
 }
@@ -1159,6 +1159,7 @@ textarea:-ms-input-placeholder {
 
     .header_right_info_member_ship{
         justify-content: flex-end !important;
+        padding-bottom: 10px;
     }
 }
 
@@ -1211,7 +1212,7 @@ textarea:-ms-input-placeholder {
     .search_box {
         border: 1px solid #ededed;
         border-radius: 6px;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
     }
 }
 
@@ -1433,6 +1434,7 @@ textarea:-ms-input-placeholder {
 @media only screen and (max-width: 767px) {
     .header_right_info {
         justify-content: flex-end;
+        margin-bottom: 10px;
     }
 }
 
@@ -4082,6 +4084,7 @@ textarea:-ms-input-placeholder {
     left: 50%;
     transform: translatex(-50%);
     bottom: 0;
+    width: 100%;
     opacity: 0;
     visibility: hidden;
     z-index: 9;
@@ -4097,26 +4100,25 @@ textarea:-ms-input-placeholder {
 
 .action_links ul li {
     margin-right: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+.action_links:hover{
+    background-color: #80B82D;
+    color: #fff;
 }
 
 .action_links ul li:last-child {
     margin-right: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .action_links ul li a {
     font-size: 16px;
-    display: inline-block;
-    width: 33px;
-    height: 33px;
-    line-height: 36px;
+    width: 100%;
     text-align: center;
-    background: #fff;
-    border-radius: 50%;
-}
-
-.action_links ul li a:hover {
-    background: #40A944;
-    color: #fff;
 }
 
 .label_product span {
@@ -4607,9 +4609,9 @@ textarea:-ms-input-placeholder {
     background: #80B82D;
 }
 
-.color_two .action_links ul li a:hover {
+/* .color_two .action_links ul li a:hover {
     background: #80B82D;
-}
+} */
 
 .color_two .product_content h4 a:hover {
     color: #80B82D;
@@ -7429,8 +7431,7 @@ textarea:-ms-input-placeholder {
 
 @media only screen and (max-width: 767px) {
     .product_details {
-        margin-top: 60px;
-        margin-bottom: 60px;
+        margin-top: 10px;
     }
 }
 

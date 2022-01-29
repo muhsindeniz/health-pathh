@@ -3,7 +3,6 @@ import { Modal, message, Spin } from 'antd';
 import axios from 'axios';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
-import { useLayoutEffect } from 'react';
 
 const AddressList = (props) => {
 

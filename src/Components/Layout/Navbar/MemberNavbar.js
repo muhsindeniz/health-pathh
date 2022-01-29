@@ -61,26 +61,33 @@ const MemberNavbar = () => {
                                                 </div>
                                             </form>
                                         </div>
-                                        <Link to="/cart">
-                                            <div className="members_basket_container">
-                                                <span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
-                                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                                                    </svg>
-                                                </span>
-                                                <span className="members_basket_title">Sepetim</span>
-                                            </div>
-                                        </Link>
-                                        <Link to="/">
-                                            <div className="members_basket_container">
-                                                <span>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-seam" viewBox="0 0 16 16">
-                                                        <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
-                                                    </svg>
-                                                </span>
-                                                <span className="members_basket_title">Siparişlerim</span>
-                                            </div>
-                                        </Link>
+
+                                        {
+                                            mobile === true ? "" : <Link to="/cart">
+                                                <div className="members_basket_container">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
+                                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                                        </svg>
+                                                    </span>
+                                                    <span className="members_basket_title">Sepetim</span>
+                                                </div>
+                                            </Link>
+                                        }
+
+                                        {
+                                            mobile === true ? "" : <Link to="/">
+                                                <div className="members_basket_container">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-seam" viewBox="0 0 16 16">
+                                                            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                                                        </svg>
+                                                    </span>
+                                                    <span className="members_basket_title">Siparişlerim</span>
+                                                </div>
+                                            </Link>
+                                        }
+
                                         <div className="header_account_area">
                                             <label className="member_nav_profile" onClick={() => { setOpenMemberMenu(!openMemberMenu); }}>
                                                 {
@@ -105,6 +112,12 @@ const MemberNavbar = () => {
                                                                         <div><i className="fas fa-user-cog"></i></div>
                                                                         <span>Kullanıcı bilgilerim</span>
                                                                     </Link>
+                                                                    {
+                                                                        mobile === true ? <Link className="d-flex" to="/cart">
+                                                                            <div><i className="fas fa-shopping-basket"></i></div>
+                                                                            <span>Sepetim</span>
+                                                                        </Link> : ""
+                                                                    }
                                                                     <Link className="d-flex" to="/" onClick={() => logOut()}>
                                                                         <div><i className="fas fa-sign-out-alt"></i></div>
                                                                         <span>Çıkış</span>
