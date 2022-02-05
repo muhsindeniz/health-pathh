@@ -6,8 +6,6 @@ SwiperCore.use([Navigation, Thumbs]);
 
 const ProductDetail = () => {
 
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
     return (
         <>
             <div className="product_details mt-70 mb-70">
@@ -15,27 +13,7 @@ const ProductDetail = () => {
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
                             <section className="product-detail-container">
-
-                           
-                            <Swiper style={{ '--swiper-navigation-color': '#fff', '--swiper-pagination-color': '#fff' }} spaceBetween={10} loop navigation={true} thumbs={{ swiper: thumbsSwiper }}>
-                                <SwiperSlide>
-                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
-                                </SwiperSlide>
-                            </Swiper>
-                            <Swiper onSwiper={setThumbsSwiper} spaceBetween={10} slidesPerView={4} loop freeMode={true} className="mySwiper">
-                                <SwiperSlide><img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" /></SwiperSlide>
-                                <SwiperSlide><img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" /></SwiperSlide>
-                                <SwiperSlide><img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" /></SwiperSlide>
-                            </Swiper>
+                                <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
                             </section>
                         </div>
                         <div className="col-lg-6 col-md-6">
@@ -54,8 +32,8 @@ const ProductDetail = () => {
 
                                     </div>
                                     <div className="price_box">
-                                        <span className="current_price">70.00$</span>
                                         <span className="old_price">80.00$</span>
+                                        <span className="current_price">70.00$</span>
 
                                     </div>
                                     <div className="product_desc">

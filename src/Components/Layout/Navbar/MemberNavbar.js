@@ -17,12 +17,15 @@ const MemberNavbar = () => {
     let [openMemberMenu, setOpenMemberMenu] = useState(false)
 
     let logOut = () => {
-        localStorage.removeItem("user")
-        localStorage.removeItem("token")
-        setUser(null)
-        setToken(null)
-        message.success("Başarıyla çıkış yapıldı..")
-        history.push('/')
+        message.info("Çıkış yapılıyor...")
+        setTimeout(() => {
+            localStorage.removeItem("user")
+            localStorage.removeItem("token")
+            setUser(null)
+            setToken(null)
+            message.success("Başarıyla çıkış yapıldı.")
+            history.push('/')
+        }, 2500)
     }
 
     useEffect(() => {

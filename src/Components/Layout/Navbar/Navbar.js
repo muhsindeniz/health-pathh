@@ -16,12 +16,15 @@ const Navbar = () => {
     let history = useHistory();
 
     let logOut = () => {
-        localStorage.removeItem("user")
-        localStorage.removeItem("token")
-        setUser(null)
-        setToken(null)
-        message.success("Başarıyla çıkış yapıldı..")
-        history.push('/')
+        message.info("Çıkış yapılıyor...")
+        setTimeout(() => {
+            localStorage.removeItem("user")
+            localStorage.removeItem("token")
+            setUser(null)
+            setToken(null)
+            message.success("Başarıyla çıkış yapıldı.")
+            history.push('/')
+        }, 2000)
     }
 
     return (
@@ -77,7 +80,7 @@ const Navbar = () => {
                                                         <i className="far fa-user"></i>
                                                         <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                             <span className="header-title-login">
-                                                            {token === null ? "Giriş Yap" : "Hesabım"}
+                                                                {token === null ? "Giriş Yap" : "Hesabım"}
                                                             </span>
                                                             <br />
                                                             <small>{token === null ? "veya üye ol" : user?.name}</small>

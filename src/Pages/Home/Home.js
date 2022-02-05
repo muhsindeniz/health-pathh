@@ -189,12 +189,13 @@ const Home = () => {
                                                             <span className="label_new">New</span>
                                                         </div>
                                                         <div className="action_links">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                                <ul>
+                                                                    <li className="add_to_cart">
                                                                         Sepete Ekle
-                                                                    </Link></li>
-                                                            </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
@@ -219,12 +220,13 @@ const Home = () => {
                                                             <span className="label_new">New</span>
                                                         </div>
                                                         <div className="action_links">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                                <ul>
+                                                                    <li className="add_to_cart">
                                                                         Sepete Ekle
-                                                                    </Link></li>
-                                                            </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
@@ -249,12 +251,13 @@ const Home = () => {
                                                             <span className="label_new">New</span>
                                                         </div>
                                                         <div className="action_links">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                                <ul>
+                                                                    <li className="add_to_cart">
                                                                         Sepete Ekle
-                                                                    </Link></li>
-                                                            </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
@@ -279,12 +282,13 @@ const Home = () => {
                                                             <span className="label_new">New</span>
                                                         </div>
                                                         <div className="action_links">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                                <ul>
+                                                                    <li className="add_to_cart">
                                                                         Sepete Ekle
-                                                                    </Link></li>
-                                                            </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <figcaption className="product_content">
