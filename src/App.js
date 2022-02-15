@@ -2,11 +2,14 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { GlobalSettingsContext } from "./Contexts/GlobalSettingsContext"
 import { CompanySettingsContext } from "./Contexts/CompanySettingsContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import './Assets/css/bootstrap.min.css'
 import './Assets/css/style.css'
 import './Assets/css/plugins.css'
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
+import 'antd/dist/antd.css';
+
 import Navbar from './Components/Layout/Navbar/Navbar';
 import Footer from './Components/Layout/Footer/Footer';
 import Home from './Pages/Home/Home';
@@ -19,7 +22,6 @@ import Fruits from './Pages/Fruits/Fruits';
 import NaturalTeas from './Pages/NaturalTeas/NaturalTeas';
 import Plants from './Pages/Plants/Plants';
 import DietList from './Pages/DietList/DietList';
-import 'antd/dist/antd.css';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import MembershipInfo from './Pages/MembershipInfo/MembershipInfo';

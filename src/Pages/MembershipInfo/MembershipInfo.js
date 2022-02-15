@@ -38,6 +38,7 @@ const MembershipInfo = () => {
 
     useEffect(() => {
         setUserInfo({ ...userInfo, name: user.name, email: user.email, birthdayString: user.birthdayString, gender: user.gender })
+        get();
     }, [user])
 
     useEffect(() => {
