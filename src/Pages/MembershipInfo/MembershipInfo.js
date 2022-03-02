@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react';
+import React, { useEffect, useState, useContext, useCallback, useMemo } from 'react';
 import { DatePicker, Tabs, Input, Switch, Button, Spin, message } from 'antd';
 import moment from 'moment';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
@@ -9,7 +9,6 @@ import { useHistory } from "react-router-dom";
 import { useGetData, usePatchData, usePostData } from '../../hooks/ServiceGetways';
 import AddressList from '../../Components/AddressList/AddressList';
 import AddUserAddress from '../../Components/AddUserAddress/AddUserAddress';
-import { useLayoutEffect } from 'react';
 const { TabPane } = Tabs;
 
 const MembershipInfo = () => {
@@ -26,7 +25,7 @@ const MembershipInfo = () => {
     let [showAddressPopup, setShowAddressPopup] = useState(false);
     let [addressInfo, setAddressInfo] = useState({ "name": "", "province": "", "district": "", "address": "", "addressTitle": "", "phone": "" })
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
-    let [storageAddress, setStorageAdress] = useState(JSON.parse(localStorage.getItem("address")))
+    let [storageAddress, setStorageAdress] = useState(null)
 
     function birthdayString(date, dateString) {
         setUserInfo({ ...userInfo, birthdayString: dateString })
@@ -39,11 +38,28 @@ const MembershipInfo = () => {
     useEffect(() => {
         setUserInfo({ ...userInfo, name: user.name, email: user.email, birthdayString: user.birthdayString, gender: user.gender })
         get();
-    }, [user])
+
+        if (token) {
+            axios.get(`http://localhost:3000/api/address/${user._id}`, {
+                headers: {
+                    Authorization: token
+                }
+            })
+                .then(res => {
+                    setStorageAdress(res.data.result);
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+        }
+    }, [])
+
+    console.log(storageAddress)
 
     useEffect(() => {
         setGenderChecked(userInfo.gender == "Erkek" ? false : true)
     }, [userInfo])
+
 
     let get = useCallback(() => {
         postData(`user/${user._id}`, {}).then(({ result, result_message }) => {
@@ -215,7 +231,7 @@ const MembershipInfo = () => {
                                                     </p>
 
                                                     {
-                                                        storageAddress == null ? <section className="card cursor-pointer" onClick={() => {setShowAddressPopup(true);}}>
+                                                        storageAddress == null ? <section className="card cursor-pointer" onClick={() => { setShowAddressPopup(true); }}>
                                                             <div className="card-body d-flex justify-content-center align-items-center flex-column">
                                                                 <div>
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-cloud-plus" viewBox="0 0 16 16">

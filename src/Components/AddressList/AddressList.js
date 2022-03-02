@@ -66,19 +66,19 @@ const AddressList = (props) => {
 
             <section className="card">
                 <div className="card-body">
-                    <h4><b>{storageAddress.addressTitle}</b></h4>
+                    <h4><b>{storageAddress?.addressTitle}</b></h4>
 
-                    <div className="text-secondary mt-3"><b>{storageAddress.name}</b></div>
+                    <div className="text-secondary mt-3"><b>{storageAddress?.name}</b></div>
 
                     <p className="mt-1">
-                        {storageAddress.address}
+                        {storageAddress?.address}
                     </p>
 
                     <div>
-                        {storageAddress.province} / {storageAddress.district}
+                        {storageAddress?.province} / {storageAddress?.district}
                     </div>
 
-                    <h5 className="mt-2"><b>{storageAddress.phone}</b></h5>
+                    <h5 className="mt-2"><b>{storageAddress?.phone}</b></h5>
 
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-danger" onClick={() => showModal()}>Delete</button>

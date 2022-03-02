@@ -39,8 +39,8 @@ const AddUserAddress = (props) => {
                     message.success("Your shipping address has been successfully added..")
                     setShowAddressPopup(false)
                     setLoading(false)
-                    localStorage.setItem("address", JSON.stringify(addressInfo))
                     setStorageAdress(addressInfo)
+                    localStorage.setItem("address", JSON.stringify(addressInfo))
                 } else {
                     message.error(result_message.message)
                     setLoading(false)
@@ -49,10 +49,9 @@ const AddUserAddress = (props) => {
         }
     }
 
-
     return (
         <>
-            <div className="before-bg" onClick={() => {setShowAddressPopup(false)}}></div>
+            <div className="before-bg" onClick={() => { setShowAddressPopup(false) }}></div>
             <div className="addUserAddressContainer card">
                 <div className="card-header">
                     <div className="close-user-address" onClick={() => setShowAddressPopup(false)}>
