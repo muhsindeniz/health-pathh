@@ -358,12 +358,13 @@ const Home = () => {
                                                     <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
                                                     <p><Link to="/product-detail/1">Fruits</Link></p>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart"><Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></Link></li>
-                                                            <li className="quick_button"><Link to="/" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></Link></li>
-                                                            <li className="wishlist"><Link to="/wishlist" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></Link></li>
-                                                            <li className="compare"><Link to="/" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></Link></li>
-                                                        </ul>
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Sepete Ekle
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
                                                     </div>
                                                     <div className="price_box">
                                                         <span className="current_price">$56.00</span>
@@ -383,12 +384,13 @@ const Home = () => {
                                                     <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
                                                     <p><Link to="/product-detail/1">Fruits</Link></p>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart"><Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></Link></li>
-                                                            <li className="quick_button"><Link to="/" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></Link></li>
-                                                            <li className="wishlist"><Link to="/wishlist" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></Link></li>
-                                                            <li className="compare"><Link to="/" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></Link></li>
-                                                        </ul>
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Sepete Ekle
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
                                                     </div>
                                                     <div className="price_box">
                                                         <span className="current_price">$56.00</span>
@@ -408,12 +410,13 @@ const Home = () => {
                                                     <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
                                                     <p><Link to="/product-detail/1">Fruits</Link></p>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart"><Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></Link></li>
-                                                            <li className="quick_button"><Link to="/" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></Link></li>
-                                                            <li className="wishlist"><Link to="/wishlist" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></Link></li>
-                                                            <li className="compare"><Link to="/" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></Link></li>
-                                                        </ul>
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Sepete Ekle
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
                                                     </div>
                                                     <div className="price_box">
                                                         <span className="current_price">$56.00</span>
@@ -433,12 +436,13 @@ const Home = () => {
                                                     <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
                                                     <p><Link to="/product-detail/1">Fruits</Link></p>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart"><Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></Link></li>
-                                                            <li className="quick_button"><Link to="/" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></Link></li>
-                                                            <li className="wishlist"><Link to="/wishlist" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></Link></li>
-                                                            <li className="compare"><Link to="/" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></Link></li>
-                                                        </ul>
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Sepete Ekle
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
                                                     </div>
                                                     <div className="price_box">
                                                         <span className="current_price">$56.00</span>
@@ -458,12 +462,13 @@ const Home = () => {
                                                     <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
                                                     <p><Link to="/product-detail/1">Fruits</Link></p>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart"><Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></Link></li>
-                                                            <li className="quick_button"><Link to="/" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></Link></li>
-                                                            <li className="wishlist"><Link to="/wishlist" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></Link></li>
-                                                            <li className="compare"><Link to="/" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></Link></li>
-                                                        </ul>
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Sepete Ekle
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
                                                     </div>
                                                     <div className="price_box">
                                                         <span className="current_price">$56.00</span>
@@ -483,12 +488,13 @@ const Home = () => {
                                                     <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
                                                     <p><Link to="/product-detail/1">Fruits</Link></p>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart"><Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></Link></li>
-                                                            <li className="quick_button"><Link to="/" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></Link></li>
-                                                            <li className="wishlist"><Link to="/wishlist" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></Link></li>
-                                                            <li className="compare"><Link to="/" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></Link></li>
-                                                        </ul>
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Sepete Ekle
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
                                                     </div>
                                                     <div className="price_box">
                                                         <span className="current_price">$56.00</span>
@@ -573,12 +579,13 @@ const Home = () => {
                                                 <h4 className="product_name"><a href="#">Aliquam Consequat</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
+                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                        <ul>
+                                                            <li className="add_to_cart">
+                                                                Sepete Ekle
+                                                            </li>
+                                                        </ul>
+                                                    </Link>
                                                 </div>
                                                 <div className="price_box">
                                                     <span className="current_price">$26.00</span>
@@ -597,12 +604,13 @@ const Home = () => {
                                                 <h4 className="product_name"><a href="#">Donec Non Est</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
+                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                        <ul>
+                                                            <li className="add_to_cart">
+                                                                Sepete Ekle
+                                                            </li>
+                                                        </ul>
+                                                    </Link>
                                                 </div>
                                                 <div className="price_box">
                                                     <span className="current_price">$46.00</span>
@@ -621,12 +629,13 @@ const Home = () => {
                                                 <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
+                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                        <ul>
+                                                            <li className="add_to_cart">
+                                                                Sepete Ekle
+                                                            </li>
+                                                        </ul>
+                                                    </Link>
                                                 </div>
                                                 <div className="price_box">
                                                     <span className="current_price">$56.00</span>
@@ -645,12 +654,13 @@ const Home = () => {
                                                 <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
+                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                        <ul>
+                                                            <li className="add_to_cart">
+                                                                Sepete Ekle
+                                                            </li>
+                                                        </ul>
+                                                    </Link>
                                                 </div>
                                                 <div className="price_box">
                                                     <span className="current_price">$56.00</span>
@@ -669,12 +679,13 @@ const Home = () => {
                                                 <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
+                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                        <ul>
+                                                            <li className="add_to_cart">
+                                                                Sepete Ekle
+                                                            </li>
+                                                        </ul>
+                                                    </Link>
                                                 </div>
                                                 <div className="price_box">
                                                     <span className="current_price">$56.00</span>
@@ -693,12 +704,13 @@ const Home = () => {
                                                 <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
                                                 <p><a href="#">Fruits</a></p>
                                                 <div className="action_links">
-                                                    <ul>
-                                                        <li className="add_to_cart"><a href="cart.html" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"> <span className="lnr lnr-cart"></span></a></li>
-                                                        <li className="quick_button"><a href="#" data-tippy="quick view" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" > <span className="lnr lnr-magnifier"></span></a></li>
-                                                        <li className="wishlist"><a href="wishlist.html" data-tippy="Add to Wishlist" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-heart"></span></a></li>
-                                                        <li className="compare"><a href="#" data-tippy="Add to Compare" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true"><span className="lnr lnr-sync"></span></a></li>
-                                                    </ul>
+                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                        <ul>
+                                                            <li className="add_to_cart">
+                                                                Sepete Ekle
+                                                            </li>
+                                                        </ul>
+                                                    </Link>
                                                 </div>
                                                 <div className="price_box">
                                                     <span className="current_price">$56.00</span>
