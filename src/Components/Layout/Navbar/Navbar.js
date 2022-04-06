@@ -6,12 +6,11 @@ import product2 from '../../../Assets/media/img/s-product/product2.jpg'
 import { Menu, message } from 'antd';
 import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../../Contexts/CompanySettingsContext'
-import Cookies from 'js-cookie'
 import { useHistory } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
 
-    let { mobile, token, setToken } = useContext(GlobalSettingsContext)
+    let { mobile, token, setToken, basket } = useContext(GlobalSettingsContext)
     let { user, setUser } = useContext(CompanySettingsContext);
     let history = useHistory();
 
@@ -104,7 +103,7 @@ const Navbar = () => {
                                                         <div className="sec-center">
                                                             <input className="dropdown" type="checkbox" id="dropdown" name="dropdown" />
                                                             <label className="for-dropdown">
-                                                                <i className="fas fa-shopping-cart" data-value={0}></i>
+                                                                <i className="fas fa-shopping-cart" data-value={basket?.length || 0}></i>
                                                                 <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                                     <span className="header-title-login position-relative">
                                                                         Sepetim

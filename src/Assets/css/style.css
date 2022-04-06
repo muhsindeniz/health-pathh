@@ -4107,6 +4107,7 @@ textarea:-ms-input-placeholder {
 .action_links:hover{
     background-color: #80B82D;
     color: #fff;
+    cursor: pointer;
 }
 
 .action_links ul li:last-child {
@@ -4132,9 +4133,8 @@ textarea:-ms-input-placeholder {
     color: #ffffff;
     background: #40A944;
     font-size: 12px;
-    height: 20px;
-    line-height: 20px;
-    width: 40px;
+    line-height: 25px;
+    padding: 0 5px;
     text-align: center;
     display: block;
     border-radius: 5px;
@@ -7557,6 +7557,7 @@ textarea:-ms-input-placeholder {
     margin-right: 7px;
 }
 
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .product_d_right .priduct_social ul li {
         margin-right: 2px;
@@ -7580,7 +7581,7 @@ textarea:-ms-input-placeholder {
 }
 
 .product_d_right .priduct_social ul li a {
-    color: #fff;
+    color: #fff !important;
     font-size: 12px;
     line-height: 24px;
     padding: 0 8px;
@@ -14321,7 +14322,7 @@ iframe {
     min-width: 20px;
     height: 20px;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 9px;
     display: flex;
     justify-content: center;
     align-items: center;

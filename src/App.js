@@ -32,7 +32,7 @@ function App() {
   let [mobile, setMobile] = useState(false)
   let [token, setToken] = useState(localStorage.getItem("token"))
   let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
-  let [basket, setBaset] = useState(null)
+  let [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
 
   useEffect(() => {
     let getSize = () => {
@@ -47,10 +47,16 @@ function App() {
     }
   }, [])
 
+  console.log(basket)
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basket))
+  }, [basket])
+
   if (token) {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBaset }}>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>
@@ -128,7 +134,7 @@ function App() {
   } else {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken }}>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>

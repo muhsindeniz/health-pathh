@@ -54,8 +54,6 @@ const MembershipInfo = () => {
         }
     }, [])
 
-    console.log(storageAddress)
-
     useEffect(() => {
         setGenderChecked(userInfo.gender == "Erkek" ? false : true)
     }, [userInfo])

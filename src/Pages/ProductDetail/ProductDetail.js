@@ -1,10 +1,28 @@
-import React, { useState } from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useState, useEffect } from 'react'
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
-
+import { useParams } from 'react-router-dom'
+import axios from 'axios';
+import { message, Spin } from 'antd'
 SwiperCore.use([Navigation, Thumbs]);
 
 const ProductDetail = () => {
+
+    let { id } = useParams();
+    let [productDetail, setProductDetail] = useState(null)
+    let [loading, setLoading] = useState(null)
+
+    useEffect(() => {
+        setLoading(true)
+        axios.get(`http://localhost:3000/api/vegetables/${id}`)
+            .then(res => {
+                setProductDetail(res.data.result);
+                setLoading(false)
+            })
+            .catch(e => {
+                console.log(e)
+                setLoading(false)
+            })
+    }, [id])
 
     return (
         <>
@@ -13,13 +31,13 @@ const ProductDetail = () => {
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
                             <section className="product-detail-container">
-                                <img src="https://migros-dali-storage-prod.global.ssl.fastly.net/tazedirekt/product/28120006/28120006-ac18e3-680x454.jpg" />
+                                <img src={`http://localhost:3000/${productDetail?.avatar}`} />
                             </section>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <div className="product_d_right">
                                 <form>
-                                    <h1><a href="#">Carrot</a></h1>
+                                    <h1><a href="#">{productDetail?.name}</a></h1>
                                     <div className=" product_ratting">
                                         <ul>
                                             <li><a href="#"><i className="icon-star"></i></a></li>
@@ -32,18 +50,13 @@ const ProductDetail = () => {
 
                                     </div>
                                     <div className="price_box">
-                                        <span className="old_price">80.00$</span>
-                                        <span className="current_price">70.00$</span>
-
-                                    </div>
-                                    <div className="product_desc">
-                                        <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in </p>
+                                        <span className="old_price">{productDetail?.newPrice}$</span>
+                                        <span className="current_price" style={{ marginLeft: "10px" }}>{productDetail?.price}$</span>
                                     </div>
                                     <div className="product_variant quantity">
                                         <label>quantity</label>
                                         <input min="1" max="100" defaultValue="1" type="number" />
                                         <button className="button" type="submit">add to cart</button>
-
                                     </div>
                                     <div className="product_meta">
                                         <span>Category: <a href="#">Vegetables</a></span>
@@ -75,19 +88,14 @@ const ProductDetail = () => {
                                         <li >
                                             <a className="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Description</a>
                                         </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Specification</a>
-                                        </li>
-                                        <li>
-                                            <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews (1)</a>
-                                        </li>
                                     </ul>
                                 </div>
                                 <div className="tab-content">
                                     <div className="tab-pane fade show active" id="info" role="tabpanel" >
                                         <div className="product_info_content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                            <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
+                                            <p>
+                                                {productDetail?.productDescription}
+                                            </p>
                                         </div>
                                     </div>
                                     <div className="tab-pane fade" id="sheet" role="tabpanel" >
@@ -182,6 +190,12 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
+
+            {
+                loading && <div className="loading__container">
+                    <Spin size="large" />
+                </div>
+            }
         </>
     )
 }
