@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import { data } from 'dom7';
 import React, { useEffect, useState, useContext } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
@@ -6,7 +7,7 @@ import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 const Cart = () => {
 
     let { basket, setBasket } = useContext(GlobalSettingsContext)
-
+    let [discountCart, setDiscountCart] = useState(0)
     console.log(basket)
 
     let priceProgress = (count, id) => {
@@ -30,10 +31,16 @@ const Cart = () => {
     }
 
     let removeBasket = (info) => {
+        message.success("Ürün başarıyla silindi !")
         setBasket(
             basket.filter(item => item._id != info)
         )
     }
+
+    useEffect(() => {
+        const sum = basket.length > 0 ? basket.map(datum => datum.total).reduce((a, b) => parseFloat(a) + parseFloat(b)) : 0
+        setDiscountCart(sum)
+    }, [basket])
 
     return (
         <>
@@ -99,17 +106,16 @@ const Cart = () => {
                                         <div className="coupon_inner">
                                             <div className="cart_subtotal">
                                                 <p>Subtotal</p>
-                                                <p className="cart_amount">£215.00</p>
+                                                <p className="cart_amount">${Number(discountCart).toFixed(2)}</p>
                                             </div>
-                                            <div className="cart_subtotal ">
-                                                <p>Shipping</p>
-                                                <p className="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                            <div className="cart_subtotal">
+                                                <p>Calculate shipping</p>
+                                                <p className="cart_amount">${basket.length > 0 ? 15 : 0}</p>
                                             </div>
-                                            <a href="#">Calculate shipping</a>
 
                                             <div className="cart_subtotal">
                                                 <p>Total</p>
-                                                <p className="cart_amount">£215.00</p>
+                                                <p className="cart_amount">${(Number(discountCart) + (basket.length > 0 ? 15 : 0)).toFixed(2)}</p>
                                             </div>
                                             <div className="checkout_btn">
                                                 <a href="#">Proceed to Checkout</a>
