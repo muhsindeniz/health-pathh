@@ -82,7 +82,7 @@ const Cart = () => {
                                                             <td className="product_name"><a href="#">{bask.name}</a></td>
                                                             <td className="product-price">${bask.newPrice}</td>
                                                             <td className="product_quantity"><label>Quantity</label> <input onChange={(e) => priceProgress(e.target.value, bask._id)} min="1" max="100" defaultValue={bask?.quntity || 1} type="number" /></td>
-                                                            <td className="product_total">${bask.newPrice * bask.quntity}</td>
+                                                            <td className="product_total">${Number(bask.newPrice * bask.quntity).toFixed(2)}</td>
                                                         </tr>
                                                     ))
                                                 }
@@ -111,7 +111,7 @@ const Cart = () => {
                                         <div className="coupon_inner">
                                             <div className="cart_subtotal">
                                                 <p>Subtotal</p>
-                                                <p className="cart_amount">${Number(discountCart).toFixed(1)}</p>
+                                                <p className="cart_amount">${Number(discountCart).toFixed(2)}</p>
                                             </div>
                                             <div className="cart_subtotal">
                                                 <p>Calculate shipping</p>
