@@ -5,6 +5,7 @@ import { Select } from 'antd';
 import axios from 'axios';
 import { message, Spin } from 'antd'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 
 const Vegetables = () => {
 
@@ -12,6 +13,7 @@ const Vegetables = () => {
     let [data, setData] = useState(null);
     let [loading, setLoading] = useState(false);
     let { basket, setBasket } = useContext(GlobalSettingsContext)
+    let { user } = useContext(CompanySettingsContext)
 
     function handleChange(value) {
         console.log(`selected ${value}`);
@@ -31,9 +33,30 @@ const Vegetables = () => {
     }, [])
 
     let ADD_TO_BASKET = (product) => {
-        message.success("Ürün Sepete Eklendi.")
-        setBasket(basket.concat(product))
+        var response = basket.find(resp => resp._id == product._id)
+        if (response === undefined) {
+            setBasket(basket.concat(product))
+            message.success("Ürün Sepete Eklendi.", 4)
+        } else {
+            response.quntity += 1
+            message.success("Ürün Sepete Eklendi.", 4)
+        }
     }
+
+    // let postBasket = () => {
+    //     axios.post('http://localhost:3000/api/basket', {
+    //         products: basket,
+    //         userId: user._id
+    //     })
+    //         .then(response => {
+    //             if (response.data.result_message.type === "success") {
+    //                 message.success("Ürün Sepete Eklendi.")
+    //             }
+    //         })
+    //         .catch(err => {
+    //             message.error("Ürün sepete eklenemedi!!")
+    //         })
+    // }
 
     return (
         <>
@@ -113,14 +136,14 @@ const Vegetables = () => {
                                                     <div className="action_links">
                                                         <ul>
                                                             <li className="add_to_cart" onClick={() => ADD_TO_BASKET({
-                                                                 _id: product._id,
-                                                                 name: product.name,
-                                                                 avatar: product.avatar,
-                                                                 farmerName: product.farmerName,
-                                                                 quntity: 1,
-                                                                 total: parseInt(product.newPrice),
-                                                                 price: product.price,
-                                                                 newPrice: product.newPrice
+                                                                _id: product._id,
+                                                                name: product.name,
+                                                                avatar: product.avatar,
+                                                                farmerName: product.farmerName,
+                                                                quntity: 1,
+                                                                total: parseInt(product.newPrice),
+                                                                price: product.price,
+                                                                newPrice: product.newPrice
                                                             })}>
                                                                 <div data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                                     Sepete Ekle

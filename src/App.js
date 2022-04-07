@@ -26,6 +26,7 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import MembershipInfo from './Pages/MembershipInfo/MembershipInfo';
 import MemberNavbar from './Components/Layout/Navbar/MemberNavbar';
+import Delivery from './Pages/Delivery/Delivery';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
   let [token, setToken] = useState(localStorage.getItem("token"))
   let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
   let [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
+  let [discountCartInfo, setDiscountCartInfo] = useState(0)
 
   useEffect(() => {
     let getSize = () => {
@@ -47,8 +49,6 @@ function App() {
     }
   }, [])
 
-  console.log(basket)
-
   useEffect(() => {
     localStorage.setItem('basket', JSON.stringify(basket))
   }, [basket])
@@ -56,7 +56,7 @@ function App() {
   if (token) {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket }}>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>
@@ -93,6 +93,11 @@ function App() {
                 <Route exact path="/cart">
                   <MemberNavbar />
                   <Cart />
+                  <Footer />
+                </Route>
+                <Route exact path="/delivery">
+                  <Navbar />
+                  <Delivery />
                   <Footer />
                 </Route>
                 <Route exact path="/vegetables">
@@ -134,7 +139,7 @@ function App() {
   } else {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket }}>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>

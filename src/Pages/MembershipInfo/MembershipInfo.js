@@ -5,7 +5,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext'
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useGetData, usePatchData, usePostData } from '../../hooks/ServiceGetways';
 import AddressList from '../../Components/AddressList/AddressList';
 import AddUserAddress from '../../Components/AddUserAddress/AddUserAddress';
@@ -16,6 +16,7 @@ const MembershipInfo = () => {
     let { token } = useContext(GlobalSettingsContext)
     let { user, setUser } = useContext(CompanySettingsContext);
     let history = useHistory();
+    let params = useLocation();
     let postData = usePostData()
     let patchData = usePatchData()
     let [userInfo, setUserInfo] = useState({ "name": "", "email": "", "gender": "", "birthdayString": "" });
@@ -26,7 +27,6 @@ const MembershipInfo = () => {
     let [addressInfo, setAddressInfo] = useState({ "name": "", "province": "", "district": "", "address": "", "addressTitle": "", "phone": "" })
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
     let [storageAddress, setStorageAdress] = useState(null)
-
     function birthdayString(date, dateString) {
         setUserInfo({ ...userInfo, birthdayString: dateString })
     }
@@ -38,8 +38,8 @@ const MembershipInfo = () => {
     useEffect(() => {
         setUserInfo({ ...userInfo, name: user.name, email: user.email, birthdayString: user.birthdayString, gender: user.gender })
         get();
-
         if (token) {
+            setLoading(true)
             axios.get(`http://localhost:3000/api/address/${user._id}`, {
                 headers: {
                     Authorization: token
@@ -47,9 +47,11 @@ const MembershipInfo = () => {
             })
                 .then(res => {
                     setStorageAdress(res.data.result);
+                     setLoading(false)
                 })
                 .catch(e => {
                     console.log(e)
+                     setLoading(false)
                 })
         }
     }, [])
@@ -58,11 +60,12 @@ const MembershipInfo = () => {
         setGenderChecked(userInfo.gender == "Erkek" ? false : true)
     }, [userInfo])
 
-
     let get = useCallback(() => {
+        setLoading(true)
         postData(`user/${user._id}`, {}).then(({ result, result_message }) => {
             if (result_message.type === "error") console.log(result_message.message);
             setUser(result)
+            setLoading(false)
         });
     }, [])
 
@@ -108,7 +111,6 @@ const MembershipInfo = () => {
         }
     }
 
-
     return (
         <>
 
@@ -126,7 +128,7 @@ const MembershipInfo = () => {
 
                             <section className="membershipInfo_tabs">
                                 <form id="update-user-info">
-                                    <Tabs defaultActiveKey="1">
+                                    <Tabs defaultActiveKey={params.search === "?activeKey=3" ? "3" : 0}>
                                         <TabPane tab="My membership information" key="1" className="mt-5">
                                             <div className="row d-flex justify-content-center">
                                                 <div className="col-sm-12 col-lg-8">

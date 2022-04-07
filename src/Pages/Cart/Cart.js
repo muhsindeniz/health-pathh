@@ -1,14 +1,17 @@
 import { message } from 'antd';
-import { data } from 'dom7';
+import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
+import { useHistory } from 'react-router';
 
 const Cart = () => {
 
-    let { basket, setBasket } = useContext(GlobalSettingsContext)
+    let history = useHistory();
+    let { basket, setBasket, token, setDiscountCartInfo } = useContext(GlobalSettingsContext)
+    let { user } = useContext(CompanySettingsContext);
     let [discountCart, setDiscountCart] = useState(0)
-    console.log(basket)
 
     let priceProgress = (count, id) => {
         setBasket(basket.map(data => {
@@ -38,9 +41,14 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        const sum = basket.length > 0 ? basket.map(datum => datum.total).reduce((a, b) => parseFloat(a) + parseFloat(b)) : 0
+        const sum = basket.length > 0 ? basket.map(datum => datum.total).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
         setDiscountCart(sum)
+        setDiscountCartInfo(sum)
     }, [basket])
+
+    let checkOut = async () => {
+        history.push('/delivery')
+    }
 
     return (
         <>
@@ -69,21 +77,18 @@ const Cart = () => {
                                                 {
                                                     basket && basket.map((bask, index) => (
                                                         <tr key={index}>
-                                                            <td className="product_remove" onClick={() => removeBasket(bask._id)}><a><i className="far fa-trash-alt"></i></a></td>
+                                                            <td className="product_remove"><a><i onClick={() => removeBasket(bask._id)} className="far fa-trash-alt"></i></a></td>
                                                             <td className="product_thumb"><a href="#"><img src={`http://localhost:3000/${bask?.avatar}`} alt="" /></a></td>
                                                             <td className="product_name"><a href="#">{bask.name}</a></td>
                                                             <td className="product-price">${bask.newPrice}</td>
                                                             <td className="product_quantity"><label>Quantity</label> <input onChange={(e) => priceProgress(e.target.value, bask._id)} min="1" max="100" defaultValue={bask?.quntity || 1} type="number" /></td>
-                                                            <td className="product_total">${bask.total}</td>
+                                                            <td className="product_total">${bask.newPrice * bask.quntity}</td>
                                                         </tr>
                                                     ))
                                                 }
 
                                             </tbody>
                                         </table>
-                                    </div>
-                                    <div className="cart_submit">
-                                        <button type="submit">update cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +111,7 @@ const Cart = () => {
                                         <div className="coupon_inner">
                                             <div className="cart_subtotal">
                                                 <p>Subtotal</p>
-                                                <p className="cart_amount">${Number(discountCart).toFixed(2)}</p>
+                                                <p className="cart_amount">${Number(discountCart).toFixed(1)}</p>
                                             </div>
                                             <div className="cart_subtotal">
                                                 <p>Calculate shipping</p>
@@ -118,7 +123,7 @@ const Cart = () => {
                                                 <p className="cart_amount">${(Number(discountCart) + (basket.length > 0 ? 15 : 0)).toFixed(2)}</p>
                                             </div>
                                             <div className="checkout_btn">
-                                                <a href="#">Proceed to Checkout</a>
+                                                <a onClick={() => checkOut()} className="text-white">Proceed to Checkout</a>
                                             </div>
                                         </div>
                                     </div>
