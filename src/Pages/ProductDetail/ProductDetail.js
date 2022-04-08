@@ -70,11 +70,14 @@ const ProductDetail = () => {
                         <div className="col-lg-6 col-md-6 p-0">
                             <div className="product_d_right">
                                 <h1 className="mb-3"><b className="text-secondary">{productDetail?.name}</b></h1>
-                                <h4 className="text-primary">{productDetail?.farmerName}</h4>
+                                <div>
+                                    <span><h4 className="mb-1"><b className="text-dark">Farmer Name</b></h4></span>
+                                    <h4><a className="text-primary">{productDetail?.farmerName}</a></h4>
+                                </div>
                                 <div className="price_box">
                                     <div className="d-flex align-items-center">
-                                        <h4 className="text-secondary"> <b><del>{productDetail?.price}$</del></b></h4>
-                                        <h4 className="text-success" style={{ marginLeft: "20px" }}>
+                                        <h3 className="text-secondary"> <b><del>{productDetail?.price}$</del></b></h3>
+                                        <h3 className="text-success" style={{ marginLeft: "20px" }}>
                                             %<b>{productDetail?.discount}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
                                                     <g fill="none" fillRule="evenodd">
@@ -83,9 +86,9 @@ const ProductDetail = () => {
                                                     </g>
                                                 </svg>
                                             </b>
-                                        </h4>
+                                        </h3>
                                     </div>
-                                    <h3 className="text-success">{productDetail?.newPrice} $</h3>
+                                    <h2 className="text-success">{productDetail?.newPrice} $</h2>
                                 </div>
                                 <div className="product_variant quantity">
                                     <label>quantity</label>
