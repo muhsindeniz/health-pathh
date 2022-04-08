@@ -51,7 +51,7 @@ const Delivery = () => {
 
                                 <div className="delivery_address_item">
                                     <div className="address_header_radio">
-                                        <input name="typeshipping" type="radio" class="address_header_input" checked />
+                                        <input name="typeshipping" type="radio" className="address_header_input" checked />
                                     </div>
 
                                     <div className="header_context">
@@ -65,7 +65,7 @@ const Delivery = () => {
                                     </div>
 
                                     <div className="header_edit_button" onClick={() => history.push("/membership-infos?activeKey=3")}>
-                                        <svg width="16" height="16"><path fill="#7B7B7B" d="M11.369 10.002l-.076.068L8 13.363 4.707 10.07a1 1 0 00-1.483 1.339l.069.075 3.81 3.811a1.264 1.264 0 001.71.076l.083-.075 3.811-3.812a1 1 0 00-1.338-1.482zM8 .444c-.336 0-.659.134-.896.372l-3.811 3.81-.069.076A1 1 0 004.707 6.04L8 2.748l3.293 3.292.076.07a1 1 0 001.338-1.484L8.896.815 8.813.74A1.264 1.264 0 008 .444z" fill-rule="evenodd"></path></svg>
+                                        <svg width="16" height="16"><path fill="#7B7B7B" d="M11.369 10.002l-.076.068L8 13.363 4.707 10.07a1 1 0 00-1.483 1.339l.069.075 3.81 3.811a1.264 1.264 0 001.71.076l.083-.075 3.811-3.812a1 1 0 00-1.338-1.482zM8 .444c-.336 0-.659.134-.896.372l-3.811 3.81-.069.076A1 1 0 004.707 6.04L8 2.748l3.293 3.292.076.07a1 1 0 001.338-1.484L8.896.815 8.813.74A1.264 1.264 0 008 .444z" fillRule="evenodd"></path></svg>
                                     </div>
                                 </div>
                             </div>

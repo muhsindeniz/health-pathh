@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { message, Spin } from 'antd'
+import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+
 SwiperCore.use([Navigation, Thumbs]);
 
 const ProductDetail = () => {
@@ -10,6 +12,7 @@ const ProductDetail = () => {
     let { id } = useParams();
     let [productDetail, setProductDetail] = useState(null)
     let [loading, setLoading] = useState(null)
+    let { basket, setBasket } = useContext(GlobalSettingsContext)
 
     useEffect(() => {
         setLoading(true)
@@ -24,45 +27,75 @@ const ProductDetail = () => {
             })
     }, [id])
 
+    let ADD_TO_BASKET = (product) => {
+        console.log(product)
+        var response = basket.find(resp => resp._id == product._id)
+        if (response === undefined) {
+            setBasket(basket.concat(product));
+        } else {
+            response.quntity += 1
+        }
+    }
+
+    let priceProgress = (count, id) => {
+        setBasket(basket.map(data => {
+            if (data._id === id) {
+                return {
+                    _id: data._id,
+                    name: data.name,
+                    avatar: data.avatar,
+                    farmerName: data.farmerName,
+                    quntity: parseInt(count),
+                    total: (parseFloat(data.newPrice) * parseFloat(count)).toFixed(2),
+                    price: data.price,
+                    newPrice: data.newPrice
+                }
+            } else {
+                return { ...data }
+            }
+
+        }))
+    }
+
     return (
         <>
             <div className="product_details mt-70 mb-70">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6">
+                    <div className="row product-detail-container-row">
+                        <div className="col-lg-6 col-md-6 p-0">
                             <section className="product-detail-container">
                                 <img src={`http://localhost:3000/${productDetail?.avatar}`} />
                             </section>
                         </div>
-                        <div className="col-lg-6 col-md-6">
+                        <div className="col-lg-6 col-md-6 p-0">
                             <div className="product_d_right">
-                                <form>
-                                    <h1><a href="#">{productDetail?.name}</a></h1>
-                                    <div className=" product_ratting">
-                                        <ul>
-                                            <li><a href="#"><i className="icon-star"></i></a></li>
-                                            <li><a href="#"><i className="icon-star"></i></a></li>
-                                            <li><a href="#"><i className="icon-star"></i></a></li>
-                                            <li><a href="#"><i className="icon-star"></i></a></li>
-                                            <li><a href="#"><i className="icon-star"></i></a></li>
-                                            <li className="review"><a href="#"> (customer review ) </a></li>
-                                        </ul>
+                                <h1 className="mb-3"><b className="text-secondary">{productDetail?.name}</b></h1>
+                                <h4 className="text-primary">{productDetail?.farmerName}</h4>
+                                <div className="price_box">
+                                    <div className="d-flex align-items-center">
+                                        <h4 className="text-secondary"> <b><del>{productDetail?.price}$</del></b></h4>
+                                        <h4 className="text-success" style={{ marginLeft: "20px" }}>
+                                            %<b>{productDetail?.discount}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+                                                    <g fill="none" fillRule="evenodd">
+                                                        <path d="M0 0h12v12H0z" />
+                                                        <path d="M10.886 3.004 6.73 9.866a.854.854 0 0 1-1.46 0L1.114 3.004a.854.854 0 0 1 .73-1.282h8.311a.854.854 0 0 1 .73 1.282z" fill="#439E4A" />
+                                                    </g>
+                                                </svg>
+                                            </b>
+                                        </h4>
+                                    </div>
+                                    <h3 className="text-success">{productDetail?.newPrice} $</h3>
+                                </div>
+                                <div className="product_variant quantity">
+                                    <label>quantity</label>
+                                    <input onChange={(e) => priceProgress(e.target.value, productDetail._id)} defaultValue={productDetail?.quntity || 1} min="1" max="100" defaultValue="1" type="number" />
+                                    <button className="button" type="submit" onClick={() => ADD_TO_BASKET(productDetail)}>add to cart</button>
+                                </div>
+                                <div className="product_meta">
+                                    <span>Category: <a>Vegetables</a></span>
+                                </div>
 
-                                    </div>
-                                    <div className="price_box">
-                                        <span className="old_price">{productDetail?.newPrice}$</span>
-                                        <span className="current_price" style={{ marginLeft: "10px" }}>{productDetail?.price}$</span>
-                                    </div>
-                                    <div className="product_variant quantity">
-                                        <label>quantity</label>
-                                        <input min="1" max="100" defaultValue="1" type="number" />
-                                        <button className="button" type="submit">add to cart</button>
-                                    </div>
-                                    <div className="product_meta">
-                                        <span>Category: <a href="#">Vegetables</a></span>
-                                    </div>
-
-                                </form>
                                 <div className="priduct_social">
                                     <ul>
                                         <li><a className="facebook" href="#" title="facebook"><i className="fab fa-facebook-f"></i> Like</a></li>

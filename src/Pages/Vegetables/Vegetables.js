@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useLayoutEffect } from 'react'
+import React, { useState, useEffect, useContext, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import banner17 from '../../Assets/media/img/bg/banner17.jpg'
 import { Select } from 'antd';
@@ -32,31 +32,46 @@ const Vegetables = () => {
             })
     }, [])
 
-    let ADD_TO_BASKET = (product) => {
+    function ADD_TO_BASKET(product) {
         var response = basket.find(resp => resp._id == product._id)
         if (response === undefined) {
-            setBasket(basket.concat(product))
-            message.success("Ürün Sepete Eklendi.", 4)
+            setBasket(basket.concat(product));
         } else {
             response.quntity += 1
-            message.success("Ürün Sepete Eklendi.", 4)
         }
     }
 
-    // let postBasket = () => {
-    //     axios.post('http://localhost:3000/api/basket', {
-    //         products: basket,
-    //         userId: user._id
-    //     })
-    //         .then(response => {
-    //             if (response.data.result_message.type === "success") {
-    //                 message.success("Ürün Sepete Eklendi.")
-    //             }
-    //         })
-    //         .catch(err => {
-    //             message.error("Ürün sepete eklenemedi!!")
-    //         })
-    // }
+    function ADD_DB_BASKET() {
+
+        // if (basket === []) {
+        //     setLoading(false)
+        // } else if (basket.length === 1) {
+        //     axios.post(`http://localhost:3000/api/basket`, {
+        //         userId: user._id,
+        //         products: basket
+        //     })
+        //         .then(response => {
+        //             message.success("Ürün Sepete Eklendi.", 4)
+        //             setLoading(false)
+        //         })
+        //         .catch(error => {
+        //             console.log(error)
+        //             setLoading(false)
+        //         })
+        // } else if (basket.length > 1) {
+        //     axios.patch(`http://localhost:3000/api/basket/${user._id}`, {
+        //         products: basket
+        //     })
+        //         .then(response => {
+        //             message.success("Ürün Sepete Eklendi.", 4)
+        //             setLoading(false)
+        //         })
+        //         .catch(error => {
+        //             console.log(error)
+        //             setLoading(false)
+        //         })
+        // }
+    }
 
     return (
         <>

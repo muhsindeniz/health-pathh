@@ -53,6 +53,7 @@ function App() {
     localStorage.setItem('basket', JSON.stringify(basket))
   }, [basket])
 
+
   if (token) {
     return (
       <>

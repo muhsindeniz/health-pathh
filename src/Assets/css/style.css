@@ -7704,7 +7704,7 @@ textarea:-ms-input-placeholder {
 
 .product_variant.quantity input {
     width: 130px;
-    border: 1px solid #ebebeb;
+    border: 1px solid #bfbfbf;
     background: none;
     height: 42px;
     padding: 0 12px;
@@ -14659,4 +14659,24 @@ iframe {
 .header_edit_button:hover{
     box-shadow: 0 0 3px 0 rgb(0 0 0 / 40%);
     transition: linear .3s all;
+}
+
+.product_d_right{
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 12px;
+    height: 100%;
+}
+
+.product-detail-container-row{
+    border: solid 1px #ccc;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+}
+
+.product-detail-container img{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 100%;
 }
