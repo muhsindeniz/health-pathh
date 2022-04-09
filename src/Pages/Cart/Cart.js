@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { message, Spin } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
@@ -12,9 +12,10 @@ const Cart = () => {
     let { basket, setBasket, token, setDiscountCartInfo } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext);
     let [discountCart, setDiscountCart] = useState(0)
+    let [loading, setLoading] = useState(false);
 
     let priceProgress = (count, id) => {
-        setBasket(basket.map(data => {
+        setBasket([...basket.map(data => {
             if (data._id === id) {
                 return {
                     _id: data._id,
@@ -29,15 +30,60 @@ const Cart = () => {
             } else {
                 return { ...data }
             }
+        })])
+        UPDATE_DB_QUANTITY([...basket.map(data => {
+            if (data._id === id) {
+                return {
+                    _id: data._id,
+                    name: data.name,
+                    avatar: data.avatar,
+                    farmerName: data.farmerName,
+                    quntity: parseInt(count),
+                    total: (parseFloat(data.newPrice) * parseFloat(count)).toFixed(2),
+                    price: data.price,
+                    newPrice: data.newPrice
+                }
+            } else {
+                return { ...data }
+            }
+        })])
+    }
 
-        }))
+    let UPDATE_DB_QUANTITY = (data) => {
+        setLoading(true)
+        axios.post(`http://localhost:3000/api/basket`, {
+            userId: user._id,
+            products: data
+        })
+            .then(response => {
+                message.success("Ürün sepetten kaldırıldı!", 4)
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoading(false)
+            })
     }
 
     let removeBasket = (info) => {
-        message.success("Ürün başarıyla silindi !")
-        setBasket(
-            basket.filter(item => item._id != info)
-        )
+        setBasket([...basket.filter(b => b._id !== info)])
+        REMOVE_DB_BASKET([...basket.filter(b => b._id !== info)])
+    }
+
+    let REMOVE_DB_BASKET = (data) => {
+        setLoading(true)
+        axios.post(`http://localhost:3000/api/basket`, {
+            userId: user._id,
+            products: data
+        })
+            .then(response => {
+                message.success("Ürün sepetten kaldırıldı!", 4)
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoading(false)
+            })
     }
 
     useEffect(() => {
@@ -133,6 +179,12 @@ const Cart = () => {
                     </form>
                 </div>
             </div>
+
+            {
+                loading && <div className="loading__container">
+                    <Spin size="large" />
+                </div>
+            }
         </>
     )
 }

@@ -27,13 +27,14 @@ import Register from './Pages/Register/Register';
 import MembershipInfo from './Pages/MembershipInfo/MembershipInfo';
 import MemberNavbar from './Components/Layout/Navbar/MemberNavbar';
 import Delivery from './Pages/Delivery/Delivery';
+import axios from 'axios';
 
 function App() {
 
   let [mobile, setMobile] = useState(false)
   let [token, setToken] = useState(localStorage.getItem("token"))
   let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
-  let [basket, setBasket] = useState(JSON.parse(localStorage.getItem('basket')) || [])
+  let [basket, setBasket] = useState([])
   let [discountCartInfo, setDiscountCartInfo] = useState(0)
 
   useEffect(() => {
@@ -52,6 +53,17 @@ function App() {
   useEffect(() => {
     localStorage.setItem('basket', JSON.stringify(basket))
   }, [basket])
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/api/basket/${user._id}`)
+      .then(resp => {
+        console.log(resp.data.products)
+        setBasket(resp.data.products)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }, [user])
 
 
   if (token) {

@@ -33,44 +33,31 @@ const Vegetables = () => {
     }, [])
 
     function ADD_TO_BASKET(product) {
-        var response = basket.find(resp => resp._id == product._id)
-        if (response === undefined) {
-            setBasket(basket.concat(product));
+        var response = basket.find(resp => resp._id === product._id)
+        if (!response) {
+            setBasket([...basket, product])
+            ADD_DB_BASKET([...basket, product])
         } else {
-            response.quntity += 1
+            setBasket([...basket.filter(b => b._id !== product._id), { ...response, quntity: response.quntity + 1 }])
+            ADD_DB_BASKET([...basket.filter(b => b._id !== product._id), { ...response, quntity: response.quntity + 1 }])
         }
     }
 
-    function ADD_DB_BASKET() {
 
-        // if (basket === []) {
-        //     setLoading(false)
-        // } else if (basket.length === 1) {
-        //     axios.post(`http://localhost:3000/api/basket`, {
-        //         userId: user._id,
-        //         products: basket
-        //     })
-        //         .then(response => {
-        //             message.success("Ürün Sepete Eklendi.", 4)
-        //             setLoading(false)
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //             setLoading(false)
-        //         })
-        // } else if (basket.length > 1) {
-        //     axios.patch(`http://localhost:3000/api/basket/${user._id}`, {
-        //         products: basket
-        //     })
-        //         .then(response => {
-        //             message.success("Ürün Sepete Eklendi.", 4)
-        //             setLoading(false)
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //             setLoading(false)
-        //         })
-        // }
+    function ADD_DB_BASKET(data) {
+        setLoading(true)
+        axios.post(`http://localhost:3000/api/basket`, {
+            userId: user._id,
+            products: data
+        })
+            .then(response => {
+                message.success("Ürün Sepete Eklendi.", 4)
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoading(false)
+            })
     }
 
     return (
