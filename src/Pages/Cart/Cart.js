@@ -1,4 +1,4 @@
-import { message, Spin } from 'antd';
+import { message, Spin, Input } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
@@ -9,15 +9,13 @@ import { useHistory } from 'react-router';
 const Cart = () => {
 
     let history = useHistory();
-    let { basket, setBasket, token, setDiscountCartInfo } = useContext(GlobalSettingsContext)
+    let { basket, setBasket, token, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext);
-    let [discountCart, setDiscountCart] = useState(0)
     let [loading, setLoading] = useState(false);
     let [couponCode, setCouponCode] = useState(null)
-    let [discount, setDiscount] = useState(null)
-    let [lastPrice, setLastPrice] = useState(null)
 
     let priceProgress = (count, id) => {
+        let positive = count.replace('-', "");
         setBasket([...basket.map(data => {
             if (data._id === id) {
                 return {
@@ -25,10 +23,11 @@ const Cart = () => {
                     name: data.name,
                     avatar: data.avatar,
                     farmerName: data.farmerName,
-                    quntity: parseInt(count),
-                    total: (parseFloat(data.newPrice) * parseFloat(count)).toFixed(2),
+                    quntity: parseInt(positive || 0),
+                    total: (parseFloat(data.newPrice) * parseFloat(positive || 0)).toFixed(2),
                     price: data.price,
-                    newPrice: data.newPrice
+                    newPrice: data.newPrice,
+                    category: data.productCategory
                 }
             } else {
                 return { ...data }
@@ -42,10 +41,11 @@ const Cart = () => {
                     name: data.name,
                     avatar: data.avatar,
                     farmerName: data.farmerName,
-                    quntity: parseInt(count),
-                    total: (parseFloat(data.newPrice) * parseFloat(count)).toFixed(2),
+                    quntity: parseInt(positive || 0),
+                    total: (parseFloat(data.newPrice) * parseFloat(positive || 0)).toFixed(2),
                     price: data.price,
-                    newPrice: data.newPrice
+                    newPrice: data.newPrice,
+                    category: data.productCategory
                 }
             } else {
                 return { ...data }
@@ -60,7 +60,7 @@ const Cart = () => {
             products: data
         })
             .then(response => {
-                message.success("Ürün sepetten kaldırıldı!", 4)
+                message.success("Sepet güncellendi!")
                 setLoading(false)
             })
             .catch(error => {
@@ -81,7 +81,7 @@ const Cart = () => {
             products: data
         })
             .then(response => {
-                message.success("Ürün sepetten kaldırıldı!", 4)
+                message.success("Ürün sepetten kaldırıldı!")
                 setLoading(false)
             })
             .catch(error => {
@@ -95,6 +95,11 @@ const Cart = () => {
         setDiscountCart(sum)
         setDiscountCartInfo(sum)
     }, [basket])
+
+    if (basket.length === 0) {
+        setLastPrice(0)
+        setDiscount(null)
+    }
 
     let checkOut = async () => {
         history.push('/delivery')
@@ -115,8 +120,8 @@ const Cart = () => {
                         message.error(response.data.result_message.message)
                     else {
                         message.success(response.data.result_message.message)
+                        setDiscount(response.data.result)
                     }
-                    setDiscount(response.data.result)
                     setLoading(false)
                 })
                 .catch(error => {
@@ -128,10 +133,7 @@ const Cart = () => {
 
     useEffect(() => {
         setLastPrice((Number(discountCart) + (basket.length > 0 ? 15 : 0)) - Number(discount))
-    }, [discount])
-
-    console.log(discount)
-    console.log(lastPrice)
+    }, [discount, basket, discountCart])
 
     return (
         <>
@@ -178,7 +180,7 @@ const Cart = () => {
                     <div className="coupon_area">
                         <div className="row">
                             <div className="col-lg-6 col-md-6">
-                                <div className="coupon_code left">
+                                <div className="coupon_code left" style={{ display: discount !== null ? "none" : "block" }}>
                                     <h3>Coupon</h3>
                                     <div className="coupon_inner">
                                         <p>Enter your coupon code if you have one.</p>
@@ -195,19 +197,24 @@ const Cart = () => {
                                             <p>Subtotal</p>
                                             <p className="cart_amount">${Number(discountCart).toFixed(2)}</p>
                                         </div>
+
                                         <div className="cart_subtotal">
                                             <p>Calculate shipping</p>
                                             <p className="cart_amount">${basket.length > 0 ? 15 : 0}</p>
                                         </div>
 
-                                        <div className="cart_subtotal">
-                                            <p>Price</p>
-                                            <p className="cart_amount">$<del>{(Number(discountCart) + (basket.length > 0 ? 15 : 0))}</del></p>
+                                        <div style={{ display: discount !== null ? "block" : "none" }}>
+                                            <div className="cart_subtotal">
+                                                <p>Price</p>
+                                                <p className="cart_amount">$<del>{(Number(discountCart) + (basket.length > 0 ? 15 : 0))}</del></p>
+                                            </div>
                                         </div>
 
-                                        <div className="cart_subtotal">
-                                            <p>Discount amount</p>
-                                            <p className="cart_amount">${discount}</p>
+                                        <div style={{ display: discount !== null ? "block" : "none" }}>
+                                            <div className="cart_subtotal">
+                                                <p>Discount amount</p>
+                                                <p className="cart_amount">${discount}</p>
+                                            </div>
                                         </div>
 
                                         <div className="cart_subtotal">

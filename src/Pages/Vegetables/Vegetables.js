@@ -51,7 +51,7 @@ const Vegetables = () => {
             products: data
         })
             .then(response => {
-                message.success("Ürün Sepete Eklendi.", 4)
+                message.success("Ürün Sepete Eklendi.")
                 setLoading(false)
             })
             .catch(error => {
@@ -145,7 +145,8 @@ const Vegetables = () => {
                                                                 quntity: 1,
                                                                 total: parseInt(product.newPrice),
                                                                 price: product.price,
-                                                                newPrice: product.newPrice
+                                                                newPrice: product.newPrice,
+                                                                category: product.productCategory
                                                             })}>
                                                                 <div data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                                     Sepete Ekle

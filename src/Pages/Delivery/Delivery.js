@@ -8,14 +8,22 @@ import { message, Spin } from 'antd';
 
 const Delivery = () => {
 
-    let { basket, setBasket, token, discountCartInfo } = useContext(GlobalSettingsContext)
+    let { basket,
+        token,
+        discountCart,
+        lastPrice,
+        discount,
+        setBasket,
+        setDiscountCartInfo,
+        setDiscountCart,
+        setLastPrice,
+        setDiscount } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext);
     let history = useHistory();
     let [storageAddress, setStorageAdress] = useState(null)
     let [loading, setLoading] = useState(false)
 
     useEffect(() => {
-
         if (token) {
             setLoading(true)
             axios.get(`http://localhost:3000/api/address/${user._id}`, {
@@ -35,7 +43,39 @@ const Delivery = () => {
     }, [token])
 
     let addOrder = () => {
-        message.success("Siparişiniz başarıyla verildi..", 3)
+        setLoading(true)
+        axios.post('http://localhost:3000/api/addOrders', {
+            userId: user._id,
+            basket: basket,
+            address: JSON.parse(localStorage.getItem('address'))
+        })
+            .then(resp => {
+                axios.delete(`http://localhost:3000/api/basket/${user._id}`)
+                    .then(resp => {
+                        if (resp.data.result_message.type === "success") {
+                            message.success(resp.data.result_message.message)
+                            setLoading(false)
+                            setBasket([])
+                            setDiscountCartInfo(0)
+                            setDiscountCart(0)
+                            setLastPrice(0)
+                            setDiscount(null)
+                            history.push('/')
+                        }
+                        else {
+                            message.info(resp.data.result_message.message)
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false)
+            })
+
     }
 
     return (
@@ -73,14 +113,7 @@ const Delivery = () => {
                             <div className="coupon_area">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6">
-                                        <div className="coupon_code left">
-                                            <h3>Coupon</h3>
-                                            <div className="coupon_inner">
-                                                <p>Enter your coupon code if you have one.</p>
-                                                <input placeholder="Coupon code" type="text" />
-                                                <button type="submit">Apply coupon</button>
-                                            </div>
-                                        </div>
+                                       
                                     </div>
                                     <div className="col-lg-6 col-md-6">
                                         <div className="coupon_code right">
@@ -88,16 +121,30 @@ const Delivery = () => {
                                             <div className="coupon_inner">
                                                 <div className="cart_subtotal">
                                                     <p>Subtotal</p>
-                                                    <p className="cart_amount">${Number(discountCartInfo).toFixed(2)}</p>
+                                                    <p className="cart_amount">${Number(discountCart).toFixed(2)}</p>
                                                 </div>
                                                 <div className="cart_subtotal">
                                                     <p>Calculate shipping</p>
                                                     <p className="cart_amount">${basket.length > 0 ? 15 : 0}</p>
                                                 </div>
 
+                                                <div style={{ display: discount !== null ? "block" : "none" }}>
+                                                    <div className="cart_subtotal">
+                                                        <p>Price</p>
+                                                        <p className="cart_amount">$<del>{(Number(discountCart) + (basket.length > 0 ? 15 : 0))}</del></p>
+                                                    </div>
+                                                </div>
+
+                                                <div style={{ display: discount !== null ? "block" : "none" }}>
+                                                    <div className="cart_subtotal">
+                                                        <p>Discount amount</p>
+                                                        <p className="cart_amount">${discount}</p>
+                                                    </div>
+                                                </div>
+
                                                 <div className="cart_subtotal">
                                                     <p>Total</p>
-                                                    <p className="cart_amount">${(Number(discountCartInfo) + (basket.length > 0 ? 15 : 0)).toFixed(2)}</p>
+                                                    <p className="cart_amount">${lastPrice}</p>
                                                 </div>
                                                 <div className="checkout_btn">
                                                     <a onClick={() => addOrder()} className="text-white">Proceed to Checkout</a>

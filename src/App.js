@@ -36,6 +36,9 @@ function App() {
   let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
   let [basket, setBasket] = useState([])
   let [discountCartInfo, setDiscountCartInfo] = useState(0)
+  let [discountCart, setDiscountCart] = useState(0)
+  let [lastPrice, setLastPrice] = useState(0)
+  let [discount, setDiscount] = useState(null)
 
   useEffect(() => {
     let getSize = () => {
@@ -57,7 +60,6 @@ function App() {
   useEffect(() => {
     axios.get(`http://localhost:3000/api/basket/${user._id}`)
       .then(resp => {
-        console.log(resp.data.products)
         setBasket(resp.data.products)
       })
       .catch(err => {
@@ -69,7 +71,7 @@ function App() {
   if (token) {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo }}>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>
@@ -152,7 +154,7 @@ function App() {
   } else {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo }}>
+        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>

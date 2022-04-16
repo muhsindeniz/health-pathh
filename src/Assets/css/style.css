@@ -14680,3 +14680,13 @@ iframe {
     border-bottom-left-radius: 8px;
     width: 100%;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}

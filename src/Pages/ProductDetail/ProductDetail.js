@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { message, Spin } from 'antd'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 
 SwiperCore.use([Navigation, Thumbs]);
 
@@ -13,6 +14,8 @@ const ProductDetail = () => {
     let [productDetail, setProductDetail] = useState(null)
     let [loading, setLoading] = useState(null)
     let { basket, setBasket } = useContext(GlobalSettingsContext)
+    let { user } = useContext(CompanySettingsContext)
+    let [priceProgress, setPriceProgress] = useState(1)
 
     useEffect(() => {
         setLoading(true)
@@ -28,33 +31,30 @@ const ProductDetail = () => {
     }, [id])
 
     let ADD_TO_BASKET = (product) => {
-        console.log(product)
-        var response = basket.find(resp => resp._id == product._id)
-        if (response === undefined) {
-            setBasket(basket.concat(product));
+        var response = basket.find(resp => resp._id === product._id)
+        if (!response) {
+            setBasket([...basket, product])
+            ADD_DB_BASKET([...basket, product])
         } else {
-            response.quntity += 1
+            setBasket([...basket.filter(b => b._id !== product._id), { ...response, quntity: response.quntity + 1 }])
+            ADD_DB_BASKET([...basket.filter(b => b._id !== product._id), { ...response, quntity: response.quntity + 1 }])
         }
     }
 
-    let priceProgress = (count, id) => {
-        setBasket(basket.map(data => {
-            if (data._id === id) {
-                return {
-                    _id: data._id,
-                    name: data.name,
-                    avatar: data.avatar,
-                    farmerName: data.farmerName,
-                    quntity: parseInt(count),
-                    total: (parseFloat(data.newPrice) * parseFloat(count)).toFixed(2),
-                    price: data.price,
-                    newPrice: data.newPrice
-                }
-            } else {
-                return { ...data }
-            }
-
-        }))
+    function ADD_DB_BASKET(data) {
+        setLoading(true)
+        axios.post(`http://localhost:3000/api/basket`, {
+            userId: user._id,
+            products: data
+        })
+            .then(response => {
+                message.success("Ürün Sepete Eklendi.")
+                setLoading(false)
+            })
+            .catch(error => {
+                console.log(error)
+                setLoading(false)
+            })
     }
 
     return (
@@ -92,8 +92,18 @@ const ProductDetail = () => {
                                 </div>
                                 <div className="product_variant quantity">
                                     <label>quantity</label>
-                                    <input onChange={(e) => priceProgress(e.target.value, productDetail._id)} defaultValue={productDetail?.quntity || 1} min="1" max="100" defaultValue="1" type="number" />
-                                    <button className="button" type="submit" onClick={() => ADD_TO_BASKET(productDetail)}>add to cart</button>
+                                    <input onChange={(e) => setPriceProgress(e.target.value)} min="1" max="100" defaultValue="1" type="number" />
+                                    <button className="button" type="submit" onClick={() => ADD_TO_BASKET({
+                                        _id: productDetail._id,
+                                        name: productDetail.name,
+                                        avatar: productDetail.avatar,
+                                        farmerName: productDetail.farmerName,
+                                        quntity: parseInt(priceProgress),
+                                        total: parseInt(productDetail.newPrice),
+                                        price: productDetail.price,
+                                        newPrice: productDetail.newPrice,
+                                        category: productDetail.productCategory
+                                    })}>add to cart</button>
                                 </div>
                                 <div className="product_meta">
                                     <span>Category: <a>Vegetables</a></span>
