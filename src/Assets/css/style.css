@@ -14690,3 +14690,25 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
+
+.passiveButton{
+    background: rgba(0, 0, 0, .3) !important;
+    color: #fff !important;
+}
+
+.passiveButton:hover{
+    background: rgba(0, 0, 0, .3) !important;
+    color: #fff !important;
+    cursor:not-allowed;
+}
+
+.passiveButtonCategories{
+    background: none !important;
+    color: #000 !important;
+}
+
+.passiveButtonCategories:hover{
+    background: none !important;
+    color: #000 !important;
+    cursor:not-allowed;
+}

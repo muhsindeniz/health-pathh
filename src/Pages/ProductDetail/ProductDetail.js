@@ -93,20 +93,34 @@ const ProductDetail = () => {
                                 <div className="product_variant quantity">
                                     <label>quantity</label>
                                     <input onChange={(e) => setPriceProgress(e.target.value)} min="1" max="100" defaultValue="1" type="number" />
-                                    <button className="button" type="submit" onClick={() => ADD_TO_BASKET({
-                                        _id: productDetail._id,
-                                        name: productDetail.name,
-                                        avatar: productDetail.avatar,
-                                        farmerName: productDetail.farmerName,
+                                    <button className={parseInt(productDetail?.stock) === 0 ? "passiveButton" : "button activeButton"} disabled={parseInt(productDetail?.stock) === 0 ? true : false} type="submit" onClick={() => ADD_TO_BASKET({
+                                        _id: productDetail?._id,
+                                        name: productDetail?.name,
+                                        avatar: productDetail?.avatar,
+                                        farmerName: productDetail?.farmerName,
                                         quntity: parseInt(priceProgress),
-                                        total: parseInt(productDetail.newPrice),
-                                        price: productDetail.price,
-                                        newPrice: productDetail.newPrice,
-                                        category: productDetail.productCategory
+                                        total: parseInt(productDetail?.newPrice),
+                                        price: productDetail?.price,
+                                        newPrice: productDetail?.newPrice,
+                                        category: productDetail?.productCategory
                                     })}>add to cart</button>
                                 </div>
                                 <div className="product_meta">
-                                    <span>Category: <a>Vegetables</a></span>
+                                    <span style={{ textTransform: "capitalize" }}>Category: <a>{productDetail?.productCategory}</a></span>
+                                </div>
+
+                                <div className="product_meta">
+                                    <h4> <span>Stock Status:
+                                        <b className={parseInt(productDetail?.stock) < 20 ? "text-danger" : "text-dark"}>
+                                            {
+                                                parseInt(productDetail?.stock) < 20 ? " Only " : ""
+                                            }
+                                            {productDetail?.stock} Kg
+                                            {
+                                                parseInt(productDetail?.stock) < 20 ? " left in stock" : ""
+                                            }
+                                        </b>
+                                    </span></h4>
                                 </div>
 
                                 <div className="priduct_social">

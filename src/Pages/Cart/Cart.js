@@ -9,48 +9,52 @@ import { useHistory } from 'react-router';
 const Cart = () => {
 
     let history = useHistory();
-    let { basket, setBasket, token, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount } = useContext(GlobalSettingsContext)
+    let { basket, setBasket, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext);
     let [loading, setLoading] = useState(false);
     let [couponCode, setCouponCode] = useState(null)
 
     let priceProgress = (count, id) => {
         let positive = count.replace('-', "");
-        setBasket([...basket.map(data => {
-            if (data._id === id) {
-                return {
-                    _id: data._id,
-                    name: data.name,
-                    avatar: data.avatar,
-                    farmerName: data.farmerName,
-                    quntity: parseInt(positive || 0),
-                    total: (parseFloat(data.newPrice) * parseFloat(positive || 0)).toFixed(2),
-                    price: data.price,
-                    newPrice: data.newPrice,
-                    category: data.productCategory
+        if (positive == "" || positive == " ") {
+            return false
+        } else {
+            setBasket([...basket.map(data => {
+                if (data._id === id) {
+                    return {
+                        _id: data._id,
+                        category: data.category,
+                        name: data.name,
+                        avatar: data.avatar,
+                        farmerName: data.farmerName,
+                        quntity: parseInt(positive || 1),
+                        total: (parseFloat(data.newPrice) * parseFloat(positive || 1)).toFixed(2),
+                        price: data.price,
+                        newPrice: data.newPrice
+                    }
+                } else {
+                    return { ...data }
                 }
-            } else {
-                return { ...data }
-            }
-        })])
+            })])
 
-        UPDATE_DB_QUANTITY([...basket.map(data => {
-            if (data._id === id) {
-                return {
-                    _id: data._id,
-                    name: data.name,
-                    avatar: data.avatar,
-                    farmerName: data.farmerName,
-                    quntity: parseInt(positive || 0),
-                    total: (parseFloat(data.newPrice) * parseFloat(positive || 0)).toFixed(2),
-                    price: data.price,
-                    newPrice: data.newPrice,
-                    category: data.productCategory
+            UPDATE_DB_QUANTITY([...basket.map(data => {
+                if (data._id === id) {
+                    return {
+                        _id: data._id,
+                        category: data.category,
+                        name: data.name,
+                        avatar: data.avatar,
+                        farmerName: data.farmerName,
+                        quntity: parseInt(positive || 1),
+                        total: (parseFloat(data.newPrice) * parseFloat(positive || 1)).toFixed(2),
+                        price: data.price,
+                        newPrice: data.newPrice
+                    }
+                } else {
+                    return { ...data }
                 }
-            } else {
-                return { ...data }
-            }
-        })])
+            })])
+        }
     }
 
     let UPDATE_DB_QUANTITY = (data) => {
@@ -89,12 +93,6 @@ const Cart = () => {
                 setLoading(false)
             })
     }
-
-    useEffect(() => {
-        const sum = basket.length > 0 ? basket.map(datum => datum.total).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
-        setDiscountCart(sum)
-        setDiscountCartInfo(sum)
-    }, [basket])
 
     if (basket.length === 0) {
         setLastPrice(0)
@@ -165,7 +163,9 @@ const Cart = () => {
                                                         <td className="product_thumb"><a href="#"><img src={`http://localhost:3000/${bask?.avatar}`} alt="" /></a></td>
                                                         <td className="product_name"><a href="#">{bask.name}</a></td>
                                                         <td className="product-price">${bask.newPrice}</td>
-                                                        <td className="product_quantity"><label>Quantity</label> <input onChange={(e) => priceProgress(e.target.value, bask._id)} min="1" max="100" defaultValue={bask?.quntity || 1} type="number" /></td>
+                                                        <td className="product_quantity"><label>Quantity</label>
+                                                            <input onChange={(e) => priceProgress(e.target.value, bask._id)} min={1} max={100} defaultValue={bask.quntity || 1} type="number" />
+                                                        </td>
                                                         <td className="product_total">${Number(bask.newPrice * bask.quntity).toFixed(2)}</td>
                                                     </tr>
                                                 ))
@@ -180,7 +180,7 @@ const Cart = () => {
                     <div className="coupon_area">
                         <div className="row">
                             <div className="col-lg-6 col-md-6">
-                                <div className="coupon_code left" style={{ display: discount !== null ? "none" : "block" }}>
+                                <div className="coupon_code left" style={{ display: discount !== null || basket.length === 0 ? "none" : "block" }}>
                                     <h3>Coupon</h3>
                                     <div className="coupon_inner">
                                         <p>Enter your coupon code if you have one.</p>
@@ -195,7 +195,7 @@ const Cart = () => {
                                     <div className="coupon_inner">
                                         <div className="cart_subtotal">
                                             <p>Subtotal</p>
-                                            <p className="cart_amount">${Number(discountCart).toFixed(2)}</p>
+                                            <p className="cart_amount">${parseFloat(discountCart).toFixed(2)}</p>
                                         </div>
 
                                         <div className="cart_subtotal">
@@ -206,7 +206,7 @@ const Cart = () => {
                                         <div style={{ display: discount !== null ? "block" : "none" }}>
                                             <div className="cart_subtotal">
                                                 <p>Price</p>
-                                                <p className="cart_amount">$<del>{(Number(discountCart) + (basket.length > 0 ? 15 : 0))}</del></p>
+                                                <p className="cart_amount">$<del>{(parseFloat(discountCart) + (basket.length > 0 ? 15 : 0)).toFixed(2)}</del></p>
                                             </div>
                                         </div>
 
@@ -219,9 +219,9 @@ const Cart = () => {
 
                                         <div className="cart_subtotal">
                                             <p>Total</p>
-                                            <p className="cart_amount">${lastPrice}</p>
+                                            <p className="cart_amount">${parseFloat(lastPrice).toFixed(2) || 0}</p>
                                         </div>
-                                        <div className="checkout_btn">
+                                        <div className={basket.length === 0 ? "d-none checkout_btn" : "checkout_btn"}>
                                             <a onClick={() => checkOut()} className="text-white">Proceed to Checkout</a>
                                         </div>
                                     </div>

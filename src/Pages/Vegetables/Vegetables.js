@@ -43,7 +43,6 @@ const Vegetables = () => {
         }
     }
 
-
     function ADD_DB_BASKET(data) {
         setLoading(true)
         axios.post(`http://localhost:3000/api/basket`, {
@@ -136,30 +135,34 @@ const Vegetables = () => {
                                                         <span className="label_new">New</span>
                                                     </div>
                                                     <div className="action_links">
-                                                        <ul>
-                                                            <li className="add_to_cart" onClick={() => ADD_TO_BASKET({
-                                                                _id: product._id,
-                                                                name: product.name,
-                                                                avatar: product.avatar,
-                                                                farmerName: product.farmerName,
-                                                                quntity: 1,
-                                                                total: parseInt(product.newPrice),
-                                                                price: product.price,
-                                                                newPrice: product.newPrice,
-                                                                category: product.productCategory
-                                                            })}>
-                                                                <div data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                                    Sepete Ekle
-                                                                </div>
-                                                            </li>
-                                                        </ul>
+                                                        <button disabled={parseInt(product?.stock) === 0 ? true : false} className={parseInt(product?.stock) === 0 ? "passiveButtonCategories w-100" : "w-100 activeButton"} style={{ background: "none", border: "none" }} onClick={() => ADD_TO_BASKET({
+                                                            _id: product._id,
+                                                            name: product.name,
+                                                            avatar: product.avatar,
+                                                            farmerName: product.farmerName,
+                                                            quntity: 1,
+                                                            total: parseInt(product.newPrice),
+                                                            price: product.price,
+                                                            newPrice: product.newPrice,
+                                                            category: product.productCategory
+                                                        })}>
+                                                            Sepete Ekle
+                                                        </button>
+
                                                     </div>
                                                 </div>
                                                 <div className="product_content grid_content">
-                                                    <h4 className="product_name"><a href="#">{product.name}</a></h4>
-                                                    <div className="price_box">
-                                                        <span className="current_price">{product.newPrice} TL</span>
+                                                    <h4 className="product_name mb-2"><a href="#">{product.name}</a></h4>
+                                                    <div className={parseInt(product?.stock) === 0 ? "text-danger" : "text-dark"}>
+                                                            <b>
+                                                                {
+                                                                    parseInt(product?.stock) === 0 ? "Stokta yok" : ""
+                                                                }
+                                                            </b>
+                                                        </div>
+                                                    <div className="price_box m-0">
                                                         <span className="old_price">{product.price} TL</span>
+                                                        <span style={{marginLeft: "10px"}} className="current_price">{product.newPrice} TL</span>
                                                     </div>
                                                 </div>
                                             </div>

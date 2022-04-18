@@ -55,7 +55,11 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('basket', JSON.stringify(basket))
+    const sum = basket.length > 0 ? basket.map(datum => datum.total).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
+    setDiscountCart(sum)
+    setDiscountCartInfo(sum)
   }, [basket])
+
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/basket/${user._id}`)
