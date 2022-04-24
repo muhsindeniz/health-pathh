@@ -9,6 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useGetData, usePatchData, usePostData } from '../../hooks/ServiceGetways';
 import AddressList from '../../Components/AddressList/AddressList';
 import AddUserAddress from '../../Components/AddUserAddress/AddUserAddress';
+import Cookies from 'js-cookie';
 const { TabPane } = Tabs;
 
 const MembershipInfo = () => {
@@ -47,14 +48,14 @@ const MembershipInfo = () => {
             })
                 .then(res => {
                     setStorageAdress(res.data.result);
-                     setLoading(false)
+                    setLoading(false)
                 })
                 .catch(e => {
                     console.log(e)
-                     setLoading(false)
+                    setLoading(false)
                 })
         }
-    }, [])
+    }, [token.user])
 
     useEffect(() => {
         setGenderChecked(userInfo.gender == "Erkek" ? false : true)
@@ -67,17 +68,17 @@ const MembershipInfo = () => {
             setUser(result)
             setLoading(false)
         });
-    }, [])
+    }, [user])
 
     let updateMembershipInfo = () => {
         setLoading(true)
         patchData(`user/${user._id}`, { ...userInfo }).then(({ result_message }) => {
             if (result_message.type == "success") {
                 const profile = {
-                    ...JSON.parse(localStorage.getItem('user')),
+                    ...JSON.parse(Cookies.get('user')),
                     ...userInfo
                 };
-                localStorage.setItem('user', JSON.stringify(profile));
+                Cookies.set('user', JSON.stringify(profile))
                 message.success("Your information has been successfully updated.", 3)
                 get()
                 history.push('/membership-infos')

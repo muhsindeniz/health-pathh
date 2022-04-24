@@ -14,6 +14,13 @@ const Vegetables = () => {
     let [loading, setLoading] = useState(false);
     let { basket, setBasket } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext)
+    let [filterButtonActive, setFilterButtonActive] = useState(null);
+    let [priceFilter, setPriceFilter] = useState({
+        minPrice: "",
+        maxPrice: ""
+    })
+
+    console.log(basket)
 
     function handleChange(value) {
         console.log(`selected ${value}`);
@@ -24,6 +31,7 @@ const Vegetables = () => {
         axios.get(`http://localhost:3000/api/vegetables`)
             .then(res => {
                 setData(res.data);
+                setFilterButtonActive(res.data)
                 setLoading(false)
             })
             .catch(e => {
@@ -59,6 +67,17 @@ const Vegetables = () => {
             })
     }
 
+    let filterProduct = () => {
+        if (priceFilter.minPrice == '' && priceFilter.maxPrice == '') {
+            setData([...data, ...filterButtonActive])
+        } else if (priceFilter.minPrice == '0' || priceFilter.maxPrice == '0') {
+            setData([...data, ...filterButtonActive])
+        } else {
+            setData([...data.filter(a => parseFloat(a.price) > parseFloat(priceFilter.minPrice) || parseFloat(a.price) < parseFloat(priceFilter.maxPrice))])
+        }
+    }
+
+
     return (
         <>
             <div className="shop_area shop_reverse mt-70 mb-70">
@@ -70,9 +89,9 @@ const Vegetables = () => {
                                     <div className="widget_list widget_filter">
                                         <h3>Filter by price</h3>
                                         <div className="filter-price">
-                                            <input placeholder="En az" type="number" />
-                                            <input placeholder="En az" type="number" />
-                                            <button type="submit"><i className="fas fa-arrow-right"></i></button>
+                                            <input placeholder="En az" type="number" onChange={(e) => setPriceFilter({ ...priceFilter, minPrice: e.target.value })} />
+                                            <input placeholder="En çok" type="number" onChange={(e) => setPriceFilter({ ...priceFilter, maxPrice: e.target.value })} />
+                                            <button className={(priceFilter.minPrice == '' && priceFilter.maxPrice == '') ? "filterButtonPassive" : (priceFilter.minPrice == '0' || priceFilter.maxPrice == '0') ? "filterButtonPassive" : "filterButtonActive"} disabled={(priceFilter.minPrice == '' && priceFilter.maxPrice == '') ? true : (priceFilter.minPrice == '0' || priceFilter.maxPrice == '0') ? true : false} onClick={() => filterProduct()} type="submit"><i className="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
                                     <div className="widget_list widget_color">
@@ -134,18 +153,19 @@ const Vegetables = () => {
                                                         <span className="label_sale"><small>Oil: {product.oil} kcal</small></span>
                                                         <span className="label_new">New</span>
                                                     </div>
-                                                    <div className="action_links">
-                                                        <button disabled={parseInt(product?.stock) === 0 ? true : false} className={parseInt(product?.stock) === 0 ? "passiveButtonCategories w-100" : "w-100 activeButton"} style={{ background: "none", border: "none" }} onClick={() => ADD_TO_BASKET({
-                                                            _id: product._id,
-                                                            name: product.name,
-                                                            avatar: product.avatar,
-                                                            farmerName: product.farmerName,
-                                                            quntity: 1,
-                                                            total: parseInt(product.newPrice),
-                                                            price: product.price,
-                                                            newPrice: product.newPrice,
-                                                            category: product.productCategory
-                                                        })}>
+                                                    <div className={parseFloat(product?.stock) < 1 ? "d-none" : "d-flex action_links"} >
+                                                        <button disabled={parseFloat(product?.stock) < 1 ? true : false} className={parseFloat(product?.stock) < 1 ? "passiveButtonCategories w-100 d-none" : "w-100 activeButton"} style={{ background: "none", border: "none" }} onClick={() =>
+                                                            ADD_TO_BASKET({
+                                                                _id: product._id,
+                                                                name: product.name,
+                                                                avatar: product.avatar,
+                                                                farmerName: product.farmerName,
+                                                                quntity: 1,
+                                                                total: parseFloat(product.newPrice),
+                                                                price: product.price,
+                                                                newPrice: product.newPrice,
+                                                                category: product.productCategory
+                                                            })}>
                                                             Sepete Ekle
                                                         </button>
 
@@ -153,16 +173,16 @@ const Vegetables = () => {
                                                 </div>
                                                 <div className="product_content grid_content">
                                                     <h4 className="product_name mb-2"><a href="#">{product.name}</a></h4>
-                                                    <div className={parseInt(product?.stock) === 0 ? "text-danger" : "text-dark"}>
-                                                            <b>
-                                                                {
-                                                                    parseInt(product?.stock) === 0 ? "Stokta yok" : ""
-                                                                }
-                                                            </b>
-                                                        </div>
+                                                    <div className={parseFloat(product?.stock) < 1 ? "text-danger" : "text-dark"}>
+                                                        <b>
+                                                            {
+                                                                parseFloat(product?.stock) < 1 ? "Stokta yok" : ""
+                                                            }
+                                                        </b>
+                                                    </div>
                                                     <div className="price_box m-0">
                                                         <span className="old_price">{product.price} TL</span>
-                                                        <span style={{marginLeft: "10px"}} className="current_price">{product.newPrice} TL</span>
+                                                        <span style={{ marginLeft: "10px" }} className="current_price">{product.newPrice} TL</span>
                                                     </div>
                                                 </div>
                                             </div>

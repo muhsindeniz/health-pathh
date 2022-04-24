@@ -4,52 +4,6 @@ import qs from 'qs';
 import Cookies from 'js-cookie';
 import { GlobalSettingsContext } from '../Contexts/GlobalSettingsContext';
 
-let useGetData = () => {
-    const { token, setToken } = useContext(GlobalSettingsContext)
-
-    let call = useMemo(() => async (action, params) => {
-
-        let { query } = params;
-        try {
-            if (token) {
-                let {data: {result, result_message}} = await axios.get(query ? `http://localhost:3000/api/${action}?${qs.stringify(query)}` : `http://localhost:3000/api/${action}`, {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                        'x-api-lang': 'TR'
-                    }
-                })
-
-                if (result_message && result_message.type === 'token_expire') {
-                    Cookies.remove("token")
-                    setToken(null);
-                    return (result_message.message)
-                }
-                else if (!result && result_message.type === 'error')
-                    throw Error(result_message.message)
-                else
-                    return ({ result, result_message })
-
-            } else {
-                throw new Error({ status: 404 })
-            }
-        }
-        catch (error) {
-            if (error) {
-                if (error?.response?.status === 401)
-                    throw ({ code: 401, message: error.message })
-                if (error?.response?.status === 404)
-                    throw ({ code: 404, message: '404 Aradığınızı bulamadık.' })
-                else if (error?.message === 'Entity not found')
-                    throw ({ code: 0, message: 'Aradığınız kayıt bulunamadı.' })
-                else
-                    throw ({ code: 0, message: error.message })
-            }
-        }
-
-    }, [token])
-
-    return call
-}
 
 let usePostData = () => {
     const { token, setToken } = useContext(GlobalSettingsContext)
@@ -143,8 +97,6 @@ let usePatchData = () => {
                 })
 
                 if (result_message && result_message.type === 'token_expire') {
-                    Cookies.remove("token")
-                    setToken(null);
                     return (result_message.message)
                 }
                 else if (!result && result_message.type === 'error')
@@ -195,7 +147,6 @@ let useUploadFile = () => {
 
                 if (result_message && result_message.type === 'token_expire') {
                     Cookies.remove("token")
-                    setToken(null);
                     return (result_message.message)
                 }
                 else if (!result && result_message.type === 'error')
@@ -223,4 +174,4 @@ let useUploadFile = () => {
 
 }
 
-export { useGetData, usePostData, usePatchData, useDeleteData, useUploadFile }
+export { usePostData, usePatchData, useDeleteData, useUploadFile }

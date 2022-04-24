@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import logo from '../../../Assets/media/img/logo/logo.png'
 import { Link } from 'react-router-dom'
 import product from '../../../Assets/media/img/s-product/product.jpg'
@@ -7,6 +7,7 @@ import { Menu, message } from 'antd';
 import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../../Contexts/CompanySettingsContext'
 import { useHistory } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 const MemberNavbar = () => {
 
@@ -19,19 +20,19 @@ const MemberNavbar = () => {
     let logOut = () => {
         message.info("Çıkış yapılıyor...")
         setTimeout(() => {
-            localStorage.removeItem("user")
-            localStorage.removeItem("token")
+            Cookies.remove("user")
+            Cookies.remove("token")
             setUser(null)
             setToken(null)
             message.success("Başarıyla çıkış yapıldı.")
-            history.push('/')
+            document.location.reload();
         }, 2500)
     }
 
     useEffect(() => {
         if (token) {
-            var matches = user?.name.match(/\b(\w)/g);
-            var acronym = matches.join('');
+            var matches = user?.name?.match(/\b(\w)/g);
+            var acronym = matches?.join('');
             setUserName(acronym)
         }
         else {
@@ -79,7 +80,7 @@ const MemberNavbar = () => {
                                         }
 
                                         {
-                                            mobile === true ? "" : <Link to="/">
+                                            mobile === true ? "" : <Link to="/my-orders">
                                                 <div className="members_basket_container">
                                                     <span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-box-seam" viewBox="0 0 16 16">

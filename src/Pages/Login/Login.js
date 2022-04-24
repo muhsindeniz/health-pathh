@@ -5,6 +5,7 @@ import { message, Spin } from 'antd'
 import { useHistory } from "react-router-dom";
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext'
+import Cookies from 'js-cookie';
 
 const Login = () => {
 
@@ -28,12 +29,13 @@ const Login = () => {
 
                 if(result_message.type == "success"){
                     message.success("Login successful..")
-                    localStorage.setItem("user", JSON.stringify(result))
-                    localStorage.setItem("token", result.token)
                     setToken(result.token)
                     setUser(result);
+                    Cookies.set('user', JSON.stringify(result))
+                    Cookies.set('token', result.token)
                     setLoading(false)
                     history.push('/')
+                    window.scrollTo(0, 0);
                 } else {
                     message.error(result.message, 3)
                     setLoading(false)

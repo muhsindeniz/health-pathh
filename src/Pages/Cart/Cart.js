@@ -1,6 +1,6 @@
 import { message, Spin, Input } from 'antd';
 import axios from 'axios';
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useLayoutEffect } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
@@ -13,6 +13,7 @@ const Cart = () => {
     let { user } = useContext(CompanySettingsContext);
     let [loading, setLoading] = useState(false);
     let [couponCode, setCouponCode] = useState(null)
+
 
     let priceProgress = (count, id) => {
         let positive = count.replace('-', "");
@@ -103,6 +104,7 @@ const Cart = () => {
         history.push('/delivery')
     }
 
+
     let sendCouponCode = () => {
         if (couponCode === null) {
             message.info("Lütfen bir kupon kodu giriniz!")
@@ -129,7 +131,8 @@ const Cart = () => {
         }
     }
 
-    useEffect(() => {
+
+    useLayoutEffect(() => {
         setLastPrice((Number(discountCart) + (basket.length > 0 ? 15 : 0)) - Number(discount))
     }, [discount, basket, discountCart])
 
@@ -162,7 +165,7 @@ const Cart = () => {
                                                         <td className="product_remove"><a><i onClick={() => removeBasket(bask._id)} className="far fa-trash-alt"></i></a></td>
                                                         <td className="product_thumb"><a href="#"><img src={`http://localhost:3000/${bask?.avatar}`} alt="" /></a></td>
                                                         <td className="product_name"><a href="#">{bask.name}</a></td>
-                                                        <td className="product-price">${bask.newPrice}</td>
+                                                        <td className="product-price">${parseFloat(bask.newPrice).toFixed(2)}</td>
                                                         <td className="product_quantity"><label>Quantity</label>
                                                             <input onChange={(e) => priceProgress(e.target.value, bask._id)} min={1} max={100} defaultValue={bask.quntity || 1} type="number" />
                                                         </td>

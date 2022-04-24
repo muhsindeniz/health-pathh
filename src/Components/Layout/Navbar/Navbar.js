@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import logo from '../../../Assets/media/img/logo/logo.png'
 import { Link } from 'react-router-dom'
 import product from '../../../Assets/media/img/s-product/product.jpg'
@@ -7,6 +7,7 @@ import { Menu, message } from 'antd';
 import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../../Contexts/CompanySettingsContext'
 import { useHistory } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 const Navbar = (props) => {
 
@@ -17,12 +18,12 @@ const Navbar = (props) => {
     let logOut = () => {
         message.info("Çıkış yapılıyor...")
         setTimeout(() => {
-            localStorage.removeItem("user")
-            localStorage.removeItem("token")
+            Cookies.remove('user')
+            Cookies.remove('token')
             setUser(null)
             setToken(null)
             message.success("Başarıyla çıkış yapıldı.")
-            history.push('/')
+            document.location.reload();
         }, 2000)
     }
 
@@ -79,18 +80,18 @@ const Navbar = (props) => {
                                                         <i className="far fa-user"></i>
                                                         <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                             <span className="header-title-login">
-                                                                {token === null ? "Giriş Yap" : "Hesabım"}
+                                                                {!token ? "Giriş Yap" : "Hesabım"}
                                                             </span>
                                                             <br />
-                                                            <small>{token === null ? "veya üye ol" : user?.name}</small>
+                                                            <small>{!token ? "veya üye ol" : user?.name}</small>
                                                         </div>
                                                     </label>
                                                     <div className="section-dropdown">
-                                                        <Link className={token === null ? "d-block" : "d-none"} to="/login">Giriş Yap</Link>
-                                                        <Link className={token === null ? "d-block" : "d-none"} to="/register">Üye Ol </Link>
-                                                        <Link to="/">Siparişlerim</Link>
-                                                        <Link to="/membership-infos">Kullanıcı Bilgilerim</Link>
-                                                        <Link to="#" className={token === null ? "d-none" : "d-block"} onClick={() => logOut()}>Çıkış Yap</Link>
+                                                        <Link className={!token ? "d-block" : "d-none"} to="/login">Giriş Yap</Link>
+                                                        <Link className={!token ? "d-block" : "d-none"} to="/register">Üye Ol </Link>
+                                                        <Link className={!token ? "d-none" : "d-block"} to="/my-orders">Siparişlerim</Link>
+                                                        <Link className={!token ? "d-none" : "d-block"} to="/membership-infos">Kullanıcı Bilgilerim</Link>
+                                                        <Link to="#" className={!token ? "d-none" : "d-block"} onClick={() => logOut()}>Çıkış Yap</Link>
                                                     </div>
                                                 </div>
                                             </div>

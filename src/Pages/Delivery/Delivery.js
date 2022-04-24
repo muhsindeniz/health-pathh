@@ -5,6 +5,7 @@ import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { message, Spin } from 'antd';
+import Cookies from 'js-cookie';
 
 const Delivery = () => {
 
@@ -25,20 +26,22 @@ const Delivery = () => {
 
     useEffect(() => {
         if (token) {
-            setLoading(true)
-            axios.get(`http://localhost:3000/api/address/${user._id}`, {
-                headers: {
-                    Authorization: token
-                }
-            })
-                .then(res => {
-                    setStorageAdress(res.data.result);
-                    setLoading(false)
+            if (user._id) {
+                setLoading(true)
+                axios.get(`http://localhost:3000/api/address/${user._id}`, {
+                    headers: {
+                        Authorization: token
+                    }
                 })
-                .catch(e => {
-                    console.log(e)
-                    setLoading(false)
-                })
+                    .then(res => {
+                        setStorageAdress(res.data.result);
+                        setLoading(false)
+                    })
+                    .catch(e => {
+                        console.log(e)
+                        setLoading(false)
+                    })
+            }
         }
     }, [token])
 
@@ -47,7 +50,9 @@ const Delivery = () => {
         axios.post('http://localhost:3000/api/addOrders', {
             userId: user._id,
             basket: basket,
-            address: JSON.parse(localStorage.getItem('address'))
+            address: storageAddress,
+            discountCodeAmount: discount,
+            totalPricePaid: lastPrice.toFixed(2)
         })
             .then(resp => {
                 axios.delete(`http://localhost:3000/api/basket/${user._id}`)
@@ -113,7 +118,7 @@ const Delivery = () => {
                             <div className="coupon_area">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6">
-                                       
+
                                     </div>
                                     <div className="col-lg-6 col-md-6">
                                         <div className="coupon_code right">
@@ -144,7 +149,7 @@ const Delivery = () => {
 
                                                 <div className="cart_subtotal">
                                                     <p>Total</p>
-                                                    <p className="cart_amount">${lastPrice}</p>
+                                                    <p className="cart_amount">${lastPrice.toFixed(2)}</p>
                                                 </div>
                                                 <div className="checkout_btn">
                                                     <a onClick={() => addOrder()} className="text-white">Proceed to Checkout</a>

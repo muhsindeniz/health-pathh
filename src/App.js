@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useMemo, useEffect, useLayoutEffect, useState } from 'react';
 import { GlobalSettingsContext } from "./Contexts/GlobalSettingsContext"
 import { CompanySettingsContext } from "./Contexts/CompanySettingsContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -28,17 +28,53 @@ import MembershipInfo from './Pages/MembershipInfo/MembershipInfo';
 import MemberNavbar from './Components/Layout/Navbar/MemberNavbar';
 import Delivery from './Pages/Delivery/Delivery';
 import axios from 'axios';
+import MyOrders from './Pages/MyOrders/MyOrders';
+import Cookies from 'js-cookie';
 
 function App() {
 
   let [mobile, setMobile] = useState(false)
-  let [token, setToken] = useState(localStorage.getItem("token"))
-  let [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  let [token, setToken] = useState(Cookies.get('token'))
+  let [user, setUser] = useState(Cookies.get('user'))
   let [basket, setBasket] = useState([])
   let [discountCartInfo, setDiscountCartInfo] = useState(0)
   let [discountCart, setDiscountCart] = useState(0)
   let [lastPrice, setLastPrice] = useState(0)
   let [discount, setDiscount] = useState(null)
+
+  useEffect(() => {
+    if (user) {
+      if (user._id) {
+        axios.get(`http://localhost:3000/api/basket/${user._id}`)
+          .then(resp => {
+            setBasket(resp.data.products)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      } else {
+        let userInfo = JSON.parse(user)
+        setUser(userInfo)
+        axios.get(`http://localhost:3000/api/basket/${userInfo._id}`)
+          .then(resp => {
+            setBasket(resp.data.products)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basket))
+  }, [basket])
+
+  useEffect(() => {
+    let sum = basket.length > 0 ? basket.map(datum => datum.price * datum.quntity).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
+    setDiscountCart(sum)
+    setDiscountCartInfo(sum)
+  }, [basket, discount, discountCart])
 
   useEffect(() => {
     let getSize = () => {
@@ -53,23 +89,7 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    localStorage.setItem('basket', JSON.stringify(basket))
-    const sum = basket.length > 0 ? basket.map(datum => datum.total).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
-    setDiscountCart(sum)
-    setDiscountCartInfo(sum)
-  }, [basket])
 
-
-  useEffect(() => {
-    axios.get(`http://localhost:3000/api/basket/${user._id}`)
-      .then(resp => {
-        setBasket(resp.data.products)
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }, [user])
 
 
   if (token) {
@@ -149,6 +169,11 @@ function App() {
                   <MembershipInfo />
                   <Footer />
                 </Route>
+                <Route exact path="/my-orders">
+                  <Navbar />
+                  <MyOrders />
+                  <Footer />
+                </Route>
               </Switch>
             </Router>
           </CompanySettingsContext.Provider>
@@ -158,7 +183,7 @@ function App() {
   } else {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart }}>
+        <GlobalSettingsContext.Provider value={{ mobile, basket, token, setToken, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart }}>
           <CompanySettingsContext.Provider value={{ user, setUser }}>
             <Router>
               <Switch>
@@ -224,7 +249,7 @@ function App() {
                 </Route>
                 <Route exact path="/membership-infos">
                   <MemberNavbar />
-                  <MembershipInfo />
+                  <Login />
                   <Footer />
                 </Route>
               </Switch>

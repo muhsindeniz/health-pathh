@@ -99,7 +99,7 @@ const ProductDetail = () => {
                                         avatar: productDetail?.avatar,
                                         farmerName: productDetail?.farmerName,
                                         quntity: parseInt(priceProgress),
-                                        total: parseInt(productDetail?.newPrice),
+                                        total: parseFloat(productDetail?.newPrice),
                                         price: productDetail?.price,
                                         newPrice: productDetail?.newPrice,
                                         category: productDetail?.productCategory
