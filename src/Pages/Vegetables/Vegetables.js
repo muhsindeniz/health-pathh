@@ -20,11 +20,16 @@ const Vegetables = () => {
         maxPrice: ""
     })
 
-    console.log(basket)
-
     function handleChange(value) {
-        console.log(`selected ${value}`);
+        console.log(value);
+        if (value === 'lowest') {
+            return setBasket([...data.sort((a, b) => a.price - b.price)])
+        } else {
+            return setBasket([...data.sort((a, b) => b.price - a.price)])
+        }
     }
+
+    console.log(data)
 
     useEffect(() => {
         setLoading(true)
@@ -129,16 +134,13 @@ const Vegetables = () => {
                         <div className="col-lg-9 col-md-12">
                             <div className="shop_toolbar_wrapper">
                                 <div className=" niceselect_option">
-                                    <Select defaultValue="Sort by average rating" style={{ width: "100%" }} onChange={handleChange}>
-                                        <Option value="jack">Sort by popularity</Option>
-                                        <Option value="lucy">Sort by newness</Option>
-                                        <Option value="Yiminghe">Sort by price: low to high</Option>
-                                        <Option value="a">Sort by price: low to high</Option>
-                                        <Option value="b">Product Name: Z</Option>
+                                    <Select defaultValue="lowest" style={{ width: "100%" }} onChange={handleChange}>
+                                        <Option value="lowest">Lowest to highest</Option>
+                                        <Option value="highest">Highest to lowest</Option>
                                     </Select>
                                 </div>
                                 <div className="page_amount">
-                                    <p>Showing 1–9 of 21 results</p>
+                                    <p>Showing {data && data.length} results</p>
                                 </div>
                             </div>
                             <div className="row shop_wrapper">
