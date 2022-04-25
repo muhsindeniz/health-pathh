@@ -18,15 +18,12 @@ const MemberNavbar = () => {
     let [openMemberMenu, setOpenMemberMenu] = useState(false)
 
     let logOut = () => {
-        message.info("Çıkış yapılıyor...")
-        setTimeout(() => {
-            Cookies.remove("user")
-            Cookies.remove("token")
-            setUser(null)
-            setToken(null)
-            message.success("Başarıyla çıkış yapıldı.")
-            document.location.reload();
-        }, 2500)
+        Cookies.remove("user")
+        Cookies.remove("token")
+        setUser(null)
+        setToken(null)
+        message.success("Successfully logged out.")
+        document.location.reload();
     }
 
     useEffect(() => {
@@ -74,7 +71,7 @@ const MemberNavbar = () => {
                                                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                                         </svg>
                                                     </span>
-                                                    <span className="members_basket_title">Sepetim</span>
+                                                    <span className="members_basket_title">My Cart</span>
                                                 </div>
                                             </Link>
                                         }
@@ -87,7 +84,7 @@ const MemberNavbar = () => {
                                                             <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
                                                         </svg>
                                                     </span>
-                                                    <span className="members_basket_title">Siparişlerim</span>
+                                                    <span className="members_basket_title">My Orders</span>
                                                 </div>
                                             </Link>
                                         }
@@ -110,31 +107,31 @@ const MemberNavbar = () => {
                                                         </header>
                                                         <main>
                                                             <section className="border-bottom pb-3">
-                                                                <h4 className="mb-3">Hesabım</h4>
+                                                                <h4 className="mb-3">My account</h4>
                                                                 <div className="member_sub_menu_mobile">
                                                                     <Link className="d-flex" to="/membership-infos">
                                                                         <div><i className="fas fa-user-cog"></i></div>
-                                                                        <span>Kullanıcı bilgilerim</span>
+                                                                        <span>My user infor</span>
                                                                     </Link>
                                                                     {
                                                                         mobile === true ? <Link className="d-flex" to="/cart">
                                                                             <div><i className="fas fa-shopping-basket"></i></div>
-                                                                            <span>Sepetim</span>
+                                                                            <span>My cart</span>
                                                                         </Link> : ""
                                                                     }
                                                                     <Link className="d-flex" to="/" onClick={() => logOut()}>
                                                                         <div><i className="fas fa-sign-out-alt"></i></div>
-                                                                        <span>Çıkış</span>
+                                                                        <span>Logout</span>
                                                                     </Link>
                                                                 </div>
                                                             </section>
 
                                                             <section className="customer_service">
-                                                                <span>MÜŞTERİ HİZMETLERİ</span>
+                                                                <span>CUSTOMER SERVICE</span>
 
                                                                 <ul>
-                                                                    <li>Destek Taleplerim</li>
-                                                                    <li>Çözüm Merkezi</li>
+                                                                    <li>My Support Requests</li>
+                                                                    <li>Solution Center</li>
                                                                 </ul>
                                                             </section>
                                                         </main>
@@ -142,65 +139,6 @@ const MemberNavbar = () => {
                                                 }
                                             </label>
 
-                                            <div className="header_account_list  mini_cart_wrapper">
-                                                <div className="mini_cart">
-                                                    <div className="cart_gallery">
-                                                        <div className="cart_close">
-                                                            <div className="cart_text">
-                                                                <h3>cart</h3>
-                                                            </div>
-                                                            <div className="mini_cart_close">
-                                                                <i className="icon-x"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div className="cart_item">
-                                                            <div className="cart_img">
-                                                                <a href="#"><img src={product} alt="" /></a>
-                                                            </div>
-                                                            <div className="cart_info">
-                                                                <a href="#">Primis In Faucibus</a>
-                                                                <p>1 x <span> $65.00 </span></p>
-                                                            </div>
-                                                            <div className="cart_remove">
-                                                                <a href="#"><i className="icon-x"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div className="cart_item">
-                                                            <div className="cart_img">
-                                                                <a href="#"><img src={product2} alt="" /></a>
-                                                            </div>
-                                                            <div className="cart_info">
-                                                                <a href="#">Letraset Sheets</a>
-                                                                <p>1 x <span> $60.00 </span></p>
-                                                            </div>
-                                                            <div className="cart_remove">
-                                                                <a href="#"><i className="icon-x"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="mini_cart_table">
-                                                        <div className="cart_table_border">
-                                                            <div className="cart_total">
-                                                                <span>Sub total:</span>
-                                                                <span className="price">$125.00</span>
-                                                            </div>
-                                                            <div className="cart_total mt-10">
-                                                                <span>total:</span>
-                                                                <span className="price">$125.00</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="mini_cart_footer">
-                                                        <div className="cart_button">
-                                                            <Link to="cart.html"><i className="fa fa-shopping-cart"></i> View cart</Link>
-                                                        </div>
-                                                        <div className="cart_button">
-                                                            <Link to="checkout.html"><i className="fa fa-sign-in"></i> Checkout</Link>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

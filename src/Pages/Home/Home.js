@@ -192,7 +192,7 @@ const Home = () => {
                                                             <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                                 <ul>
                                                                     <li className="add_to_cart">
-                                                                        Sepete Ekle
+                                                                        Add to Basket
                                                                     </li>
                                                                 </ul>
                                                             </Link>
@@ -223,7 +223,7 @@ const Home = () => {
                                                             <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                                 <ul>
                                                                     <li className="add_to_cart">
-                                                                        Sepete Ekle
+                                                                        Add to Basket
                                                                     </li>
                                                                 </ul>
                                                             </Link>
@@ -254,7 +254,7 @@ const Home = () => {
                                                             <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                                 <ul>
                                                                     <li className="add_to_cart">
-                                                                        Sepete Ekle
+                                                                        Add to Basket
                                                                     </li>
                                                                 </ul>
                                                             </Link>
@@ -285,7 +285,7 @@ const Home = () => {
                                                             <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                                 <ul>
                                                                     <li className="add_to_cart">
-                                                                        Sepete Ekle
+                                                                        Add to Basket
                                                                     </li>
                                                                 </ul>
                                                             </Link>
@@ -361,7 +361,33 @@ const Home = () => {
                                                         <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                             <ul>
                                                                 <li className="add_to_cart">
-                                                                    Sepete Ekle
+                                                                    Add to Basket
+                                                                </li>
+                                                            </ul>
+                                                        </Link>
+                                                    </div>
+                                                    <div className="price_box">
+                                                        <span className="current_price">$56.00</span>
+                                                        <span className="old_price">$362.00</span>
+                                                    </div>
+                                                </figcaption>
+                                            </figure>
+                                        </article>
+
+                                        <article className="single_product col-sm-12 col-lg-6">
+                                            <figure>
+                                                <div className="product_thumb">
+                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
+                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
+                                                </div>
+                                                <figcaption className="product_content">
+                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
+                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
+                                                    <div className="action_links">
+                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
+                                                            <ul>
+                                                                <li className="add_to_cart">
+                                                                    Add to Basket
                                                                 </li>
                                                             </ul>
                                                         </Link>
@@ -413,7 +439,7 @@ const Home = () => {
                                                         <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                             <ul>
                                                                 <li className="add_to_cart">
-                                                                    Sepete Ekle
+                                                                    Add to Basket
                                                                 </li>
                                                             </ul>
                                                         </Link>
@@ -439,7 +465,7 @@ const Home = () => {
                                                         <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                             <ul>
                                                                 <li className="add_to_cart">
-                                                                    Sepete Ekle
+                                                                    Add to Basket
                                                                 </li>
                                                             </ul>
                                                         </Link>
@@ -465,33 +491,7 @@ const Home = () => {
                                                         <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                             <ul>
                                                                 <li className="add_to_cart">
-                                                                    Sepete Ekle
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
-                                                </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Sepete Ekle
+                                                                    Add to Basket
                                                                 </li>
                                                             </ul>
                                                         </Link>
@@ -582,7 +582,7 @@ const Home = () => {
                                                     <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                         <ul>
                                                             <li className="add_to_cart">
-                                                                Sepete Ekle
+                                                                Add to Basket
                                                             </li>
                                                         </ul>
                                                     </Link>
@@ -607,7 +607,7 @@ const Home = () => {
                                                     <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                         <ul>
                                                             <li className="add_to_cart">
-                                                                Sepete Ekle
+                                                                Add to Basket
                                                             </li>
                                                         </ul>
                                                     </Link>
@@ -632,7 +632,7 @@ const Home = () => {
                                                     <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                         <ul>
                                                             <li className="add_to_cart">
-                                                                Sepete Ekle
+                                                                Add to Basket
                                                             </li>
                                                         </ul>
                                                     </Link>
@@ -657,7 +657,7 @@ const Home = () => {
                                                     <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                         <ul>
                                                             <li className="add_to_cart">
-                                                                Sepete Ekle
+                                                                Add to Basket
                                                             </li>
                                                         </ul>
                                                     </Link>
@@ -682,7 +682,7 @@ const Home = () => {
                                                     <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                         <ul>
                                                             <li className="add_to_cart">
-                                                                Sepete Ekle
+                                                                Add to Basket
                                                             </li>
                                                         </ul>
                                                     </Link>
@@ -707,7 +707,7 @@ const Home = () => {
                                                     <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
                                                         <ul>
                                                             <li className="add_to_cart">
-                                                                Sepete Ekle
+                                                                Add to Basket
                                                             </li>
                                                         </ul>
                                                     </Link>

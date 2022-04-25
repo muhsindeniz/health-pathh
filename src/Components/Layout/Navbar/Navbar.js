@@ -16,15 +16,12 @@ const Navbar = (props) => {
     let history = useHistory();
 
     let logOut = () => {
-        message.info("Çıkış yapılıyor...")
-        setTimeout(() => {
-            Cookies.remove('user')
-            Cookies.remove('token')
-            setUser(null)
-            setToken(null)
-            message.success("Başarıyla çıkış yapıldı.")
-            document.location.reload();
-        }, 2000)
+        Cookies.remove("user")
+        Cookies.remove("token")
+        setUser(null)
+        setToken(null)
+        message.success("Successfully logged out.")
+        document.location.reload();
     }
 
     return (
@@ -80,18 +77,18 @@ const Navbar = (props) => {
                                                         <i className="far fa-user"></i>
                                                         <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                             <span className="header-title-login">
-                                                                {!token ? "Giriş Yap" : "Hesabım"}
+                                                                {!token ? "Giriş Yap" : "My account"}
                                                             </span>
                                                             <br />
-                                                            <small>{!token ? "veya üye ol" : user?.name}</small>
+                                                            <small>{!token ? "or sign up" : user?.name}</small>
                                                         </div>
                                                     </label>
                                                     <div className="section-dropdown">
-                                                        <Link className={!token ? "d-block" : "d-none"} to="/login">Giriş Yap</Link>
-                                                        <Link className={!token ? "d-block" : "d-none"} to="/register">Üye Ol </Link>
-                                                        <Link className={!token ? "d-none" : "d-block"} to="/my-orders">Siparişlerim</Link>
-                                                        <Link className={!token ? "d-none" : "d-block"} to="/membership-infos">Kullanıcı Bilgilerim</Link>
-                                                        <Link to="#" className={!token ? "d-none" : "d-block"} onClick={() => logOut()}>Çıkış Yap</Link>
+                                                        <Link className={!token ? "d-block" : "d-none"} to="/login">Login</Link>
+                                                        <Link className={!token ? "d-block" : "d-none"} to="/register">Sign up</Link>
+                                                        <Link className={!token ? "d-none" : "d-block"} to="/my-orders">My orders</Link>
+                                                        <Link className={!token ? "d-none" : "d-block"} to="/membership-infos">My User Info</Link>
+                                                        <Link to="#" className={!token ? "d-none" : "d-block"} onClick={() => logOut()}>Logout</Link>
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,66 +112,7 @@ const Navbar = (props) => {
                                                     </Link>
                                                 </div>
                                             }
-
-                                            <div className="header_account_list  mini_cart_wrapper">
-                                                <div className="mini_cart">
-                                                    <div className="cart_gallery">
-                                                        <div className="cart_close">
-                                                            <div className="cart_text">
-                                                                <h3>cart</h3>
-                                                            </div>
-                                                            <div className="mini_cart_close">
-                                                                <i className="icon-x"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div className="cart_item">
-                                                            <div className="cart_img">
-                                                                <a href="#"><img src={product} alt="" /></a>
-                                                            </div>
-                                                            <div className="cart_info">
-                                                                <a href="#">Primis In Faucibus</a>
-                                                                <p>1 x <span> $65.00 </span></p>
-                                                            </div>
-                                                            <div className="cart_remove">
-                                                                <a href="#"><i className="icon-x"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div className="cart_item">
-                                                            <div className="cart_img">
-                                                                <a href="#"><img src={product2} alt="" /></a>
-                                                            </div>
-                                                            <div className="cart_info">
-                                                                <a href="#">Letraset Sheets</a>
-                                                                <p>1 x <span> $60.00 </span></p>
-                                                            </div>
-                                                            <div className="cart_remove">
-                                                                <a href="#"><i className="icon-x"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="mini_cart_table">
-                                                        <div className="cart_table_border">
-                                                            <div className="cart_total">
-                                                                <span>Sub total:</span>
-                                                                <span className="price">$125.00</span>
-                                                            </div>
-                                                            <div className="cart_total mt-10">
-                                                                <span>total:</span>
-                                                                <span className="price">$125.00</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="mini_cart_footer">
-                                                        <div className="cart_button">
-                                                            <Link to="cart.html"><i className="fa fa-shopping-cart"></i> View cart</Link>
-                                                        </div>
-                                                        <div className="cart_button">
-                                                            <Link to="checkout.html"><i className="fa fa-sign-in"></i> Checkout</Link>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
+                                          
                                         </div>
                                     </div>
                                 </div>

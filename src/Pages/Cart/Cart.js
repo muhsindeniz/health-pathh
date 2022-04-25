@@ -9,7 +9,7 @@ import { useHistory } from 'react-router';
 const Cart = () => {
 
     let history = useHistory();
-    let { basket, setBasket, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount } = useContext(GlobalSettingsContext)
+    let { basket, setBasket, discountCart, lastPrice, setLastPrice, discount, setDiscount } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext);
     let [loading, setLoading] = useState(false);
     let [couponCode, setCouponCode] = useState(null)
@@ -86,7 +86,7 @@ const Cart = () => {
             products: data
         })
             .then(response => {
-                message.success("Ürün sepetten kaldırıldı!")
+                message.success("The product has been removed from the cart!")
                 setLoading(false)
             })
             .catch(error => {
@@ -107,7 +107,7 @@ const Cart = () => {
 
     let sendCouponCode = () => {
         if (couponCode === null) {
-            message.info("Lütfen bir kupon kodu giriniz!")
+            message.info("Please enter a coupon code!")
         } else {
             setLoading(true)
             axios.post(`http://localhost:3000/api/coupon`, {

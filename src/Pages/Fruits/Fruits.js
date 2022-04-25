@@ -59,7 +59,7 @@ const Fruits = () => {
             products: data
         })
             .then(response => {
-                message.success("Ürün Sepete Eklendi.")
+                message.success("Product Added to Cart.")
                 setLoading(false)
             })
             .catch(error => {
@@ -149,7 +149,7 @@ const Fruits = () => {
                                                                 newPrice: product.newPrice,
                                                                 category: product.productCategory
                                                             })}>
-                                                            Sepete Ekle
+                                                            Add to Basket
                                                         </button>
 
                                                     </div>
@@ -159,13 +159,13 @@ const Fruits = () => {
                                                     <div className={parseFloat(product?.stock) < 1 ? "text-danger" : "text-dark"}>
                                                         <b>
                                                             {
-                                                                parseFloat(product?.stock) < 1 ? "Stokta yok" : ""
+                                                                parseFloat(product?.stock) < 1 ? "Out of stock" : ""
                                                             }
                                                         </b>
                                                     </div>
                                                     <div className="price_box m-0">
                                                         <span className="old_price">{product.price} TL</span>
-                                                        <span style={{ marginLeft: "10px" }} className="current_price">{product.newPrice} TL</span>
+                                                        <span style={{ marginLeft: "10px" }} className="current_price">{product.newPrice} $</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -92,7 +92,7 @@ const Delivery = () => {
                     <div className="row">
                         <div className="col-12 mb-5">
                             <div className="delivery_address__container">
-                                <h4>Teslimat ve Fatura adresi</h4>
+                                <h4>Delivery and Billing address</h4>
 
                                 <div className="delivery_address_item">
                                     <div className="address_header_radio">

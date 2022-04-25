@@ -27,7 +27,7 @@ const AddUserAddress = (props) => {
 
     let addAddressInfo = () => {
         if (addressInfo.name == "" || addressInfo.province == "" || addressInfo.district == "", addressInfo.address == "", addressInfo.addressTitle == "", addressInfo.phone == "") {
-            message.info("Lütfen tüm alanları doldurun!!")
+            message.info("Please fill in all fields!!")
         } else {
             setLoading(true)
             axios.post('http://localhost:3000/api/address', {

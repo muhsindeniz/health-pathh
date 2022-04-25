@@ -59,7 +59,7 @@ const NaturalTeas = () => {
             products: data
         })
             .then(response => {
-                message.success("Ürün Sepete Eklendi.")
+                message.success("Product Added to Cart.")
                 setLoading(false)
             })
             .catch(error => {
