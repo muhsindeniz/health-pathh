@@ -71,7 +71,7 @@ function App() {
   }, [basket])
 
   useEffect(() => {
-    let sum = basket.length > 0 ? basket.map(datum => datum.price * datum.quntity).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
+    let sum = basket.length > 0 ? basket.map(datum => datum.newPrice * datum.quntity).reduce((a, b) => parseFloat(a) + parseFloat(b), 0) : 0
     setDiscountCart(sum)
     setDiscountCartInfo(sum)
   }, [basket, discount, discountCart])

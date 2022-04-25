@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import SwiperCore, { Navigation, Thumbs } from 'swiper';
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import axios from 'axios';
 import { message, Spin } from 'antd'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
@@ -11,6 +11,7 @@ SwiperCore.use([Navigation, Thumbs]);
 const ProductDetail = () => {
 
     let { id } = useParams();
+    let location = useLocation();
     let [productDetail, setProductDetail] = useState(null)
     let [loading, setLoading] = useState(null)
     let { basket, setBasket } = useContext(GlobalSettingsContext)
@@ -19,15 +20,49 @@ const ProductDetail = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:3000/api/vegetables/${id}`)
-            .then(res => {
-                setProductDetail(res.data.result);
-                setLoading(false)
-            })
-            .catch(e => {
-                console.log(e)
-                setLoading(false)
-            })
+        let categories = location.search.replace('?cat=', '');
+        if (categories === "vegetables") {
+            axios.get(`http://localhost:3000/api/vegetables/${id}`)
+                .then(res => {
+                    setProductDetail(res.data.result);
+                    setLoading(false)
+                })
+                .catch(e => {
+                    console.log(e)
+                    setLoading(false)
+                })
+        } else if (categories === "Fruit") {
+            axios.get(`http://localhost:3000/api/fruit/${id}`)
+                .then(res => {
+                    setProductDetail(res.data.result);
+                    setLoading(false)
+                })
+                .catch(e => {
+                    console.log(e)
+                    setLoading(false)
+                })
+        } else if (categories === "Teas") {
+            axios.get(`http://localhost:3000/api/teas/${id}`)
+                .then(res => {
+                    setProductDetail(res.data.result);
+                    setLoading(false)
+                })
+                .catch(e => {
+                    console.log(e)
+                    setLoading(false)
+                })
+        } else {
+            axios.get(`http://localhost:3000/api/plants/${id}`)
+                .then(res => {
+                    setProductDetail(res.data.result);
+                    setLoading(false)
+                })
+                .catch(e => {
+                    console.log(e)
+                    setLoading(false)
+                })
+        }
+        window.scrollTo(0, 0);
     }, [id])
 
     let ADD_TO_BASKET = (product) => {

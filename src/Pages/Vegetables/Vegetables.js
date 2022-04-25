@@ -14,7 +14,6 @@ const Vegetables = () => {
     let [loading, setLoading] = useState(false);
     let { basket, setBasket } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext)
-    let [filterButtonActive, setFilterButtonActive] = useState(null);
     let [priceFilter, setPriceFilter] = useState({
         minPrice: "",
         maxPrice: ""
@@ -29,14 +28,11 @@ const Vegetables = () => {
         }
     }
 
-    console.log(data)
-
     useEffect(() => {
         setLoading(true)
         axios.get(`http://localhost:3000/api/vegetables`)
             .then(res => {
                 setData(res.data);
-                setFilterButtonActive(res.data)
                 setLoading(false)
             })
             .catch(e => {
@@ -74,9 +70,7 @@ const Vegetables = () => {
 
     let filterProduct = () => {
         if (priceFilter.minPrice == '' && priceFilter.maxPrice == '') {
-            setData([...data, ...filterButtonActive])
         } else if (priceFilter.minPrice == '0' || priceFilter.maxPrice == '0') {
-            setData([...data, ...filterButtonActive])
         } else {
             setData([...data.filter(a => parseFloat(a.price) > parseFloat(priceFilter.minPrice) || parseFloat(a.price) < parseFloat(priceFilter.maxPrice))])
         }
@@ -99,20 +93,7 @@ const Vegetables = () => {
                                             <button className={(priceFilter.minPrice == '' && priceFilter.maxPrice == '') ? "filterButtonPassive" : (priceFilter.minPrice == '0' || priceFilter.maxPrice == '0') ? "filterButtonPassive" : "filterButtonActive"} disabled={(priceFilter.minPrice == '' && priceFilter.maxPrice == '') ? true : (priceFilter.minPrice == '0' || priceFilter.maxPrice == '0') ? true : false} onClick={() => filterProduct()} type="submit"><i className="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
-                                    <div className="widget_list widget_color">
-                                        <h3>Choose Calorie Values</h3>
-                                        <ul>
-                                            <li>
-                                                <a href="#">Low-calorie Vegetables<span>(6)</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Medium-calorie Vegetables<span>(8)</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="#">High Calorie Vegetables<span>(10)</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+
                                     <div className="widget_list tags_widget">
                                         <h3>Product tags</h3>
                                         <div className="tag_cloud">
@@ -150,7 +131,7 @@ const Vegetables = () => {
                                         <div key={index} className="col-lg-4 col-md-4 col-sm-6 col-12 ">
                                             <div className="single_product">
                                                 <div className="product_thumb">
-                                                    <Link className="primary_img" to={`/product-detail/${product._id}`}><img style={{ height: "240px", objectFit: "cover" }} src={`http://localhost:3000/${product.avatar}`} alt="" /></Link>
+                                                    <Link className="primary_img" to={`/product-detail/${product._id}?cat=${product.productCategory}`}><img style={{ height: "240px", objectFit: "cover" }} src={`http://localhost:3000/${product.avatar}`} alt="" /></Link>
                                                     <div className="label_product">
                                                         <span className="label_sale"><small>Oil: {product.oil} kcal</small></span>
                                                         <span className="label_new">New</span>
