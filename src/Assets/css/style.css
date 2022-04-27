@@ -15450,7 +15450,7 @@ input[type=number] {
 .dietList__container fieldset{ 
     border: 3px solid #eee;
     border-radius: 0.3rem;
-    padding: 13px 13px 0 13px;
+    padding: 13px;
     min-width: inherit;
     margin: 20px 0;
 }

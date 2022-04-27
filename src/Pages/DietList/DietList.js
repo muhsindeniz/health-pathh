@@ -1,5 +1,8 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { message, Radio } from 'antd';
-import React, { useState } from 'react'
+import ExportList from '../../Components/ExportList/ExportList';
+
 
 const DietList = () => {
 
@@ -12,6 +15,20 @@ const DietList = () => {
     let [bodyWeight, setBodyWeight] = useState(null)
     let [bodySurface, setBodySurface] = useState(null)
     let [notOilBody, setNotOilBody] = useState(null)
+    let [dietListWeight, setDietListWeight] = useState(null)
+    let [dietListData, setDietListData] = useState(null)
+    let [dietList, setDietList] = useState(null)
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/dietList')
+            .then(resp => {
+                setDietListData(resp.data)
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }, [])
+
 
     function setGender(e) {
         setMassIndex({ ...massIndex, gender: e.target.value })
@@ -51,15 +68,39 @@ const DietList = () => {
         }
     }
 
+    let createDietList = () => {
+        if (!dietListWeight) {
+            message.info("Lütfen kilonuzu girin!!")
+        } else {
+            if (dietListWeight < 1) {
+                message.info("Lütfen min 40 ve üzeri kilolar yazınız!")
+            }
+            else if (dietListWeight > 40 && dietListWeight < 50) {
+                setDietList(dietListData.filter(a => a.type == "50"))
+            } else if (dietListWeight >= 50 && dietListWeight < 80) {
+                setDietList(dietListData.filter(a => a.type == "70"))
+            } else if (dietListWeight >= 80 && dietListWeight < 110) {
+                setDietList(dietListData.filter(a => a.type == "80"))
+            } else if (dietListWeight >= 110 && dietListWeight < 140) {
+                setDietList(dietListData.filter(a => a.type == "100"))
+            }
+            else {
+                setDietList(dietListData.filter(a => a.type == "120"))
+            }
+        }
+    }
+
+    console.log(dietList)
+
     return (
         <>
             <div className="shop_area shop_reverse dietList__container mt-70 mb-70">
                 <div className="container">
                     <div className="row">
-                        <div className="col-sm-12">
+                        <div className="col-sm-12 col-md-12">
                             <fieldset>
                                 <legend>
-                                    Body Mass Index Calculator
+                                    Calculate your body mass index, Ideal Body Weight, Body Surface Area and Lean Body Weight
                                 </legend>
 
                                 <label style={{ fontSize: 18, marginBottom: 15 }}>* Mandatory field.</label>
@@ -118,10 +159,13 @@ const DietList = () => {
                                             bodyIndex >= 18.5 && bodyIndex < 24.9 ? <span className="vki-result-title">Normal weight</span> : ""
                                         }
                                         {
-                                            bodyIndex >= 25 && bodyIndex <= 29.9 ? <span className="vki-result-title text-warning">Above Ideal Weight</span> : ""
+                                            bodyIndex >= 25 && bodyIndex <= 29.9 ? <span className="vki-result-title text-warning">Overweight</span> : ""
                                         }
                                         {
-                                            bodyIndex >= 30 ? <span className="vki-result-title text-danger">Far Above Ideal Weight</span> : ""
+                                            bodyIndex >= 30 && bodyIndex <= 39.9 ? <span className="vki-result-title text-danger">Obese</span> : ""
+                                        }
+                                        {
+                                            bodyIndex >= 40 ? <span className="vki-result-title text-danger">Severely obese</span> : ""
                                         }
                                         <span className="bmi-result-text">
                                             {
@@ -134,7 +178,10 @@ const DietList = () => {
                                                 bodyIndex >= 25 && bodyIndex <= 29.9 ? "You are close to the target! There is a short road ahead. With a balanced diet and regular physical activity, you can hit the ideal out of 12!" : ""
                                             }
                                             {
-                                                bodyIndex >= 30 ? "You left your ideal weight a little far away, but we have good news; Reaching him is not as difficult as you think. Everything starts with being determined and motivated, never give up and keep your motivation high, even you will not believe the speed of change when movement and balanced nutrition are a part of your life. It will be easier than you hope by keeping motivation high, paying attention to a balanced and regular diet, and increasing movement. Everything you need is waiting for you here to be read! Let's get some inspiration and take action first thing!" : ""
+                                                bodyIndex >= 30 && bodyIndex <= 39.9 ? "You are obese, please do lots of sports and drink lots of water." : ""
+                                            }
+                                            {
+                                                bodyIndex >= 40 ? "You left your ideal weight a little far away, but we have good news; Reaching him is not as difficult as you think. Everything starts with being determined and motivated, never give up and keep your motivation high, even you will not believe the speed of change when movement and balanced nutrition are a part of your life. It will be easier than you hope by keeping motivation high, paying attention to a balanced and regular diet, and increasing movement. Everything you need is waiting for you here to be read! Let's get some inspiration and take action first thing!" : ""
                                             }
                                         </span>
                                     </div>
@@ -156,7 +203,30 @@ const DietList = () => {
                             </fieldset>
                         </div>
 
-                        <div className="col-sm-12 col-lg-6">
+                        <div className="col-sm-12 col-md-12">
+                            <fieldset>
+                                <legend>
+                                    Prepare diet lists specific to your weight
+                                </legend>
+
+                                <label style={{ fontSize: 18, marginBottom: 15 }}>* Mandatory field.</label>
+                                <ul className="narrowest">
+                                    <li>
+                                        <label className="title"><em>*</em> Your weight:</label>
+                                        <div className="d-flex flex-wrap flex-column">
+                                            <label htmlFor="cinsiyet" className="mb-2">
+                                                <input onChange={(e) => setDietListWeight(parseFloat(e.target.value))} type="number" id="cinsiyet" /> kg (Örn. 69)
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <button className="w-100 btn btn-primary" onClick={() => createDietList()}>Creating the list</button>
+                            </fieldset>
+
+
+                            <ExportList data={dietList} />
+
 
                         </div>
                     </div>
