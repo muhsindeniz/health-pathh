@@ -7,6 +7,7 @@ import moment from 'moment'
 import returnPolicy from '../../contracts/returnPolicy.pdf'
 import salesContract from '../../contracts/salescontract.pdf'
 import { Link } from 'react-router-dom';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const MyOrders = () => {
 
@@ -323,7 +324,7 @@ const MyOrders = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
         </>

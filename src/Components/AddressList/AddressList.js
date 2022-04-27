@@ -3,6 +3,7 @@ import { Modal, message, Spin } from 'antd';
 import axios from 'axios';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const AddressList = (props) => {
 
@@ -88,7 +89,7 @@ const AddressList = (props) => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
         </>

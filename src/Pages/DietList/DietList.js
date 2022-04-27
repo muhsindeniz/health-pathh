@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { message, Radio } from 'antd';
+import { message, Radio, Spin } from 'antd';
 import ExportList from '../../Components/ExportList/ExportList';
-
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const DietList = () => {
 
@@ -11,6 +11,7 @@ const DietList = () => {
         size: null,
         weight: null
     })
+    let [loading, setLoading] = useState(false);
     let [bodyIndex, setBodyIndex] = useState(null)
     let [bodyWeight, setBodyWeight] = useState(null)
     let [bodySurface, setBodySurface] = useState(null)
@@ -89,8 +90,6 @@ const DietList = () => {
             }
         }
     }
-
-    console.log(dietList)
 
     return (
         <>
@@ -232,6 +231,12 @@ const DietList = () => {
                     </div>
                 </div>
             </div>
+
+            {
+                loading && <div className="loading__container">
+                    <img src={Loading} />
+                </div>
+            }
         </>
     )
 }

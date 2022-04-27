@@ -14,13 +14,6 @@ import product3 from '../../Assets/media/img/product/product3.jpg';
 import product4 from '../../Assets/media/img/product/product4.jpg';
 import product5 from '../../Assets/media/img/product/product5.jpg';
 import product6 from '../../Assets/media/img/product/product6.jpg';
-import product7 from '../../Assets/media/img/product/product7.jpg';
-import product8 from '../../Assets/media/img/product/product8.jpg';
-import product9 from '../../Assets/media/img/product/product9.jpg';
-import product10 from '../../Assets/media/img/product/product10.jpg';
-import product11 from '../../Assets/media/img/product/product11.jpg';
-import product12 from '../../Assets/media/img/product/product12.jpg';
-import product13 from '../../Assets/media/img/product/product13.jpg';
 import product19 from '../../Assets/media/img/product/product19.jpg';
 import banner1 from '../../Assets/media/img/bg/banner1.jpg';
 import banner2 from '../../Assets/media/img/bg/banner2.jpg';
@@ -33,6 +26,7 @@ import SwiperCore, {
     Pagination,
     Autoplay
 } from 'swiper';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 

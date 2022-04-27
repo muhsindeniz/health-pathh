@@ -5,6 +5,7 @@ import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 import { useHistory } from 'react-router';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const Cart = () => {
 
@@ -237,7 +238,7 @@ const Cart = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
         </>

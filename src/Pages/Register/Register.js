@@ -3,6 +3,7 @@ import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
 import axios from 'axios'
 import { message, Spin } from 'antd'
 import { useHistory } from "react-router-dom";
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const Register = () => {
 
@@ -76,7 +77,7 @@ const Register = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
         </>

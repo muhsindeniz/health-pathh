@@ -10,6 +10,7 @@ import { useGetData, usePatchData, usePostData } from '../../hooks/ServiceGetway
 import AddressList from '../../Components/AddressList/AddressList';
 import AddUserAddress from '../../Components/AddUserAddress/AddUserAddress';
 import Cookies from 'js-cookie';
+import Loading from '../../Assets/media/gif/loading.gif'
 const { TabPane } = Tabs;
 
 const MembershipInfo = () => {
@@ -261,7 +262,7 @@ const MembershipInfo = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                   <img src={Loading} />
                 </div>
             }
         </>

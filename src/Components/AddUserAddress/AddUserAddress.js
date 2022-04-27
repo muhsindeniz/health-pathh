@@ -5,6 +5,7 @@ import { AlignCenterOutlined } from '@ant-design/icons';
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 import axios from 'axios';
+import Loading from '../../Assets/media/gif/loading.gif'
 const { Option } = Select;
 
 const AddUserAddress = (props) => {
@@ -138,7 +139,7 @@ const AddUserAddress = (props) => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
 

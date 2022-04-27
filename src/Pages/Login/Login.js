@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext'
 import Cookies from 'js-cookie';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const Login = () => {
 
@@ -81,7 +82,7 @@ const Login = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                   <img src={Loading} />
                 </div>
             }
         </>

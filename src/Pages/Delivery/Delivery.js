@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 import { message, Spin } from 'antd';
 import Cookies from 'js-cookie';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const Delivery = () => {
 
@@ -166,7 +167,7 @@ const Delivery = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
         </>

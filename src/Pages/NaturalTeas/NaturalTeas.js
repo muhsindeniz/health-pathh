@@ -6,6 +6,7 @@ import axios from 'axios';
 import { message, Spin } from 'antd'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
+import Loading from '../../Assets/media/gif/loading.gif'
 
 const NaturalTeas = () => {
 
@@ -182,7 +183,7 @@ const NaturalTeas = () => {
 
             {
                 loading && <div className="loading__container">
-                    <Spin size="large" />
+                    <img src={Loading} />
                 </div>
             }
         </>
