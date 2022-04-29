@@ -60,7 +60,7 @@ const MyOrders = () => {
                                         <div className="order-row__summary" tabIndex="0" role="button" aria-pressed="false" aria-controls="order_number_757937353">
                                             <div className="order-row__summary__images e2e-orderRow-productImages">
                                                 {
-                                                    resp && resp.basket.map((prods, index) => (
+                                                    resp && resp.basket.slice(0, 4).map((prods, index) => (
                                                         <div className="image__item" key={index}>
                                                             <img src={`http://localhost:3000/${prods?.avatar}`} alt="" />
                                                         </div>

@@ -24,6 +24,12 @@ const Navbar = (props) => {
         document.location.reload();
     }
 
+    useEffect(() => {
+        if (!token || !user) {
+            history.push('/login')
+        }
+    }, [])
+
     return (
         <>
             <header>
@@ -112,7 +118,7 @@ const Navbar = (props) => {
                                                     </Link>
                                                 </div>
                                             }
-                                          
+
                                         </div>
                                     </div>
                                 </div>
