@@ -8,12 +8,17 @@ import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../../Contexts/CompanySettingsContext'
 import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie'
+import axios from 'axios'
+import SearchPanel from '../../SearchPanel/SearchPanel'
 
 const Navbar = (props) => {
 
     let { mobile, token, setToken, basket } = useContext(GlobalSettingsContext)
     let { user, setUser } = useContext(CompanySettingsContext);
     let history = useHistory();
+    let [searchData, setSearchData] = useState([]);
+    let [loading, setLoading] = useState(false);
+    let [text, setText] = useState("");
 
     let logOut = () => {
         Cookies.remove("user")
@@ -29,6 +34,30 @@ const Navbar = (props) => {
             history.push('/login')
         }
     }, [])
+
+    let handleChange = () => {
+        let data = text.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
+        if (data == "" || text.trim() == "") {
+
+        } else {
+            setLoading(true)
+            axios.post('http://localhost:3000/api/search', {
+                text: text
+            })
+                .then(resp => {
+                    setSearchData(resp.data.result)
+                    setLoading(false)
+
+                })
+                .catch(err => {
+                    console.log(err)
+                    setLoading(false)
+
+                })
+        }
+    }
+
+    console.log(text)
 
     return (
         <>
@@ -70,8 +99,11 @@ const Navbar = (props) => {
 
                                                 </div>
                                                 <div className="search_box">
-                                                    <input placeholder="Search product..." type="text" />
+                                                    <input onChange={(e) => {setText(e.target.value); handleChange(e.target.value)}} placeholder="Search product..." type="text" />
                                                     <button type="submit"><span className="lnr lnr-magnifier"></span></button>
+                                                    {
+                                                        text.length > 0 && <SearchPanel setText={setText} searchData={searchData} loading={loading} setLoading={setLoading} />
+                                                    }
                                                 </div>
                                             </form>
                                         </div>
@@ -134,6 +166,9 @@ const Navbar = (props) => {
                                             <div className="search_box">
                                                 <input placeholder="Search product..." type="text" />
                                                 <button type="submit"><span className="lnr lnr-magnifier"></span></button>
+                                                {
+                                                    text.length > 0 && <SearchPanel searchData={searchData} loading={loading} setLoading={setLoading} />
+                                                }
                                             </div>
                                         </form>
                                     </div>

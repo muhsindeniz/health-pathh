@@ -30,7 +30,7 @@ const Footer = () => {
             message.info("Lütfen abone olmadan önce giriş yapın!")
         } else {
             if (e.target[0].value == "") {
-                message.info("Abonelik için Lütfen mail adresinizi girin!")
+                message.info("Please enter your e-mail address for subscription!")
             } else {
                 setLoading(true)
                 axios.post(`http://localhost:3000/api/addSubscribe`, {
