@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import HeaderBanner from '../../Components/HeaderBanner/HeaderBanner'
-import { Link } from 'react-router-dom'
+import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext'
 
 const Contact = () => {
+
+    let { setting } = useContext(CompanySettingsContext);
 
     return (
         <>
@@ -20,9 +22,9 @@ const Contact = () => {
                                 <h3>contact us</h3>
                                 <p>We find the most healthy and natural foods for you, we prepare your personalized diet lists according to your body mass index value.</p>
                                 <ul>
-                                    <li><i className="fa fa-fax"></i>  Address : Maarif Mahallesi 9007. Sokak Academia Residance B Blok 2. Kat 12 Numara Kahramanmaraş / Onikişubat</li>
-                                    <li><i className="far fa-paper-plane"></i> <a  target="_blank" href="mailto:mnknsro413@gmail.com">mnknsro413@gmail.com</a></li>
-                                    <li><i className="fa fa-phone"></i><a target="_blank" href="tel:0(1234)567890">0(545) 725 04 40</a>  </li>
+                                    <li><i className="fa fa-fax"></i>  Address : {setting?.address}</li>
+                                    <li><i className="far fa-paper-plane"></i> <a target="_blank" href={`mailto:${setting?.email}`}>{setting?.email}</a></li>
+                                    <li><i className="fa fa-phone"></i><a target="_blank" href={`tel:${setting?.phone}`}>{setting?.phone}</a>  </li>
                                 </ul>
                             </div>
                         </div>

@@ -14,7 +14,7 @@ import SearchPanel from '../../SearchPanel/SearchPanel'
 const Navbar = (props) => {
 
     let { mobile, token, setToken, basket } = useContext(GlobalSettingsContext)
-    let { user, setUser } = useContext(CompanySettingsContext);
+    let { user, setUser, setting } = useContext(CompanySettingsContext);
     let history = useHistory();
     let [searchData, setSearchData] = useState([]);
     let [loading, setLoading] = useState(false);
@@ -57,8 +57,6 @@ const Navbar = (props) => {
         }
     }
 
-    console.log(text)
-
     return (
         <>
             <header>
@@ -72,11 +70,10 @@ const Navbar = (props) => {
                                 <div className="col-lg-6">
                                     <div className="header_social text-right">
                                         <ul>
-                                            <li><a href="#"><i className="ion-social-twitter"></i></a></li>
-                                            <li><a href="#"><i className="ion-social-googleplus-outline"></i></a></li>
-                                            <li><a href="#"><i className="ion-social-youtube-outline"></i></a></li>
-                                            <li><a href="#"><i className="ion-social-facebook"></i></a></li>
-                                            <li><a href="#"><i className="ion-social-instagram-outline"></i></a></li>
+                                            <li><a target="_blank" href={setting?.twitter}><i className="ion-social-twitter"></i></a></li>
+                                            <li><a target="_blank" href={setting?.youtube}><i className="ion-social-youtube-outline"></i></a></li>
+                                            <li><a target="_blank" href={setting?.facebook}><i className="ion-social-facebook"></i></a></li>
+                                            <li><a target="_blank" href={setting?.instagram}><i className="ion-social-instagram-outline"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -99,10 +96,10 @@ const Navbar = (props) => {
 
                                                 </div>
                                                 <div className="search_box">
-                                                    <input onChange={(e) => {setText(e.target.value); handleChange(e.target.value)}} placeholder="Search product..." type="text" />
+                                                    <input onChange={(e) => { setText(e.target.value); handleChange(e.target.value) }} placeholder="Search product..." type="text" />
                                                     <button type="submit"><span className="lnr lnr-magnifier"></span></button>
                                                     {
-                                                        text.length > 0 && <SearchPanel setText={setText} searchData={searchData} loading={loading} setLoading={setLoading} />
+                                                        text.length >= 2 && <SearchPanel setText={setText} searchData={searchData} loading={loading} setLoading={setLoading} />
                                                     }
                                                 </div>
                                             </form>
@@ -142,7 +139,7 @@ const Navbar = (props) => {
                                                                 <i className="fas fa-shopping-cart" data-value={basket?.length || 0}></i>
                                                                 <div style={{ lineHeight: "15px", textAlign: "left" }}>
                                                                     <span className="header-title-login position-relative">
-                                                                        Sepetim
+                                                                        My cart
                                                                     </span>
                                                                 </div>
                                                             </label>
@@ -167,7 +164,7 @@ const Navbar = (props) => {
                                                 <input placeholder="Search product..." type="text" />
                                                 <button type="submit"><span className="lnr lnr-magnifier"></span></button>
                                                 {
-                                                    text.length > 0 && <SearchPanel searchData={searchData} loading={loading} setLoading={setLoading} />
+                                                    text.length >= 2 && <SearchPanel searchData={searchData} loading={loading} setLoading={setLoading} />
                                                 }
                                             </div>
                                         </form>

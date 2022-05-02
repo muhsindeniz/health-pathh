@@ -18,7 +18,7 @@ import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
 
 const Footer = () => {
 
-    let { user } = useContext(CompanySettingsContext);
+    let { user, setting } = useContext(CompanySettingsContext);
     let { token } = useContext(GlobalSettingsContext)
 
     let [loading, setLoading] = useState(false);
@@ -65,9 +65,9 @@ const Footer = () => {
                                         <Link to="/"><img src={logo} alt="" /></Link>
                                     </div>
                                     <p className="footer_desc">We find the most healthy and natural foods for you, we prepare your personalized diet lists according to your body mass index value.</p>
-                                    <p><span>Address:</span> New Neighborhood Ahmet Rasim Street House No: 145 Hatay / Samandag</p>
-                                    <p><span>Email:</span> <a href="#">mnknsro413@gmail.com</a></p>
-                                    <p><span>Call us:</span> <a href="tel:0(545) 725 04 40">0(545) 725 04 40</a> </p>
+                                    <p><span>Address:</span> {setting?.address}</p>
+                                    <p><span>Email:</span> <a target="_blank" href={`mailto:${setting?.email}`}>{setting?.email}</a></p>
+                                    <p><span>Call us:</span> <a target="_blank" href={`tel:${setting?.phone}`}>{setting?.phone}</a> </p>
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-3 col-sm-5">

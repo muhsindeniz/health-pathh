@@ -30,6 +30,7 @@ import Delivery from './Pages/Delivery/Delivery';
 import axios from 'axios';
 import MyOrders from './Pages/MyOrders/MyOrders';
 import Cookies from 'js-cookie';
+import DocumentMeta from 'react-document-meta';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
   let [discountCart, setDiscountCart] = useState(0)
   let [lastPrice, setLastPrice] = useState(0)
   let [discount, setDiscount] = useState(null)
+  let [setting, setSetting] = useState([])
 
   useEffect(() => {
     if (user) {
@@ -89,173 +91,192 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/seoSetting')
+      .then(response => {
+        setSetting(...response.data)
+      })
+  }, [])
 
-
+  const meta = {
+    title: setting?.title,
+    description: setting?.description,
+    meta: {
+      charset: 'utf-8',
+      name: {
+        keywords: setting?.keywords
+      }
+    }
+  };
 
   if (token) {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount }}>
-          <CompanySettingsContext.Provider value={{ user, setUser }}>
-            <Router>
-              <Switch>
-                <Route exact path="/">
-                  <Navbar />
-                  <Home />
-                  <Footer />
-                </Route>
-                <Route exact path="/login">
-                  <Navbar />
-                  <Login />
-                  <Footer />
-                </Route>
-                <Route exact path="/register">
-                  <Navbar />
-                  <Register />
-                  <Footer />
-                </Route>
-                <Route exact path="/contact">
-                  <Navbar />
-                  <Contact />
-                  <Footer />
-                </Route>
-                <Route exact path="/product-detail/:id">
-                  <Navbar />
-                  <ProductDetail />
-                  <Footer />
-                </Route>
-                <Route exact path="/wishList">
-                  <Navbar />
-                  <WishList />
-                  <Footer />
-                </Route>
-                <Route exact path="/cart">
-                  <MemberNavbar />
-                  <Cart />
-                  <Footer />
-                </Route>
-                <Route exact path="/delivery">
-                  <Navbar />
-                  <Delivery />
-                  <Footer />
-                </Route>
-                <Route exact path="/vegetables">
-                  <Navbar />
-                  <Vegetables />
-                  <Footer />
-                </Route>
-                <Route exact path="/fruits">
-                  <Navbar />
-                  <Fruits />
-                  <Footer />
-                </Route>
-                <Route exact path="/natural-teas">
-                  <Navbar />
-                  <NaturalTeas />
-                  <Footer />
-                </Route>
-                <Route exact path="/useful-plants">
-                  <Navbar />
-                  <Plants />
-                  <Footer />
-                </Route>
-                <Route exact path="/diet-list">
-                  <Navbar />
-                  <DietList />
-                  <Footer />
-                </Route>
-                <Route exact path="/membership-infos">
-                  <MemberNavbar />
-                  <MembershipInfo />
-                  <Footer />
-                </Route>
-                <Route exact path="/my-orders">
-                  <Navbar />
-                  <MyOrders />
-                  <Footer />
-                </Route>
-              </Switch>
-            </Router>
-          </CompanySettingsContext.Provider>
-        </GlobalSettingsContext.Provider>
+        <DocumentMeta {...meta}>
+          <GlobalSettingsContext.Provider value={{ mobile, token, setToken, basket, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart, lastPrice, setLastPrice, discount, setDiscount }}>
+            <CompanySettingsContext.Provider value={{ user, setUser, setting, setSetting }}>
+              <Router>
+                <Switch>
+                  <Route exact path="/">
+                    <Navbar />
+                    <Home />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/login">
+                    <Navbar />
+                    <Login />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/register">
+                    <Navbar />
+                    <Register />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/contact">
+                    <Navbar />
+                    <Contact />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/product-detail/:id">
+                    <Navbar />
+                    <ProductDetail />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/wishList">
+                    <Navbar />
+                    <WishList />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/cart">
+                    <MemberNavbar />
+                    <Cart />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/delivery">
+                    <Navbar />
+                    <Delivery />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/vegetables">
+                    <Navbar />
+                    <Vegetables />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/fruits">
+                    <Navbar />
+                    <Fruits />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/natural-teas">
+                    <Navbar />
+                    <NaturalTeas />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/useful-plants">
+                    <Navbar />
+                    <Plants />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/diet-list">
+                    <Navbar />
+                    <DietList />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/membership-infos">
+                    <MemberNavbar />
+                    <MembershipInfo />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/my-orders">
+                    <Navbar />
+                    <MyOrders />
+                    <Footer />
+                  </Route>
+                </Switch>
+              </Router>
+            </CompanySettingsContext.Provider>
+          </GlobalSettingsContext.Provider>
+        </DocumentMeta>
       </>
     );
   } else {
     return (
       <>
-        <GlobalSettingsContext.Provider value={{ mobile, basket, token, setToken, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart }}>
-          <CompanySettingsContext.Provider value={{ user, setUser }}>
-            <Router>
-              <Switch>
-                <Route exact path="/">
-                  <Navbar />
-                  <Home />
-                  <Footer />
-                </Route>
-                <Route exact path="/login">
-                  <Navbar />
-                  <Login />
-                  <Footer />
-                </Route>
-                <Route exact path="/register">
-                  <Navbar />
-                  <Register />
-                  <Footer />
-                </Route>
-                <Route exact path="/contact">
-                  <Navbar />
-                  <Contact />
-                  <Footer />
-                </Route>
-                <Route exact path="/product-detail/:id">
-                  <Navbar />
-                  <ProductDetail />
-                  <Footer />
-                </Route>
-                <Route exact path="/wishList">
-                  <Navbar />
-                  <WishList />
-                  <Footer />
-                </Route>
-                <Route exact path="/cart">
-                  <MemberNavbar />
-                  <Login />
-                  <Footer />
-                </Route>
-                <Route exact path="/vegetables">
-                  <Navbar />
-                  <Vegetables />
-                  <Footer />
-                </Route>
-                <Route exact path="/fruits">
-                  <Navbar />
-                  <Fruits />
-                  <Footer />
-                </Route>
-                <Route exact path="/natural-teas">
-                  <Navbar />
-                  <NaturalTeas />
-                  <Footer />
-                </Route>
-                <Route exact path="/useful-plants">
-                  <Navbar />
-                  <Plants />
-                  <Footer />
-                </Route>
-                <Route exact path="/diet-list">
-                  <Navbar />
-                  <DietList />
-                  <Footer />
-                </Route>
-                <Route exact path="/membership-infos">
-                  <MemberNavbar />
-                  <Login />
-                  <Footer />
-                </Route>
-              </Switch>
-            </Router>
-          </CompanySettingsContext.Provider>
-        </GlobalSettingsContext.Provider>
+        <DocumentMeta {...meta}>
+          <GlobalSettingsContext.Provider value={{ mobile, basket, token, setToken, setBasket, discountCartInfo, setDiscountCartInfo, discountCart, setDiscountCart }}>
+            <CompanySettingsContext.Provider value={{ user, setUser, setting, setSetting }}>
+              <Router>
+                <Switch>
+                  <Route exact path="/">
+                    <Navbar />
+                    <Home />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/login">
+                    <Navbar />
+                    <Login />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/register">
+                    <Navbar />
+                    <Register />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/contact">
+                    <Navbar />
+                    <Contact />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/product-detail/:id">
+                    <Navbar />
+                    <ProductDetail />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/wishList">
+                    <Navbar />
+                    <WishList />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/cart">
+                    <MemberNavbar />
+                    <Login />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/vegetables">
+                    <Navbar />
+                    <Vegetables />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/fruits">
+                    <Navbar />
+                    <Fruits />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/natural-teas">
+                    <Navbar />
+                    <NaturalTeas />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/useful-plants">
+                    <Navbar />
+                    <Plants />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/diet-list">
+                    <Navbar />
+                    <DietList />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/membership-infos">
+                    <MemberNavbar />
+                    <Login />
+                    <Footer />
+                  </Route>
+                </Switch>
+              </Router>
+            </CompanySettingsContext.Provider>
+          </GlobalSettingsContext.Provider>
+        </DocumentMeta>
       </>
     );
   }
