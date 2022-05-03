@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import banner17 from '../../Assets/media/img/bg/banner17.jpg'
-import { Select } from 'antd';
 import axios from 'axios';
-import { message, Spin } from 'antd'
+import { message, Spin, Select } from 'antd'
 import { GlobalSettingsContext } from '../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../Contexts/CompanySettingsContext';
 import Loading from '../../Assets/media/gif/loading.gif'
