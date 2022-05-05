@@ -19,8 +19,6 @@ const MembershipInfo = () => {
     let { user, setUser } = useContext(CompanySettingsContext);
     let history = useHistory();
     let params = useLocation();
-    let postData = usePostData()
-    let patchData = usePatchData()
     let [userInfo, setUserInfo] = useState({ "name": "", "email": "", "gender": "", "birthdayString": "" });
     let [loading, setLoading] = useState(false);
     let [genderChecked, setGenderChecked] = useState(null);
@@ -29,6 +27,7 @@ const MembershipInfo = () => {
     let [addressInfo, setAddressInfo] = useState({ "name": "", "province": "", "district": "", "address": "", "addressTitle": "", "phone": "" })
     const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
     let [storageAddress, setStorageAdress] = useState(null)
+
     function birthdayString(date, dateString) {
         setUserInfo({ ...userInfo, birthdayString: dateString })
     }
@@ -39,42 +38,53 @@ const MembershipInfo = () => {
 
     useEffect(() => {
         setUserInfo({ ...userInfo, name: user.name, email: user.email, birthdayString: user.birthdayString, gender: user.gender })
-        get();
-        if (token) {
-            setLoading(true)
-            axios.get(`http://localhost:3000/api/address/${user._id}`, {
-                headers: {
-                    Authorization: token
-                }
-            })
-                .then(res => {
-                    setStorageAdress(res.data.result);
-                    setLoading(false)
-                })
-                .catch(e => {
-                    console.log(e)
-                    setLoading(false)
-                })
+        if (user) {
+            if (user._id) {
+                get();
+            }
         }
-    }, [token.user])
+    }, [])
+
+    useEffect(() => {
+        axios.get(`http://localhost:3000/api/address/${user._id}`, {
+            headers: { authorization: token }
+        })
+            .then(res => {
+                setStorageAdress(res.data.result);
+                setLoading(false)
+            })
+            .catch(e => {
+                console.log(e)
+                setLoading(false)
+            })
+    }, [])
 
     useEffect(() => {
         setGenderChecked(userInfo.gender == "Erkek" ? false : true)
     }, [userInfo])
 
-    let get = useCallback(() => {
-        setLoading(true)
-        postData(`user/${user._id}`, {}).then(({ result, result_message }) => {
-            if (result_message.type === "error") console.log(result_message.message);
-            setUser(result)
-            setLoading(false)
+    let get = () => {
+        // setLoading(true)
+        axios.post(`http://localhost:3000/api/user/${user._id}`).then(resp => {
+            if (resp.data.result_message.type === "error") {
+                console.log(resp.data.result_message.message);
+                setLoading(false)
+            }
+            else {
+                setUser(resp.data.result)
+                setLoading(false)
+            }
+
         });
-    }, [user])
+    }
 
     let updateMembershipInfo = () => {
         setLoading(true)
-        patchData(`user/${user._id}`, { ...userInfo }).then(({ result_message }) => {
-            if (result_message.type == "success") {
+        axios.patch(`http://localhost:3000/api/user/${user._id}`, { ...userInfo }).then(resp => {
+            if (resp.data.result_message.type === "error") {
+                message.error("Your information could not be updated!!", 3)
+            }
+            else {
                 const profile = {
                     ...JSON.parse(Cookies.get('user')),
                     ...userInfo
@@ -84,10 +94,7 @@ const MembershipInfo = () => {
                 get()
                 history.push('/membership-infos')
                 setLoading(false)
-
             }
-            else message.error("Your information could not be updated!!", 3)
-            setLoading(false)
         })
     }
 
@@ -262,7 +269,7 @@ const MembershipInfo = () => {
 
             {
                 loading && <div className="loading__container">
-                   <img src={Loading} />
+                    <img src={Loading} />
                 </div>
             }
         </>

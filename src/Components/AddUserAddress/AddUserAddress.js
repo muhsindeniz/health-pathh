@@ -34,16 +34,16 @@ const AddUserAddress = (props) => {
             axios.post('http://localhost:3000/api/address', {
                 ...addressInfo, id: user._id
             }, {
-                headers: { "Content-Type": "application/json", authorization: `${token}` }
-            }).then(({ data: { result, result_message } }) => {
-                if (result_message.type == "success") {
+                headers: { authorization: token }
+            }).then(resp => {
+                if (resp.data.result_message.type === 'success') {
                     message.success("Your shipping address has been successfully added..")
                     setShowAddressPopup(false)
                     setLoading(false)
                     setStorageAdress(addressInfo)
                     localStorage.setItem("address", JSON.stringify(addressInfo))
                 } else {
-                    message.error(result_message.message)
+                    message.error(resp.data.result_message.message)
                     setLoading(false)
                 }
             });

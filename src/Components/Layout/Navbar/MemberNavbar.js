@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import logo from '../../../Assets/media/img/logo/logo.png'
 import { Link } from 'react-router-dom'
-import product from '../../../Assets/media/img/s-product/product.jpg'
-import product2 from '../../../Assets/media/img/s-product/product2.jpg'
 import { Menu, message } from 'antd';
 import { GlobalSettingsContext } from '../../../Contexts/GlobalSettingsContext';
 import { CompanySettingsContext } from '../../../Contexts/CompanySettingsContext'
@@ -24,6 +22,8 @@ const MemberNavbar = () => {
         setToken(null)
         message.success("Successfully logged out.")
         document.location.reload();
+        history.push('/')
+
     }
 
     useEffect(() => {

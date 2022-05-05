@@ -40,10 +40,11 @@ const Footer = () => {
                     .then(resp => {
                         if (resp.data.result_message.type === 'success') {
                             message.success("Your subscription has been successfully registered, now you will be instantly informed of all news, announcements and discounts.")
+                            setLoading(false)
                         } else {
                             message.info(resp.data.result_message.message)
+                            setLoading(false)
                         }
-                        setLoading(false)
                     })
                     .catch(err => {
                         console.log(err)

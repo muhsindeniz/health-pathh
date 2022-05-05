@@ -70,7 +70,7 @@ const MyOrders = () => {
                                             </div>
                                             <div className="order-row__summary__order-data" x-apple-data-detectors="true">
                                                 <div className="order-number e2e-orderRow-orderNumber">
-                                                    <small>Sipariş No
+                                                    <small>Order number
                                                         <b data-highlight-binder="orderNumber | chapterValue: 3">{numberWithSpaces(resp.orderNumber)}</b>
                                                     </small>
                                                 </div>
@@ -95,7 +95,7 @@ const MyOrders = () => {
                                                 </div>
                                             </div>
                                             <div className="order-row__summary__price e2e-orderRow-price"><b>{resp?.totalPricePaid} <i className="f-s-text t-normal">$</i></b>
-                                                <small>Health Path Cüzdanım</small>
+                                                <small>My Health Path Wallet</small>
                                             </div>
                                             <div className="order-row__summary__toggle e2e-orderRow-toggleButton">
                                                 <div className="order-row__summary__toggle__icon">
@@ -121,7 +121,7 @@ const MyOrders = () => {
                                                                         <div className="product-card__content__title">
                                                                             <a aria-label="Ürün adı" data-highlight-binder="orderLines.name" className="" aria-disabled="false" target="_self">{subProd?.name}</a>
                                                                         </div>
-                                                                        <div className="product-card__content__merchant"><span>Satıcı: </span>
+                                                                        <div className="product-card__content__merchant"><span>Dealer: </span>
                                                                             <span className="product-card__content__merchant-name">
                                                                                 <a aria-disabled="false" className="" target="_self">{subProd?.farmerName}</a>
                                                                             </span>
@@ -134,13 +134,13 @@ const MyOrders = () => {
                                                                         </div>
                                                                         <div className="solo-tooltip__container">
                                                                             <div className="solo-tooltip__content">
-                                                                                <p className="solo-tooltip__description mt-3 mb-2">Ürününüz Helath Path üreticilerinin güvencesiyle hızlı, hasarsız ve ücretsiz olarak istediğin yere taşınır.</p>
+                                                                                <p className="solo-tooltip__description mt-3 mb-2">Your product is transported to your desired location quickly, undamaged and free of charge with the assurance of Health Path manufacturers.</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div className="product-card__content__price">
-                                                                    <span>{Number(subProd?.price).toFixed(2)} <i className="f-s-text t-normal">TL</i></span>
+                                                                    <span>{Number(subProd?.price).toFixed(2)} <i className="f-s-text t-normal">$</i></span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -154,7 +154,7 @@ const MyOrders = () => {
                                                                     <div className="lineitem-content__header__content">
                                                                         <div className="title"><b data-highlight-binder="receivedBys">{resp?.orderStatus}</b>
                                                                         </div>
-                                                                        <div className="date">Teslim tarihi <b>{moment(new Date(resp?.createdAt)).format("LLL")}</b>
+                                                                        <div className="date">Order date <b>{moment(new Date(resp?.createdAt)).format("DD MMM dddd h:mm")}</b>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -163,13 +163,13 @@ const MyOrders = () => {
                                                                         <a className="action-button action-button--return-request" target="_blank" href="mailto:mnknsro413@gmail.com">
                                                                             <svg width="1em" height="1em" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                 <path fillRule="evenodd" clipRule="evenodd" d="M17.5 3.333c1.036 0 1.875.84 1.875 1.875v10c0 1.036-.84 1.875-1.875 1.875h-15a1.875 1.875 0 01-1.875-1.875v-10c0-1.036.84-1.875 1.875-1.875h15zm.625 2.134l-6.063 4.665a3.382 3.382 0 01-4.124 0L1.875 5.468v9.74c0 .345.28.625.625.625h15c.345 0 .625-.28.625-.625V5.467zm-.901-.884H2.775L8.7 9.141a2.133 2.133 0 002.453.104l.147-.104 5.924-4.558z" fill="#484848"></path></svg>
-                                                                            Talep oluştur
+                                                                            Create request
                                                                         </a>
                                                                         <a className="action-button action-button--evaluate-merchant" target="_blank" href="mailto:mnknsro413@gmail.com">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                                                                                 <g fill="none" fillRule="current"><g fill="#484848"><g><g><g><g><g><g>
                                                                                     <path d="M3.75 8.75c2.071 0 3.75 1.679 3.75 3.75v1.875c0 .345-.28.625-.625.625h-.698l-.557 4.453c-.035.284-.258.504-.535.541L5 20H2.5c-.315 0-.581-.235-.62-.547L1.323 15H.625c-.316 0-.578-.235-.62-.54L0 14.375V12.5c0-2.071 1.679-3.75 3.75-3.75zm0 1.25c-1.38 0-2.5 1.12-2.5 2.5v1.25h.625c.287 0 .532.194.604.464l.016.083.557 4.453h1.395l.558-4.453c.035-.284.258-.504.535-.541l.085-.006h.625V12.5c0-1.331-1.04-2.42-2.353-2.496zM18.125 0c.992 0 1.805.771 1.87 1.747l.005.128v10c0 .992-.771 1.805-1.747 1.87l-.128.005h-2.242l-3.566 3.567c-.373.373-.997.142-1.062-.356l-.005-.086V13.75H9.375c-.316 0-.578-.235-.62-.54l-.005-.085c0-.316.235-.578.54-.62l.085-.005h2.5c.316 0 .578.235.62.54l.005.085v2.24l2.683-2.682c.094-.094.214-.155.344-.175l.098-.008h2.5c.316 0 .578-.235.62-.54l.005-.085v-10c0-.316-.235-.578-.54-.62l-.085-.005h-10c-.316 0-.578.235-.62.54l-.005.085c0 .345-.28.625-.625.625s-.625-.28-.625-.625c0-.992.771-1.805 1.747-1.87L8.125 0h10zm-5 2.498c.422 0 .809.237.999.613l.867 1.706h1.374c.419-.01.804.217 1.002.58l.049.101c.176.422.076.909-.249 1.224l-1.321 1.297.73 1.684c.17.406.085.869-.207 1.187l-.085.083c-.36.316-.882.367-1.29.13l-1.87-1.053-1.864 1.05c-.38.22-.85.196-1.204-.053l-.093-.074c-.36-.316-.478-.827-.29-1.278l.73-1.677-1.317-1.296c-.301-.292-.41-.725-.29-1.12l.038-.107c.177-.422.594-.692 1.036-.68l1.39-.002.866-1.701c.173-.343.508-.57.885-.609zm0 1.406L12.2 5.723c-.107.21-.322.341-.557.341H10.2l1.387 1.365c.161.158.222.39.166.604l-.032.09-.74 1.699 1.838-1.033c.163-.092.357-.105.529-.04l.084.04 1.832 1.032-.736-1.698c-.09-.208-.06-.445.073-.623l.063-.072 1.385-1.36h-1.441c-.206 0-.397-.102-.513-.267l-.045-.075-.926-1.822zM3.75 2.5c1.726 0 3.125 1.4 3.125 3.125 0 1.726-1.4 3.125-3.125 3.125-1.726 0-3.125-1.4-3.125-3.125 0-1.726 1.4-3.125 3.125-3.125zm0 1.25c-1.036 0-1.875.84-1.875 1.875 0 1.036.84 1.875 1.875 1.875 1.036 0 1.875-.84 1.875-1.875 0-1.036-.84-1.875-1.875-1.875z" transform="translate(-1078 -668) translate(348 328) translate(40 166) translate(456) translate(218 160) translate(16) translate(0 14)"></path></g></g></g></g></g></g></g></g></svg>
-                                                                            Satıcıya sor
+                                                                            Ask seller
                                                                         </a>
                                                                     </div>
                                                                     <div className="lineitem-content__footer-content">
@@ -187,11 +187,11 @@ const MyOrders = () => {
                                         <div className="order-detail-footer">
                                             <div className="order-information">
                                                 <div className="order-information__column order-information__column--addresses">
-                                                    <h5 className="order-information__title">Adres Bilgileri</h5>
+                                                    <h5 className="order-information__title">Address information</h5>
                                                     <div className="order-information__content">
                                                         <div className="order-information__column order-information__column--shipping-address">
                                                             <div className="order-information__column__row">
-                                                                <b className="order-information__content__address-title">Teslimat Adresi</b>
+                                                                <b className="order-information__content__address-title">Delivery address</b>
                                                                 <div className="address">
                                                                     <address>
                                                                         {
@@ -224,7 +224,7 @@ const MyOrders = () => {
                                                             </div>
                                                         </div>
                                                         <div className="order-information__column m-t-25">
-                                                            <b className="order-information__content__address-title">Fatura Bilgileri</b>
+                                                            <b className="order-information__content__address-title">Billing Information</b>
                                                             <div className="address">
                                                                 <address>
                                                                     {
@@ -257,23 +257,23 @@ const MyOrders = () => {
                                                     </div>
                                                 </div>
                                                 <div className="order-information__column order-information__column--payment">
-                                                    <h5 className="order-information__title">Ödeme Bilgileri</h5>
+                                                    <h5 className="order-information__title">Payment information</h5>
                                                     <div className="order-information__content">
                                                         <div className="order-information__group">
-                                                            <span className="order-information__group__key">Ürünler</span>
+                                                            <span className="order-information__group__key">Products</span>
                                                             <span className="order-information__group__value">
                                                                 {
-                                                                    resp.basket.reduce((accumulator, current) => parseFloat(accumulator) + parseFloat(current?.price), 0)
+                                                                    (resp.basket.reduce((accumulator, current) => parseFloat(accumulator) + parseFloat(current?.price), 0)).toFixed(2)
                                                                 }
                                                                 $
                                                             </span>
                                                         </div>
                                                         <div className="order-information__group">
-                                                            <span className="order-information__group__key">Kargo</span>
+                                                            <span className="order-information__group__key">Cargo</span>
                                                             <span className="order-information__group__value">15, 00 $</span>
                                                         </div>
                                                         <div className="order-information__group">
-                                                            <span className="order-information__group__key">Toplam</span>
+                                                            <span className="order-information__group__key">Total</span>
                                                             <span className="order-information__group__value order-information__group__value--total-amount">
                                                                 <del>
                                                                     {
@@ -284,7 +284,7 @@ const MyOrders = () => {
                                                             </span>
                                                         </div>
                                                         <div className="order-information__group">
-                                                            <span className="order-information__group__key" style={{ textAlign: "right" }}>Çifçi indirimi ile ödenecek tutar </span>
+                                                            <span className="order-information__group__key" style={{ textAlign: "right" }}>Amount to be paid with farmer discount </span>
                                                         </div>
 
                                                         <div className="order-information__group">
@@ -299,11 +299,11 @@ const MyOrders = () => {
                                             </div>
 
                                             <div className="order-information__column order-information__column--other">
-                                                <h5 className="order-information__title">Diğer</h5>
+                                                <h5 className="order-information__title">Other</h5>
                                                 <div className="order-information__content">
                                                     <nav>
-                                                        <Link rel="noreferrer" target="_blank" to={salesContract} role="button">Satış Sözleşmesi</Link>
-                                                        <Link rel="noreferrer" target="_blank" to={returnPolicy} role="button">İade Koşulları</Link>
+                                                        <Link rel="noreferrer" target="_blank" to={salesContract} role="button">Sales Agreement</Link>
+                                                        <Link rel="noreferrer" target="_blank" to={returnPolicy} role="button">Return Policy</Link>
                                                     </nav>
                                                 </div>
                                             </div>

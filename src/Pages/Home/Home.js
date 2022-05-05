@@ -36,8 +36,10 @@ const Home = () => {
 
     let { mobile, basket, setBasket } = useContext(GlobalSettingsContext)
     let { user } = useContext(CompanySettingsContext);
-    let [vegetablesProduct, setVegetablesProduct] = useState(null)
     let [loading, setLoading] = useState(false)
+    let [vegetablesProduct, setVegetablesProduct] = useState(null)
+    let [fruitsProduct, setFruitsProduct] = useState(null)
+    let [teasProduct, setTeasProduct] = useState(null)
 
     const pagination = {
         "clickable": true,
@@ -57,9 +59,27 @@ const Home = () => {
                 console.log(err)
                 setLoading(false)
             })
-    }, [])
 
-    console.log(vegetablesProduct)
+        axios.get('http://localhost:3000/api/fruit')
+            .then(resp => {
+                setFruitsProduct(resp.data)
+                setLoading(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false)
+            })
+
+        axios.get('http://localhost:3000/api/teas')
+            .then(resp => {
+                setTeasProduct(resp.data)
+                setLoading(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false)
+            })
+    }, [])
 
     function ADD_TO_BASKET(product) {
         var response = basket.find(resp => resp._id === product._id)
@@ -294,181 +314,62 @@ const Home = () => {
                         <div className="col-12">
                             <div className="section_title">
                                 <p>Recently added our store </p>
-                                <h2>Best Sellers</h2>
+                                <h2>Best Fruits</h2>
                             </div>
                         </div>
                     </div>
                     <div className="product_banner_container">
                         <div className="row">
-                            <div className="col-lg-4 col-md-5">
-                                <div className="banner_thumb">
-                                    <Link to="/vegetables"><img src={banner4} alt="" /></Link>
-                                </div>
-                            </div>
-                            <div className="col-lg-8 col-md-7">
-                                <div className="small_product_area product_carousel  product_column2 owl-carousel">
-                                    <div className="product_items row">
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
+                            <div className="col-sm-12">
+                                <Swiper slidesPerView={mobile === true ? 1 : 4} spaceBetween={30} navigation={true} loop={true} autoplay={true} className="mySwiper">
+
+                                    {
+                                        fruitsProduct && fruitsProduct.map((vegetablesProduct, index) => (
+                                            <SwiperSlide key={index}>
+                                                <div className="single_product">
+                                                    <div className="product_thumb">
+                                                        <Link className="primary_img" to={`/product-detail/${vegetablesProduct._id}?cat=${vegetablesProduct.productCategory}`}><img style={{ height: "240px", objectFit: "cover" }} src={`http://localhost:3000/${vegetablesProduct.avatar}`} alt="" /></Link>
+                                                        <div className="label_product">
+                                                            <span className="label_sale"><small>Oil: {vegetablesProduct.oil} kcal</small></span>
+                                                            <span className="label_new">New</span>
+                                                        </div>
+                                                        <div className={parseFloat(vegetablesProduct?.stock) < 1 ? "d-none" : "d-flex action_links"} >
+                                                            <button disabled={parseFloat(vegetablesProduct?.stock) < 1 ? true : false} className={parseFloat(vegetablesProduct?.stock) < 1 ? "passiveButtonCategories w-100 d-none" : "w-100 activeButton"} style={{ background: "none", border: "none" }} onClick={() =>
+                                                                ADD_TO_BASKET({
+                                                                    _id: vegetablesProduct._id,
+                                                                    name: vegetablesProduct.name,
+                                                                    avatar: vegetablesProduct.avatar,
+                                                                    farmerName: vegetablesProduct.farmerName,
+                                                                    quntity: 1,
+                                                                    total: parseFloat(vegetablesProduct.newPrice),
+                                                                    price: vegetablesProduct.price,
+                                                                    newPrice: vegetablesProduct.newPrice,
+                                                                    category: vegetablesProduct.productCategory
+                                                                })}>
+                                                                Sepete Ekle
+                                                            </button>
+
+                                                        </div>
+                                                    </div>
+                                                    <div className="product_content grid_content">
+                                                        <h4 className="product_name mb-2"><a href="#">{vegetablesProduct.name}</a></h4>
+                                                        <div className={parseFloat(vegetablesProduct?.stock) < 1 ? "text-danger" : "text-dark"}>
+                                                            <b>
+                                                                {
+                                                                    parseFloat(vegetablesProduct?.stock) < 1 ? "Stokta yok" : ""
+                                                                }
+                                                            </b>
+                                                        </div>
+                                                        <div className="price_box m-0">
+                                                            <span className="old_price">{vegetablesProduct.price} TL</span>
+                                                            <span style={{ marginLeft: "10px" }} className="current_price">{vegetablesProduct.newPrice} TL</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Add to Basket
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
-                                                </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Add to Basket
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
-                                                </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Sepete Ekle
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
-                                                </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Add to Basket
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
-                                                </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Add to Basket
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-                                        <article className="single_product col-sm-12 col-lg-6">
-                                            <figure>
-                                                <div className="product_thumb">
-                                                    <Link className="primary_img" to="/product-detail/1"><img src={product5} alt="" /></Link>
-                                                    <Link className="secondary_img" to="/product-detail/1"><img src={product6} alt="" /></Link>
-                                                </div>
-                                                <figcaption className="product_content">
-                                                    <h4 className="product_name"><Link to="/product-detail/1">Mauris Vel Tellus</Link></h4>
-                                                    <p><Link to="/product-detail/1">Fruits</Link></p>
-                                                    <div className="action_links">
-                                                        <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                            <ul>
-                                                                <li className="add_to_cart">
-                                                                    Add to Basket
-                                                                </li>
-                                                            </ul>
-                                                        </Link>
-                                                    </div>
-                                                    <div className="price_box">
-                                                        <span className="current_price">$56.00</span>
-                                                        <span className="old_price">$362.00</span>
-                                                    </div>
-                                                </figcaption>
-                                            </figure>
-                                        </article>
-
-
-                                    </div>
-
-
-                                </div>
+                                            </SwiperSlide>
+                                        ))
+                                    }
+                                </Swiper>
                             </div>
                         </div>
                     </div>
@@ -497,25 +398,8 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* 
 
-            <div className="banner_area">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <div className="single_banner">
-                                <div className="banner_thumb">
-                                    <Link to="/fruits"><img src={banner9} alt="" /></Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
- */}
-
-
-            <div className="custom_product_area color_two">
+            <div className="custom_product_area color_two mb-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -526,161 +410,56 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-12">
-                            <div className="small_product_area product_carousel product_column3 owl-carousel">
-                                <div className="row mb-5">
-                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="#"><img src={product1} alt="" /></a>
-                                                <a className="secondary_img" href="#"><img src={product2} alt="" /></a>
+                        <div className="col-sm-12">
+                            <Swiper slidesPerView={mobile === true ? 1 : 4} spaceBetween={30} navigation={true} loop={true} autoplay={true} className="mySwiper">
+
+                                {
+                                    teasProduct && teasProduct.map((vegetablesProduct, index) => (
+                                        <SwiperSlide key={index}>
+                                            <div className="single_product">
+                                                <div className="product_thumb">
+                                                    <Link className="primary_img" to={`/product-detail/${vegetablesProduct._id}?cat=${vegetablesProduct.productCategory}`}><img style={{ height: "240px", objectFit: "cover" }} src={`http://localhost:3000/${vegetablesProduct.avatar}`} alt="" /></Link>
+                                                    <div className="label_product">
+                                                        <span className="label_sale"><small>Oil: {vegetablesProduct.oil} kcal</small></span>
+                                                        <span className="label_new">New</span>
+                                                    </div>
+                                                    <div className={parseFloat(vegetablesProduct?.stock) < 1 ? "d-none" : "d-flex action_links"} >
+                                                        <button disabled={parseFloat(vegetablesProduct?.stock) < 1 ? true : false} className={parseFloat(vegetablesProduct?.stock) < 1 ? "passiveButtonCategories w-100 d-none" : "w-100 activeButton"} style={{ background: "none", border: "none" }} onClick={() =>
+                                                            ADD_TO_BASKET({
+                                                                _id: vegetablesProduct._id,
+                                                                name: vegetablesProduct.name,
+                                                                avatar: vegetablesProduct.avatar,
+                                                                farmerName: vegetablesProduct.farmerName,
+                                                                quntity: 1,
+                                                                total: parseFloat(vegetablesProduct.newPrice),
+                                                                price: vegetablesProduct.price,
+                                                                newPrice: vegetablesProduct.newPrice,
+                                                                category: vegetablesProduct.productCategory
+                                                            })}>
+                                                            Sepete Ekle
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                                <div className="product_content grid_content">
+                                                    <h4 className="product_name mb-2"><a href="#">{vegetablesProduct.name}</a></h4>
+                                                    <div className={parseFloat(vegetablesProduct?.stock) < 1 ? "text-danger" : "text-dark"}>
+                                                        <b>
+                                                            {
+                                                                parseFloat(vegetablesProduct?.stock) < 1 ? "Stokta yok" : ""
+                                                            }
+                                                        </b>
+                                                    </div>
+                                                    <div className="price_box m-0">
+                                                        <span className="old_price">{vegetablesProduct.price} TL</span>
+                                                        <span style={{ marginLeft: "10px" }} className="current_price">{vegetablesProduct.newPrice} TL</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="#">Aliquam Consequat</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                        <ul>
-                                                            <li className="add_to_cart">
-                                                                Add to Basket
-                                                            </li>
-                                                        </ul>
-                                                    </Link>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$26.00</span>
-                                                    <span className="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="#"><img src={product3} alt="" /></a>
-                                                <a className="secondary_img" href="#"><img src={product4} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="#">Donec Non Est</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                        <ul>
-                                                            <li className="add_to_cart">
-                                                                Add to Basket
-                                                            </li>
-                                                        </ul>
-                                                    </Link>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$46.00</span>
-                                                    <span className="old_price">$382.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
-                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                        <ul>
-                                                            <li className="add_to_cart">
-                                                                Add to Basket
-                                                            </li>
-                                                        </ul>
-                                                    </Link>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$56.00</span>
-                                                    <span className="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
-                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                        <ul>
-                                                            <li className="add_to_cart">
-                                                                Add to Basket
-                                                            </li>
-                                                        </ul>
-                                                    </Link>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$56.00</span>
-                                                    <span className="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
-                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                        <ul>
-                                                            <li className="add_to_cart">
-                                                                Add to Basket
-                                                            </li>
-                                                        </ul>
-                                                    </Link>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$56.00</span>
-                                                    <span className="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article className="single_product col-sm-12 col-md-6 col-lg-4 mb-4">
-                                        <figure>
-                                            <div className="product_thumb">
-                                                <a className="primary_img" href="#"><img src={product5} alt="" /></a>
-                                                <a className="secondary_img" href="#"><img src={product6} alt="" /></a>
-                                            </div>
-                                            <figcaption className="product_content">
-                                                <h4 className="product_name"><a href="#">Mauris Vel Tellus</a></h4>
-                                                <p><a href="#">Fruits</a></p>
-                                                <div className="action_links">
-                                                    <Link to="/cart" data-tippy="Add to cart" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true">
-                                                        <ul>
-                                                            <li className="add_to_cart">
-                                                                Add to Basket
-                                                            </li>
-                                                        </ul>
-                                                    </Link>
-                                                </div>
-                                                <div className="price_box">
-                                                    <span className="current_price">$56.00</span>
-                                                    <span className="old_price">$362.00</span>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                </div>
-                            </div>
+                                        </SwiperSlide>
+                                    ))
+                                }
+                            </Swiper>
                         </div>
                     </div>
                 </div>

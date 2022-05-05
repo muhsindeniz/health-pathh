@@ -47,28 +47,26 @@ const Register = () => {
                 <div className="container">
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-6 col-md-6 col-sm-12">
-                            <div className="account_form register register_form_container">
-                                <form action="javascript:void(0)">
-                                    <p>
-                                        <label>Name Surname <span>*</span></label>
-                                        <input onChange={(e) => setUserRegister({ ...userRegister, name: e.target.value })} type="text" />
-                                    </p>
-                                    <p>
-                                        <label>Email address  <span>*</span></label>
-                                        <input onChange={(e) => setUserRegister({ ...userRegister, email: e.target.value })} type="email" />
-                                    </p>
-                                    <p>
-                                        <label>Passwords <span>*</span></label>
-                                        <input onChange={(e) => setUserRegister({ ...userRegister, password: e.target.value })} type="password" />
-                                    </p>
-                                    <p>
-                                        <label>Passwords again <span>*</span></label>
-                                        <input onChange={(e) => setUserRegister({ ...userRegister, passwordAgain: e.target.value })} type="password" />
-                                    </p>
-                                    <div className="login_submit">
-                                        <button className="w-100 m-0" onClick={() => registerSubmit()} type="submit">Register</button>
-                                    </div>
-                                </form>
+                            <div className="account_form register register_form_container border p-4 rounded">
+                                <p>
+                                    <label>Name Surname <span>*</span></label>
+                                    <input onChange={(e) => setUserRegister({ ...userRegister, name: e.target.value })} type="text" />
+                                </p>
+                                <p>
+                                    <label>Email address  <span>*</span></label>
+                                    <input onChange={(e) => setUserRegister({ ...userRegister, email: e.target.value })} type="email" />
+                                </p>
+                                <p>
+                                    <label>Passwords <span>*</span></label>
+                                    <input onChange={(e) => setUserRegister({ ...userRegister, password: e.target.value })} type="password" />
+                                </p>
+                                <p>
+                                    <label>Passwords again <span>*</span></label>
+                                    <input onChange={(e) => setUserRegister({ ...userRegister, passwordAgain: e.target.value })} type="password" />
+                                </p>
+                                <div className="login_submit">
+                                    <button className="w-100 m-0" onClick={() => registerSubmit()} type="submit">Register</button>
+                                </div>
                             </div>
                         </div>
                     </div>

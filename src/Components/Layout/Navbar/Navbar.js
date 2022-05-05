@@ -27,6 +27,7 @@ const Navbar = (props) => {
         setToken(null)
         message.success("Successfully logged out.")
         document.location.reload();
+        history.push('/')
     }
 
     useEffect(() => {

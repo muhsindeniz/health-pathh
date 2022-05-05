@@ -28,7 +28,7 @@ const Login = () => {
                 headers: { "Content-Type": "application/json" }
             }).then(({ data: { result, result_message } }) => {
 
-                if(result_message.type == "success"){
+                if (result_message.type == "success") {
                     message.success("Login successful..")
                     setToken(result.token)
                     setUser(result);
@@ -45,7 +45,7 @@ const Login = () => {
             })
         }
     }
-  
+
     return (
         <>
 
@@ -56,24 +56,22 @@ const Login = () => {
                     <div className="row d-flex justify-content-center">
                         <div className="col-lg-6 col-md-6 col-sm-12">
                             <div className="account_form">
-                                <form action="javascript:void(0)">
-                                    <p>
-                                        <label>Username or email <span>*</span></label>
-                                        <input onChange={(e) => setLoginInfo({ ...loginInfo, email: e.target.value })} type="text" />
-                                    </p>
-                                    <p>
-                                        <label>Passwords <span>*</span></label>
-                                        <input onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })} type="password" />
-                                    </p>
-                                    <div className="login_submit">
-                                        <a href="#">Lost your password?</a>
-                                        <label htmlFor="remember">
-                                            <input id="remember" type="checkbox" />
-                                            Remember me
-                                        </label>
-                                        <button type="submit" onClick={() => loginSubmit()}>login</button>
-                                    </div>
-                                </form>
+                                <p>
+                                    <label>Username or email <span>*</span></label>
+                                    <input onChange={(e) => setLoginInfo({ ...loginInfo, email: e.target.value })} type="text" />
+                                </p>
+                                <p>
+                                    <label>Passwords <span>*</span></label>
+                                    <input onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })} type="password" />
+                                </p>
+                                <div className="login_submit">
+                                    <a href="#">Lost your password?</a>
+                                    <label htmlFor="remember">
+                                        <input id="remember" type="checkbox" />
+                                        Remember me
+                                    </label>
+                                    <button type="submit" onClick={() => loginSubmit()}>login</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,7 +80,7 @@ const Login = () => {
 
             {
                 loading && <div className="loading__container">
-                   <img src={Loading} />
+                    <img src={Loading} />
                 </div>
             }
         </>
