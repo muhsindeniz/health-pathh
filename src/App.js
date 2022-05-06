@@ -31,6 +31,7 @@ import axios from 'axios';
 import MyOrders from './Pages/MyOrders/MyOrders';
 import Cookies from 'js-cookie';
 import DocumentMeta from 'react-document-meta';
+import SolutionCenter from './Pages/SolutionCenter/SolutionCenter'
 
 function App() {
 
@@ -192,6 +193,11 @@ function App() {
                     <MyOrders />
                     <Footer />
                   </Route>
+                  <Route exact path="/solution-center">
+                    <Navbar />
+                    <SolutionCenter />
+                    <Footer />
+                  </Route>
                 </Switch>
               </Router>
             </CompanySettingsContext.Provider>
@@ -270,6 +276,11 @@ function App() {
                   <Route exact path="/membership-infos">
                     <MemberNavbar />
                     <Login />
+                    <Footer />
+                  </Route>
+                  <Route exact path="/solution-center">
+                    <Navbar />
+                    <SolutionCenter />
                     <Footer />
                   </Route>
                 </Switch>

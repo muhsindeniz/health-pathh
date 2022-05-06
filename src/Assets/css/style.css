@@ -4,6 +4,7 @@
 -----------------------------------------------------------------------------------*/
 
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Work+Sans:100,200,300,400,500,600,700,800,900&amp;display=swap");
+
 * {
     box-sizing: border-box;
 }
@@ -819,6 +820,7 @@ textarea:-ms-input-placeholder {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+
     .dropdown_currency,
     .dropdown_language {
         left: auto;
@@ -827,6 +829,7 @@ textarea:-ms-input-placeholder {
 }
 
 @media only screen and (max-width: 767px) {
+
     .dropdown_currency,
     .dropdown_language {
         left: auto;
@@ -1103,7 +1106,7 @@ textarea:-ms-input-placeholder {
     width: 500px;
 }
 
-.search_container_member form{
+.search_container_member form {
     display: flex;
     border-radius: 30px;
     border: 1px solid #ededed;
@@ -1116,7 +1119,7 @@ textarea:-ms-input-placeholder {
         width: 481px;
     }
 
-    .search_container_member form{
+    .search_container_member form {
         width: 481px;
     }
 }
@@ -1127,11 +1130,11 @@ textarea:-ms-input-placeholder {
         border-radius: 6px;
     }
 
-    .header_right_info_member_ship{
+    .header_right_info_member_ship {
         justify-content: flex-end !important;
     }
 
-    .search_container_member form{
+    .search_container_member form {
         width: 100%;
     }
 }
@@ -1146,13 +1149,13 @@ textarea:-ms-input-placeholder {
         display: none;
     }
 
-    .search_container_member form{
+    .search_container_member form {
         width: 100%;
         border-radius: 6px;
         background-color: #fff !important;
     }
 
-    .header_right_info_member_ship{
+    .header_right_info_member_ship {
         justify-content: flex-end !important;
         padding-bottom: 10px;
     }
@@ -1164,7 +1167,7 @@ textarea:-ms-input-placeholder {
         border: 0;
     }
 
-    .search_container_member form{
+    .search_container_member form {
         flex-direction: column;
         border: 0;
     }
@@ -2117,6 +2120,7 @@ textarea:-ms-input-placeholder {
     .categories_menu_toggle ul li.menu_item_children>a {
         position: relative;
     }
+
     .categories_menu_toggle ul li.menu_item_children>a::before {
         position: absolute;
         content: "+";
@@ -2131,6 +2135,7 @@ textarea:-ms-input-placeholder {
     .categories_menu_toggle ul li.menu_item_children>a {
         position: relative;
     }
+
     .categories_menu_toggle ul li.menu_item_children>a::before {
         position: absolute;
         content: "+";
@@ -2145,6 +2150,7 @@ textarea:-ms-input-placeholder {
     .categories_menu_toggle ul li.menu_item_children.open>a::before {
         display: none;
     }
+
     .categories_menu_toggle ul li.menu_item_children.open>a::after {
         position: absolute;
         content: "-";
@@ -2159,6 +2165,7 @@ textarea:-ms-input-placeholder {
     .categories_menu_toggle ul li.menu_item_children.open>a::before {
         display: none;
     }
+
     .categories_menu_toggle ul li.menu_item_children.open>a::after {
         position: absolute;
         content: "-";
@@ -2382,6 +2389,7 @@ textarea:-ms-input-placeholder {
         color: #fff;
         border: 1px solid #fff;
     }
+
     .offcanvas_two .canvas_open a:hover {
         color: #222222;
         border-color: #222222;
@@ -2393,6 +2401,7 @@ textarea:-ms-input-placeholder {
         color: #fff;
         border: 1px solid #fff;
     }
+
     .offcanvas_two .canvas_open a:hover {
         color: #222222;
         border-color: #222222;
@@ -2561,6 +2570,7 @@ textarea:-ms-input-placeholder {
     .menu_two nav>ul>li {
         margin-right: 16px;
     }
+
     .menu_two nav>ul>li:last-child {
         margin-right: 0;
     }
@@ -3858,6 +3868,7 @@ textarea:-ms-input-placeholder {
         margin-right: 0;
         margin-bottom: 30px;
     }
+
     .banner4_right_side .banner_thumb:last-child {
         margin-bottom: 0;
     }
@@ -4099,7 +4110,7 @@ textarea:-ms-input-placeholder {
     text-align: center;
 }
 
-.action_links:hover{
+.action_links:hover {
     background-color: #80B82D;
     color: #fff;
     cursor: pointer;
@@ -4546,6 +4557,7 @@ textarea:-ms-input-placeholder {
     .small_product_area .product_items .single_product {
         margin-bottom: 23px;
     }
+
     .small_product_area .product_items .single_product:last-child {
         margin-bottom: 0;
     }
@@ -4555,6 +4567,7 @@ textarea:-ms-input-placeholder {
     .small_product_area .product_items .single_product {
         margin-bottom: 23px;
     }
+
     .small_product_area .product_items .single_product:last-child {
         margin-bottom: 0;
     }
@@ -5455,6 +5468,7 @@ textarea:-ms-input-placeholder {
     .home4_gallery_right .action_links ul li {
         margin-right: 2px;
     }
+
     .home4_gallery_right .action_links ul li:last-child {
         margin-right: 0;
     }
@@ -7891,6 +7905,7 @@ textarea:-ms-input-placeholder {
     .product_info_button ul li {
         margin-bottom: 5PX;
     }
+
     .product_info_button ul li:last-child {
         margin-bottom: 0;
     }
@@ -13809,17 +13824,21 @@ textarea:-ms-input-placeholder {
     .main_menu nav>ul {
         flex-direction: column !important;
     }
+
     .main_menu nav ul>li {
         padding: 10px 0 !important;
     }
+
     .main_menu .menu_icon {
         display: block !important;
     }
+
     .main_menu ul.open {
         display: block !important;
         background-color: #f1f1f1;
         padding: 10px 15px;
     }
+
     .main_menu ul.closed {
         display: none !important;
         background-color: #f1f1f1;
@@ -14277,6 +14296,7 @@ iframe {
         top: 30px;
         left: 20px;
     }
+
     .sec-center .dark-light:checked+label,
     .sec-center .dark-light:not(:checked)+label {
         top: 20px;
@@ -14327,13 +14347,13 @@ iframe {
     color: #919191;
 }
 
-.header_right_info_member_ship{
+.header_right_info_member_ship {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.member_nav_profile{
+.member_nav_profile {
     background-color: #eee;
     min-width: 50px;
     height: 50px;
@@ -14347,13 +14367,13 @@ iframe {
     position: relative;
 }
 
-.member_nav_profile:hover{
+.member_nav_profile:hover {
     background-color: #CCFFDD;
     transition: ease .3s all;
     cursor: pointer;
 }
 
-.member_nav_open_dropdown{
+.member_nav_open_dropdown {
     display: block;
     position: absolute;
     width: 280px;
@@ -14367,11 +14387,11 @@ iframe {
     text-align: left;
 }
 
-.member_nav_open_dropdown:hover{
+.member_nav_open_dropdown:hover {
     color: #333;
 }
 
-.member_nav_open_dropdown header{
+.member_nav_open_dropdown header {
     width: 100%;
     background-color: #ccc;
     padding: 10px 15px;
@@ -14379,32 +14399,32 @@ iframe {
     border-top-right-radius: 5px;
 }
 
-.member_nav_open_dropdown main{
+.member_nav_open_dropdown main {
     width: 100%;
     padding: 10px 15px;
 }
 
-.member_nav_open_dropdown main a i{
+.member_nav_open_dropdown main a i {
     font-size: 20px;
     color: #555;
     margin-right: 5px;
 }
 
 .member_nav_open_dropdown main a:hover,
-.member_nav_open_dropdown main a:hover i{
+.member_nav_open_dropdown main a:hover i {
     color: #5AB478 !important;
     transition: linear .3s all;
 }
 
-.member_nav_open_dropdown main a span{
+.member_nav_open_dropdown main a span {
     font-size: 15px;
 }
 
-.member_nav_open_dropdown .customer_service{
+.member_nav_open_dropdown .customer_service {
     margin-top: 10px;
 }
 
-.member_nav_open_dropdown .customer_service span{
+.member_nav_open_dropdown .customer_service span {
     padding: 0;
     font-size: 12px;
     line-height: 1.33;
@@ -14414,23 +14434,23 @@ iframe {
     cursor: default;
 }
 
-.member_nav_open_dropdown .customer_service ul{
+.member_nav_open_dropdown .customer_service ul {
     padding: 12px 0;
     font-size: 13px;
     color: #333;
 }
 
-.member_nav_open_dropdown .customer_service ul li{
+.member_nav_open_dropdown .customer_service ul li {
     padding: 8px 10px;
 }
 
-.member_nav_open_dropdown .customer_service ul li:hover{
+.member_nav_open_dropdown .customer_service ul li:hover {
     border-radius: 8px;
     background-color: #f5f5f5;
     cursor: pointer;
 }
 
-.member_nav_open_dropdown_before{
+.member_nav_open_dropdown_before {
     position: fixed;
     left: 0;
     top: 0;
@@ -14439,56 +14459,56 @@ iframe {
     z-index: -20;
 }
 
-.member_nav_open_dropdown_before:hover{
+.member_nav_open_dropdown_before:hover {
     cursor: default;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
 
-    .member_nav_profile{
-        position:inherit;
+    .member_nav_profile {
+        position: inherit;
     }
 
-    .member_nav_open_dropdown{
+    .member_nav_open_dropdown {
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
     }
 
-    .member_sub_menu_mobile{
+    .member_sub_menu_mobile {
         flex-direction: column !important;
         justify-content: flex-start !important;
         align-items: flex-start !important;
     }
 
-    .member_sub_menu_mobile a{
+    .member_sub_menu_mobile a {
         margin-bottom: 10px;
     }
 }
 
-.header_middle{
+.header_middle {
     border-bottom: solid 1px #ccc;
 }
 
-.member_sub_menu_mobile{
+.member_sub_menu_mobile {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.member_nav_open_dropdown .close_button{
+.member_nav_open_dropdown .close_button {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     border: solid 3px #333;
 }
 
-.search_container_member form{
+.search_container_member form {
     background: rgba(0, 0, 0, .1);
 }
 
-.members_basket_container{
+.members_basket_container {
     padding: 10px 20px;
     border-radius: 25px;
     display: flex;
@@ -14497,14 +14517,14 @@ iframe {
     justify-content: space-between;
 }
 
-.members_basket_container:hover{
+.members_basket_container:hover {
     background-color: #f5f5f5;
     cursor: pointer;
     transition: ease .3s all;
 }
 
 
-.members_basket_container span svg{
+.members_basket_container span svg {
     width: 24px;
     height: 25px;
     color: #666;
@@ -14515,12 +14535,12 @@ iframe {
     margin-left: 10px;
 }
 
-.cursor-pointer:hover{
+.cursor-pointer:hover {
     cursor: pointer;
 }
 
 
-.addUserAddressContainer{
+.addUserAddressContainer {
     width: 570px;
     border-radius: 5px;
     background-color: #fff;
@@ -14531,7 +14551,7 @@ iframe {
     z-index: 999;
 }
 
-.before-bg{
+.before-bg {
     position: fixed;
     left: 0;
     top: 0;
@@ -14555,11 +14575,11 @@ iframe {
 }
 
 
-.delivery_address__container{
+.delivery_address__container {
     margin-bottom: 60px;
 }
 
-.delivery_address_item{
+.delivery_address_item {
     width: 100%;
     border: solid 1px #e5e5e5;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 8%);
@@ -14579,11 +14599,11 @@ iframe {
 }
 
 
-.address_header_radio{
+.address_header_radio {
     display: flex;
 }
 
-.address_header_input{
+.address_header_input {
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;
@@ -14593,11 +14613,11 @@ iframe {
     width: 30px;
 }
 
-.address_header_input:checked{
+.address_header_input:checked {
     background: #6c84fa;
 }
 
-.address_header_input::before{
+.address_header_input::before {
     align-items: center;
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='12' viewBox='0 0 15 12'%3E%3Cpath fill='%23FFF' fill-rule='nonzero' d='M13.927 2.2l-6.845 9.289a1.011 1.011 0 0 1-1.43.188L.764 7.769a1 1 0 0 1 1.25-1.562L6.09 9.468l6.227-8.451a1 1 0 1 1 1.61 1.183z'/%3E%3C/svg%3E%0A");
     display: flex;
@@ -14612,7 +14632,7 @@ iframe {
     width: 30px;
 }
 
-.header_context{
+.header_context {
     font-size: 16px;
     font-weight: 600;
     font-stretch: normal;
@@ -14625,7 +14645,7 @@ iframe {
     overflow: hidden;
 }
 
-.header_context h3{
+.header_context h3 {
     font-size: 16px;
     font-weight: 600;
     font-stretch: normal;
@@ -14633,7 +14653,7 @@ iframe {
     line-height: 1.5;
 }
 
-.header_context p{
+.header_context p {
     font-size: 12px;
     font-weight: 600;
     font-stretch: normal;
@@ -14641,7 +14661,7 @@ iframe {
     line-height: 1.5;
 }
 
-.header_edit_button{
+.header_edit_button {
     width: 38px;
     height: 38px;
     display: flex;
@@ -14651,26 +14671,26 @@ iframe {
     transition: linear .3s all;
 }
 
-.header_edit_button:hover{
+.header_edit_button:hover {
     box-shadow: 0 0 3px 0 rgb(0 0 0 / 40%);
     transition: linear .3s all;
 }
 
-.product_d_right{
+.product_d_right {
     background-color: #f5f5f5;
     border-radius: 8px;
     padding: 12px;
     height: 100%;
 }
 
-.product-detail-container-row{
+.product-detail-container-row {
     border: solid 1px #ccc;
     margin: 0;
     padding: 0;
     border-radius: 8px;
 }
 
-.product-detail-container img{
+.product-detail-container img {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     width: 100%;
@@ -14681,38 +14701,39 @@ iframe {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0; 
+    margin: 0;
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+    -moz-appearance: textfield;
+    /* Firefox */
 }
 
-.passiveButton{
+.passiveButton {
     background: rgba(0, 0, 0, .3) !important;
     color: #fff !important;
 }
 
-.passiveButton:hover{
+.passiveButton:hover {
     background: rgba(0, 0, 0, .3) !important;
     color: #fff !important;
-    cursor:not-allowed;
+    cursor: not-allowed;
 }
 
-.passiveButtonCategories{
+.passiveButtonCategories {
     background: none !important;
     color: #000 !important;
 }
 
-.passiveButtonCategories:hover{
+.passiveButtonCategories:hover {
     background: none !important;
     color: #000 !important;
-    cursor:not-allowed;
+    cursor: not-allowed;
 }
 
 .month-bar--march {
-    background-image: -o-linear-gradient(350deg,#f9fbff,#eaf3fa);
-    background-image: linear-gradient(100deg,#f9fbff,#eaf3fa);
+    background-image: -o-linear-gradient(350deg, #f9fbff, #eaf3fa);
+    background-image: linear-gradient(100deg, #f9fbff, #eaf3fa);
 }
 
 .month-bar {
@@ -14739,11 +14760,14 @@ input[type=number] {
 .month-bar--march .month-bar__date__month {
     color: #7c8b9a;
 }
+
 .month-bar__date__month {
     font-size: 21px;
     margin-right: 4px;
 }
-.month-bar__date__month, .month-bar__date__year {
+
+.month-bar__date__month,
+.month-bar__date__year {
     font-weight: 600;
 }
 
@@ -14752,6 +14776,7 @@ input[type=number] {
     height: 67px;
     width: 133px;
 }
+
 .month-bar__bg {
     background-position: 100% 100%;
     background-repeat: no-repeat;
@@ -14765,7 +14790,7 @@ input[type=number] {
     margin-top: 20px;
 }
 
-.order-row{
+.order-row {
     background-color: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -14776,17 +14801,18 @@ input[type=number] {
     flex-direction: column;
     -o-transition: all .5s ease;
     transition: all .5s ease;
-    transition-property: box-shadow,height,width,box-sizing,padding,background,font-size,transform,-webkit-box-shadow,-webkit-box-sizing,-webkit-transform;
+    transition-property: box-shadow, height, width, box-sizing, padding, background, font-size, transform, -webkit-box-shadow, -webkit-box-sizing, -webkit-transform;
 }
 
 .order-row__summary {
-    border-radius: 8px!important;
+    border-radius: 8px !important;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 16px 24px;
 }
 
-.order-row__summary, .order-row__summary__evaluate-order {
+.order-row__summary,
+.order-row__summary__evaluate-order {
     align-items: center;
     display: flex;
 }
@@ -14814,15 +14840,16 @@ input[type=number] {
 }
 
 [x-apple-data-detectors] {
-    color: inherit!important;
-    font-family: inherit!important;
-    font-size: inherit!important;
-    font-weight: inherit!important;
-    line-height: inherit!important;
-    text-decoration: none!important;
+    color: inherit !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    text-decoration: none !important;
 }
 
-.order-row__summary__order-data small, .order-row__summary__price small {
+.order-row__summary__order-data small,
+.order-row__summary__price small {
     color: #919191;
     font-size: 12px;
     letter-spacing: -.24px;
@@ -14869,31 +14896,36 @@ input[type=number] {
 .progress-bar__status--delivered span {
     color: #484848;
     font-weight: 600;
-    margin-top: 0!important;
+    margin-top: 0 !important;
 }
+
 .progress-bar__status span {
     display: block;
     font-size: 12px;
 }
 
-.order-row__summary__order-data, .order-row__summary__price {
+.order-row__summary__order-data,
+.order-row__summary__price {
     display: flex;
     flex-direction: column;
 }
 
-.order-row__summary__order-data, .order-row__summary__price, .order-row__summary__progress-bar {
+.order-row__summary__order-data,
+.order-row__summary__price,
+.order-row__summary__progress-bar {
     -ms-flex: 1;
     -webkit-flex: 1;
     flex: 1;
     margin-left: 20px;
     margin-right: 20px;
 }
+
 .order-row__summary__price {
     text-align: right;
 }
 
 .order-row__summary__price b {
-    color: #439e4a!important;
+    color: #439e4a !important;
 }
 
 .order-row__summary__toggle {
@@ -14908,7 +14940,7 @@ input[type=number] {
 
 .order-row__summary__toggle__icon {
     align-items: center;
-    background-color: rgba(0,0,0,.06);
+    background-color: rgba(0, 0, 0, .06);
     border-radius: 32px;
     display: flex;
     height: 32px;
@@ -14925,16 +14957,17 @@ input[type=number] {
     width: 14px;
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
     .order-row {
         margin-top: 20px;
     }
+
     .order-row__summary__toggle {
         margin-left: 40px;
     }
 }
 
-.order-row-sub-product{
+.order-row-sub-product {
     padding: 16px 24px;
 }
 
@@ -14947,14 +14980,16 @@ input[type=number] {
     min-height: 118px;
     width: 100%;
 }
-.order-detail-cards, .order-detail-cards__item {
+
+.order-detail-cards,
+.order-detail-cards__item {
     display: flex;
 }
 
-@media only screen and (min-width: 992px){
-.order-detail-cards__column {
-    flex: 1;
-}
+@media only screen and (min-width: 992px) {
+    .order-detail-cards__column {
+        flex: 1;
+    }
 }
 
 .order-detail-cards__column {
@@ -14976,6 +15011,7 @@ input[type=number] {
 .card-products__item {
     width: 100%;
 }
+
 .product-card {
     display: flex;
     flex-direction: row;
@@ -15024,6 +15060,7 @@ input[type=number] {
     color: #484848;
     text-decoration: none;
 }
+
 .product-card__content__merchant span {
     color: #484848;
 }
@@ -15040,6 +15077,7 @@ input[type=number] {
 .card-products__item {
     width: 100%;
 }
+
 .solo-button--tiny {
     font-size: 12px;
     height: 32px;
@@ -15054,6 +15092,7 @@ input[type=number] {
 .lineitem-content--delivered {
     background-color: #f7fdf7;
 }
+
 .lineitem-content {
     background-color: #f5f5f5;
     border-bottom-right-radius: 8px;
@@ -15084,7 +15123,8 @@ input[type=number] {
     width: 48px;
 }
 
-.lineitem-content__header, .lineitem-content__header__icon {
+.lineitem-content__header,
+.lineitem-content__header__icon {
     align-items: center;
     display: flex;
 }
@@ -15140,7 +15180,7 @@ input[type=number] {
     width: 24px;
 }
 
-.solo-button svg{
+.solo-button svg {
     margin-right: 8px;
     width: 16px;
     color: #ff6000;
@@ -15150,17 +15190,19 @@ input[type=number] {
     font-size: 12px;
     margin-top: 10px;
     background: none;
-    border:none;
+    border: none;
 }
 
-.solo-button:hover{
+.solo-button:hover {
     color: #ff6000;
 }
 
 .product-card__content__merchant span {
     color: #484848;
 }
-.product-card__content__merchant a, .product-card__content__merchant span {
+
+.product-card__content__merchant a,
+.product-card__content__merchant span {
     font-size: 12px;
 }
 
@@ -15173,11 +15215,11 @@ input[type=number] {
     text-decoration: none;
 }
 
-.order-row__summary.active{
+.order-row__summary.active {
     display: block;
 }
 
-.order-row__summary.hide{
+.order-row__summary.hide {
     display: none;
 }
 
@@ -15227,11 +15269,12 @@ input[type=number] {
     margin-top: 0;
 }
 
-@media only screen and (min-width: 992px){
-.order-information__column--addresses .order-information__content {
-    max-width: 360px;
+@media only screen and (min-width: 992px) {
+    .order-information__column--addresses .order-information__content {
+        max-width: 360px;
+    }
 }
-}
+
 .order-information__column--shipping-address {
     -ms-flex-align: start;
     -webkit-align-items: flex-start;
@@ -15271,6 +15314,7 @@ input[type=number] {
     line-height: 19px;
     word-break: break-word;
 }
+
 .order-information__content address {
     color: #484848;
     font-size: 12px;
@@ -15290,18 +15334,20 @@ input[type=number] {
     margin-top: 0;
 }
 
-@media only screen and (min-width: 992px){
-.order-information__column--payment .order-information__content {
-    max-width: 380px;
-}
+@media only screen and (min-width: 992px) {
+    .order-information__column--payment .order-information__content {
+        max-width: 380px;
+    }
 
 }
-@media only screen and (min-width: 992px){
-.order-information__column--payment .order-information__content {
-    max-width: 340px;
-}
+
+@media only screen and (min-width: 992px) {
+    .order-information__column--payment .order-information__content {
+        max-width: 340px;
+    }
 
 }
+
 .order-information__column--payment .order-information__content {
     width: 100%;
 }
@@ -15343,6 +15389,7 @@ input[type=number] {
     flex: 1;
     margin-left: 16px;
 }
+
 .payment-info-card__info__number {
     color: #484848;
     font-size: 12px;
@@ -15350,6 +15397,7 @@ input[type=number] {
     letter-spacing: -.24px;
     line-height: 1.5;
 }
+
 .payment-info-card__info__detail {
     color: #646464;
     font-size: 12px;
@@ -15383,7 +15431,8 @@ input[type=number] {
     position: relative;
 }
 
-.order-information__group__key, .order-information__group__value {
+.order-information__group__key,
+.order-information__group__value {
     flex: 1;
 }
 
@@ -15393,13 +15442,15 @@ input[type=number] {
     font-weight: 600;
     text-align: right;
 }
-.order-information__group__key, .order-information__group__value {
+
+.order-information__group__key,
+.order-information__group__value {
     -ms-flex: 1;
     -webkit-flex: 1;
     flex: 1;
 }
 
-.order-detail-footer{
+.order-detail-footer {
     padding: 16px 24px;
 }
 
@@ -15419,6 +15470,7 @@ input[type=number] {
 .order-information__column--other nav a:not(:first-child) {
     margin-left: 32px;
 }
+
 .order-information__column--other nav a {
     color: #484848;
     cursor: pointer;
@@ -15427,11 +15479,11 @@ input[type=number] {
     text-decoration: none;
 }
 
-.product-detail-container{
+.product-detail-container {
     height: 100%;
 }
 
-.filterButtonPassive{
+.filterButtonPassive {
     background-color: rgb(204, 204, 204) !important;
     color: rgb(145, 145, 145) !important;
     cursor: not-allowed !important;
@@ -15439,7 +15491,7 @@ input[type=number] {
     border-color: rgb(204, 204, 204) !important;
 }
 
-.filterButtonActive{
+.filterButtonActive {
     background-color: #40A944;
     color: #fff;
     border: solid 1px #40A944;
@@ -15447,7 +15499,7 @@ input[type=number] {
     border-radius: 8px;
 }
 
-.dietList__container fieldset{ 
+.dietList__container fieldset {
     border: 3px solid #eee;
     border-radius: 0.3rem;
     padding: 13px;
@@ -15466,28 +15518,28 @@ input[type=number] {
     cursor: default;
 }
 
-.dietList__container .narrowest{
+.dietList__container .narrowest {
     list-style-type: none;
 }
 
-.dietList__container .narrowest li{
+.dietList__container .narrowest li {
     display: flex;
     margin-bottom: 20px;
 }
 
-.dietList__container .narrowest li label.title{
+.dietList__container .narrowest li label.title {
     font-weight: 500;
     font-size: 20px;
     min-width: 150px;
 }
 
-.dietList__container .narrowest li input[type=number]{
+.dietList__container .narrowest li input[type=number] {
     width: 70px;
     height: 30px;
     border: solid 1px #333;
 }
 
-.mass-bg-result{
+.mass-bg-result {
     background-color: #f0f9ee;
 }
 
@@ -15511,7 +15563,7 @@ input[type=number] {
     font-weight: 100;
 }
 
-.vki-balon span{
+.vki-balon span {
     color: #fff;
     font-weight: 700;
 }
@@ -15525,11 +15577,11 @@ input[type=number] {
     margin-top: 35px;
 }
 
-@media (max-width: 768px){
-.vki-result-share {
-    background-image: none;
-    padding-bottom: 0;
-}
+@media (max-width: 768px) {
+    .vki-result-share {
+        background-image: none;
+        padding-bottom: 0;
+    }
 }
 
 .vki-result-share {
@@ -15540,19 +15592,19 @@ input[type=number] {
     background-position: center bottom;
 }
 
-.subSearchBar__container{
+.subSearchBar__container {
     width: 100%;
     padding: 15px;
     position: absolute;
     background: #fff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    -webkit-box-shadow: 0px 3px 15px -5px rgba(114,114,114,0.91); 
-    box-shadow: 0px 3px 15px -5px rgba(114,114,114,0.91);
+    -webkit-box-shadow: 0px 3px 15px -5px rgba(114, 114, 114, 0.91);
+    box-shadow: 0px 3px 15px -5px rgba(114, 114, 114, 0.91);
     z-index: 2;
 }
 
-.loading_search_container{
+.loading_search_container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -15560,14 +15612,14 @@ input[type=number] {
     align-items: center;
 }
 
-.subSearchBar__container{
+.subSearchBar__container {
     max-height: 360px;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
 }
 
-.subSearchBar__container .image img{
+.subSearchBar__container .image img {
     width: 36px;
     height: 36px;
     box-sizing: border-box;
@@ -15575,7 +15627,7 @@ input[type=number] {
     border-radius: 50%;
 }
 
-.subSearchBar__container .content{
+.subSearchBar__container .content {
     display: flex;
     align-items: center;
     padding-left: 15px;
@@ -15601,11 +15653,12 @@ input[type=number] {
     transform: translate(-50%, -50%);
     z-index: 101;
 }
+
 .card-header {
     padding: 0.5rem 1rem;
     margin-bottom: 0;
-    background-color: rgba(0,0,0,.03);
-    border-bottom: 1px solid rgba(0,0,0,.125);
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
 
 .close-button {
@@ -15614,4 +15667,978 @@ input[type=number] {
     position: absolute;
     right: 10px;
     top: 10px;
+}
+
+
+/****
+    Solution Center
+*****/
+
+.entrance .main[data-v-60c2a762] {
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    box-shadow: 0 8px 32px 0 rgb(0 0 0 / 8%);
+}
+
+.entrance .main .web-entrance-icon[data-v-60c2a762] {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.entrance .main .web-entrance-icon #web-entrance-icon[data-v-60c2a762] {
+    width: 720px;
+    height: 600px;
+    background-image: url(../media/img/bg/head-image.webp);
+    background-size: cover;
+}
+
+.canvas[data-v-60c2a762],
+.cm[data-v-60c2a762] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cm[data-v-60c2a762] {
+    width: 100%;
+    height: 100%;
+}
+
+.canvas[data-v-60c2a762] {
+    float: left;
+    height: 600px;
+    width: 680px;
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.bubble[data-v-60c2a762]:first-child {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/2.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 173px;
+    height: 173px;
+    left: 4vw;
+    bottom: 97vh;
+    -webkit-animation: move1-data-v-60c2a762 16s infinite;
+    animation: move1-data-v-60c2a762 16s infinite;
+}
+
+.bubble[data-v-60c2a762] {
+    display: block;
+    opacity: 1;
+    position: absolute;
+}
+
+
+@-webkit-keyframes move1-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 92vh;
+        transform: translate(-11px);
+        opacity: 0
+    }
+}
+
+@keyframes move1-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 92vh;
+        transform: translate(-11px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(2) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/3.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 188px;
+    height: 188px;
+    left: 34vw;
+    bottom: 39vh;
+    -webkit-animation: move2-data-v-60c2a762 18s infinite;
+    animation: move2-data-v-60c2a762 18s infinite
+}
+
+@-webkit-keyframes move2-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 93vh;
+        transform: translate(20px);
+        opacity: 0
+    }
+}
+
+@keyframes move2-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 93vh;
+        transform: translate(20px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(3) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/4.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 104px;
+    height: 104px;
+    left: 9vw;
+    bottom: 40vh;
+    -webkit-animation: move3-data-v-60c2a762 28s infinite;
+    animation: move3-data-v-60c2a762 28s infinite
+}
+
+@-webkit-keyframes move3-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 70vh;
+        transform: translate(-3px);
+        opacity: 0
+    }
+}
+
+@keyframes move3-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 70vh;
+        transform: translate(-3px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(4) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/5.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 175px;
+    height: 175px;
+    left: 24vw;
+    bottom: 51vh;
+    -webkit-animation: move4-data-v-60c2a762 32s infinite;
+    animation: move4-data-v-60c2a762 32s infinite
+}
+
+@-webkit-keyframes move4-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 69vh;
+        transform: translate(11px);
+        opacity: 0
+    }
+}
+
+@keyframes move4-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 69vh;
+        transform: translate(11px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(5) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/6.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 173px;
+    height: 173px;
+    left: 11vw;
+    bottom: 35vh;
+    -webkit-animation: move5-data-v-60c2a762 18s infinite;
+    animation: move5-data-v-60c2a762 18s infinite
+}
+
+@-webkit-keyframes move5-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 84vh;
+        transform: translate(26px);
+        opacity: 0
+    }
+}
+
+@keyframes move5-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 84vh;
+        transform: translate(26px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(6) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/7.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 106px;
+    height: 106px;
+    left: 2vw;
+    bottom: 82vh;
+    -webkit-animation: move6-data-v-60c2a762 31s infinite;
+    animation: move6-data-v-60c2a762 31s infinite
+}
+
+@-webkit-keyframes move6-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 97vh;
+        transform: translate(18px);
+        opacity: 0
+    }
+}
+
+@keyframes move6-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 97vh;
+        transform: translate(18px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(7) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/8.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 175px;
+    height: 175px;
+    left: 20vw;
+    bottom: 58vh;
+    -webkit-animation: move7-data-v-60c2a762 26s infinite;
+    animation: move7-data-v-60c2a762 26s infinite
+}
+
+@-webkit-keyframes move7-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 68vh;
+        transform: translate(-40px);
+        opacity: 0
+    }
+}
+
+@keyframes move7-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 68vh;
+        transform: translate(-40px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(8) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/9.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 80px;
+    height: 80px;
+    left: 4vw;
+    bottom: 79vh;
+    -webkit-animation: move8-data-v-60c2a762 21s infinite;
+    animation: move8-data-v-60c2a762 21s infinite
+}
+
+@-webkit-keyframes move8-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 100vh;
+        transform: translate(-25px);
+        opacity: 0
+    }
+}
+
+@keyframes move8-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 100vh;
+        transform: translate(-25px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(9) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/10.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 152px;
+    height: 152px;
+    left: 6vw;
+    bottom: 16vh;
+    -webkit-animation: move9-data-v-60c2a762 28s infinite;
+    animation: move9-data-v-60c2a762 28s infinite
+}
+
+@-webkit-keyframes move9-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 67vh;
+        transform: translate(26px);
+        opacity: 0
+    }
+}
+
+@keyframes move9-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 67vh;
+        transform: translate(26px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(10) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/11.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 182px;
+    height: 182px;
+    left: 24vw;
+    bottom: 26vh;
+    -webkit-animation: move10-data-v-60c2a762 24s infinite;
+    animation: move10-data-v-60c2a762 24s infinite
+}
+
+@-webkit-keyframes move10-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 52vh;
+        transform: translate(-30px);
+        opacity: 0
+    }
+}
+
+@keyframes move10-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 52vh;
+        transform: translate(-30px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(11) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/12.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 202px;
+    height: 202px;
+    left: 5vw;
+    bottom: 18vh;
+    -webkit-animation: move11-data-v-60c2a762 23s infinite;
+    animation: move11-data-v-60c2a762 23s infinite
+}
+
+@-webkit-keyframes move11-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 99vh;
+        transform: translate(-12px);
+        opacity: 0
+    }
+}
+
+@keyframes move11-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 99vh;
+        transform: translate(-12px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(12) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/13.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 102px;
+    height: 102px;
+    left: 9vw;
+    bottom: 84vh;
+    -webkit-animation: move12-data-v-60c2a762 29s infinite;
+    animation: move12-data-v-60c2a762 29s infinite
+}
+
+@-webkit-keyframes move12-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 59vh;
+        transform: translate(8px);
+        opacity: 0
+    }
+}
+
+@keyframes move12-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 59vh;
+        transform: translate(8px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(13) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/14.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 188px;
+    height: 188px;
+    left: 2vw;
+    bottom: 98vh;
+    -webkit-animation: move13-data-v-60c2a762 17s infinite;
+    animation: move13-data-v-60c2a762 17s infinite
+}
+
+@-webkit-keyframes move13-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 53vh;
+        transform: translate(5px);
+        opacity: 0
+    }
+}
+
+@keyframes move13-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 53vh;
+        transform: translate(5px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(14) {
+    background: url(https://images.hepsiburada.net/assets/gif/hepsiburada/cozum_merkezi/15.png) transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 145px;
+    height: 145px;
+    left: 33vw;
+    bottom: 63vh;
+    -webkit-animation: move14-data-v-60c2a762 17s infinite;
+    animation: move14-data-v-60c2a762 17s infinite
+}
+
+@-webkit-keyframes move14-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 78vh;
+        transform: translate(40px);
+        opacity: 0
+    }
+}
+
+@keyframes move14-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 78vh;
+        transform: translate(40px);
+        opacity: 0
+    }
+}
+
+.bubble[data-v-60c2a762]:nth-child(15) {
+    background: transparent no-repeat 50%;
+    background-size: cover;
+    background-color: transparent;
+    width: 184px;
+    height: 184px;
+    left: 16vw;
+    bottom: 40vh;
+    -webkit-animation: move15-data-v-60c2a762 16s infinite;
+    animation: move15-data-v-60c2a762 16s infinite
+}
+
+@-webkit-keyframes move15-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 93vh;
+        transform: translate(-28px);
+        opacity: 0
+    }
+}
+
+@keyframes move15-data-v-60c2a762 {
+    0% {
+        bottom: 0;
+        transform: scale(0)
+    }
+
+    5% {
+        transform: scale(1)
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    to {
+        bottom: 93vh;
+        transform: translate(-28px);
+        opacity: 0
+    }
+}
+
+.entrance-container[data-v-17c682b7] {
+    height: 600px;
+    margin-left: 80px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.entrance-container .entrance-title[data-v-17c682b7] {
+    font-size: 16px;
+    letter-spacing: -.32px;
+    color: #484848;
+}
+
+.entrance-container .text[data-v-17c682b7] {
+    width: 484px;
+    margin-top: 8px;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: .3px;
+    color: #484848;
+}
+
+.entrance-container .button-container[data-v-17c682b7] {
+    display: flex;
+    flex-direction: row;
+    margin-top: 48px;
+}
+
+.entrance-container .button-container>div[data-v-17c682b7] {
+    min-width: 245px;
+    max-width: 300px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin-right: 16px;
+}
+
+.btn.button-primary-default button[data-v-72bee508] {
+    height: 48px;
+    width: 100%;
+    background-color: #80B82D;
+    color: #fff;
+}
+
+.btn button[data-v-72bee508] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border: none;
+    height: 40px;
+    width: 100%;
+    max-width: 444px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: -.28px;
+    user-select: none;
+}
+
+.entrance-container .button-container>div[data-v-17c682b7] {
+    min-width: 245px;
+    max-width: 300px;
+    width: max-content;
+    margin-right: 16px;
+}
+
+.btn[data-v-72bee508] {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn.button-secondary-default button[data-v-72bee508] {
+    height: 48px;
+    width: 100%;
+    background-color: rgba(128, 184, 45, .08);
+    color: #80B82D;
+}
+
+.ant-collapse>.ant-collapse-item>.ant-collapse-header:hover {
+    color: #80B82D;
+}
+
+.ant-collapse {
+    background: transparent !important;
+}
+
+.ant-collapse-item.ant-collapse-item-active>.ant-collapse-header {
+    color: #80B82D !important;
+}
+
+.ant-collapse-header>img[data-v-492b9d60] {
+    height: 24px;
+    width: 24px;
+    margin-right: 12px;
 }

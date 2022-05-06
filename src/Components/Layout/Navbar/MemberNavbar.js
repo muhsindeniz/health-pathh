@@ -23,7 +23,6 @@ const MemberNavbar = () => {
         message.success("Successfully logged out.")
         document.location.reload();
         history.push('/')
-
     }
 
     useEffect(() => {
@@ -31,9 +30,6 @@ const MemberNavbar = () => {
             var matches = user?.name?.match(/\b(\w)/g);
             var acronym = matches?.join('');
             setUserName(acronym)
-        }
-        else {
-
         }
     }, [token])
 
@@ -92,7 +88,7 @@ const MemberNavbar = () => {
                                         <div className="header_account_area">
                                             <label className="member_nav_profile" onClick={() => { setOpenMemberMenu(!openMemberMenu); }}>
                                                 {
-                                                    userName === null ? <i className="far fa-user"></i> : userName
+                                                    userName === null ? <i className="far fa-user"></i> : user?.name.match(/\b(\w)/g).join('')
                                                 }
 
                                                 {
@@ -111,7 +107,7 @@ const MemberNavbar = () => {
                                                                 <div className="member_sub_menu_mobile">
                                                                     <Link className="d-flex" to="/membership-infos">
                                                                         <div><i className="fas fa-user-cog"></i></div>
-                                                                        <span>My user infor</span>
+                                                                        <span>My user info.</span>
                                                                     </Link>
                                                                     {
                                                                         mobile === true ? <Link className="d-flex" to="/cart">
@@ -119,10 +115,10 @@ const MemberNavbar = () => {
                                                                             <span>My cart</span>
                                                                         </Link> : ""
                                                                     }
-                                                                    <Link className="d-flex" to="/" onClick={() => logOut()}>
+                                                                    <div className="d-flex" onClick={() => logOut()}>
                                                                         <div><i className="fas fa-sign-out-alt"></i></div>
                                                                         <span>Logout</span>
-                                                                    </Link>
+                                                                    </div>
                                                                 </div>
                                                             </section>
 
@@ -130,8 +126,9 @@ const MemberNavbar = () => {
                                                                 <span>CUSTOMER SERVICE</span>
 
                                                                 <ul>
-                                                                    <li>My Support Requests</li>
-                                                                    <li>Solution Center</li>
+                                                                    <Link to="/solution-center">
+                                                                        <li>Solution Center</li>
+                                                                    </Link>
                                                                 </ul>
                                                             </section>
                                                         </main>
